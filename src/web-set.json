@@ -39,7 +39,7 @@
           "name": "Pinterest Search",
           "desc": "Temukan Gambar Pin Berdasarkan query",
           "path": "/search/pinsearch?query=",
-          "status": "maintenance",
+          "status": "error",
           "requireKey": false,
           "params": {
             "query": "Masukkan Query yang ingin dicari"
