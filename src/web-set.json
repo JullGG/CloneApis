@@ -62,7 +62,7 @@
           "status": "ready",
           "requireKey": false,
           "params": {
-            "q": "Masukkan Query yang ingin dicari"
+            "query": "Masukkan Query yang ingin dicari"
           }
         }        
       ]
