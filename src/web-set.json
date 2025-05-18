@@ -58,7 +58,7 @@
         {
           "name": "Tiktok Search",
           "desc": "Temukan Dari Tiktok",
-          "path": "/search/komiks?query=",
+          "path": "/search/tiktoks?query=",
           "status": "ready",
           "requireKey": false,
           "params": {
