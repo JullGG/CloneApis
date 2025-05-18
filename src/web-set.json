@@ -38,11 +38,11 @@
         {
           "name": "Pinterest Search",
           "desc": "Temukan Gambar Pin Berdasarkan query",
-          "path": "/search/pinsearch?query=",
+          "path": "/search/pinsearch?q=",
           "status": "ready",
           "requireKey": false,
           "params": {
-            "query": "Masukkan Query yang ingin dicari"
+            "q": "Masukkan Query yang ingin dicari"
           }
         },
         {
