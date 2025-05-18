@@ -193,11 +193,11 @@
         {
           "name": "GPT Ai",
           "desc": "Tanyakan Sesuatu Kepada Gpt Ai",
-          "path": "/ai/ai-gpt?teks=",
+          "path": "/ai/ai-gpt?query=",
           "status": "ready",
           "requireKey": false,
           "params": {
-            "teks": "Pesan untuk Gpt Ai"
+            "query": "Pesan untuk Gpt Ai"
           }
         }       
       ]
