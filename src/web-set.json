@@ -242,6 +242,16 @@
           "params": {
             "code": "masukkan codemu"
           }
+        },
+        {
+          "name": "Screenshot Website",
+          "desc": "Screenshot website mu menggunakan url",
+          "path": "tools/ssweb?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url untuk Screenshot gambar website."
+          }
         }
       ]
     }
