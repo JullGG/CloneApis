@@ -31,12 +31,14 @@ const askZeroGPT = async (text) => {
             const data = JSON.parse(line.slice(6));
             if (data.type === 'live') out += data.data;
             if (data.type === 'end') resolve(out);
-          } catch (e) {}
+          } catch (e) {
+            // ignore JSON parse error
+          }
         }
       });
     });
 
-    res.data.on('error', reject);
+    res.data.on('error', err => reject(err));
   });
 };
 
