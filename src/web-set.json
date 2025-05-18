@@ -39,7 +39,7 @@
           "name": "Pinterest Search",
           "desc": "Temukan Gambar Pin Berdasarkan query",
           "path": "/search/pinsearch?query=",
-          "status": "ready",
+          "status": "maintenance",
           "requireKey": false,
           "params": {
             "query": "Masukkan Query yang ingin dicari"
@@ -134,7 +134,7 @@
           "name": "Youtube Audio Downloader",
           "desc": "Download Audio Youtube",
           "path": "/downloader/yta?url=",
-          "status": "maintenance",
+          "status": "ready",
           "requireKey": false,
           "params": {
             "url": "url dari youtube"
