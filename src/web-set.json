@@ -54,6 +54,16 @@
           "params": {
             "query": "Masukkan Query yang ingin dicari"
           }
+        },
+        {
+          "name": "Tiktok Search",
+          "desc": "Temukan Dari Tiktok",
+          "path": "/search/komiks?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Masukkan Query yang ingin dicari"
+          }
         }        
       ]
     },
