@@ -1,6 +1,8 @@
 const axios = require('axios');
 
-const askZeroGPT = async (text) => {
+const askZeroGPT = async (query) => {
+  if (!query) throw new Error("Parameter 'query' wajib diisi.");
+
   const id = () => Math.random().toString(36).slice(2, 18);
 
   const res = await axios.post('https://zerogptai.org/wp-json/mwai-ui/v1/chats/submit', {
@@ -10,7 +12,7 @@ const askZeroGPT = async (text) => {
     chatId: id(),
     contextId: 39,
     messages: [],
-    newMessage: text,
+    newMessage: query,
     newFileId: null,
     stream: true
   }, {
@@ -22,7 +24,7 @@ const askZeroGPT = async (text) => {
     responseType: 'stream'
   });
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     let out = '';
     res.data.on('data', chunk => {
       chunk.toString().split('\n').forEach(line => {
@@ -32,13 +34,11 @@ const askZeroGPT = async (text) => {
             if (data.type === 'live') out += data.data;
             if (data.type === 'end') resolve(out);
           } catch (e) {
-            // ignore JSON parse error
+            // skip parsing error
           }
         }
       });
     });
-
-    res.data.on('error', err => reject(err));
   });
 };
 
