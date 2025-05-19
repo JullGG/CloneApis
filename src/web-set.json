@@ -189,6 +189,16 @@
           "params": {
             "text": "Pesan untuk LuminAI"
           }
+        },        
+        {
+          "name": "Gemini Ai",
+          "desc": "Chat dengan Gemini Ai",
+          "path": "/ai/gemini?q=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "q": "Pesan untuk gemini ai"
+          }
         },
         {
           "name": "Arting Ai",
