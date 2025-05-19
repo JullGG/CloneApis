@@ -101,6 +101,16 @@
           }
         },
         {
+          "name": "Facebook",
+          "desc": "download media dari Facebook",
+          "path": "/downloader/fb?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url dari Facebook"
+          }
+        },
+        {
           "name": "Downloader Profile Instagram",
           "desc": "Download Profile IG Via Username",
           "path": "/downloader/igdl-pp?username=",
