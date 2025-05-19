@@ -1,4 +1,4 @@
-  const getFBInfo = (url, cookie, useragent) => {
+  const getFBInfo = (videoUrl, cookie, useragent) => {
   const axios = require("axios");
 
   const headers = {
@@ -23,13 +23,13 @@
   const parseString = (string) => JSON.parse(`{"text": "${string}"}`).text;
 
   return new Promise((resolve, reject) => {
-    if (!url || !url.trim()) return reject("Please specify the Facebook URL");
+    if (!videoUrl || !videoUrl.trim()) return reject("Please specify the Facebook URL");
 
     if (
-      ["facebook.com", "fb.watch"].every((domain) => !url.includes(domain))
+      ["facebook.com", "fb.watch"].every((domain) => !videoUrl.includes(domain))
     ) return reject("Please enter the valid Facebook URL");
 
-    axios.get(url, { headers }).then(({ data }) => {
+    axios.get(videoUrl, { headers }).then(({ data }) => {
       data = data.replace(/&quot;/g, '"').replace(/&amp;/g, "&");
 
       const sdMatch = data.match(/"browser_native_sd_url":"(.*?)"/) || data.match(/"playable_url":"(.*?)"/) || data.match(/sd_src\s*:\s*"([^"]*)"/) || data.match(/(?<="src":")[^"]*(https:\/\/[^"]*)/);
@@ -41,7 +41,7 @@
 
       if (sdMatch && sdMatch[1]) {
         const result = {
-          url: url,
+          url: videoUrl,
           sd: parseString(sdMatch[1]),
           hd: hdMatch && hdMatch[1] ? parseString(hdMatch[1]) : "",
           title: titleMatch && titleMatch[1] ? parseString(titleMatch[1]) : data.match(/<title>(.*?)<\/title>/)?.[1] ?? "",
