@@ -103,7 +103,7 @@
         {
           "name": "Facebook",
           "desc": "download media dari Facebook",
-          "path": "/downloader/fb?url=",
+          "path": "/downloader/facebook?url=",
           "status": "ready",
           "requireKey": false,
           "params": {
