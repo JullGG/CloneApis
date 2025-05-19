@@ -53,4 +53,4 @@
     }).catch(_ => reject("Unable to fetch video information at this time. Please try again"));
   });
 };
-module.export = { getFBInfo }
+module.exports = { getFBInfo }
