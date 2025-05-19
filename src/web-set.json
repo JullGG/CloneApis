@@ -194,7 +194,7 @@
           "name": "Gemini Ai",
           "desc": "Chat dengan Gemini Ai",
           "path": "/ai/gemini?q=",
-          "status": "ready",
+          "status": "maintenance",
           "requireKey": false,
           "params": {
             "q": "Pesan untuk gemini ai"
@@ -213,11 +213,11 @@
         {
           "name": "GPT Ai",
           "desc": "Tanyakan Sesuatu Kepada Gpt Ai",
-          "path": "/ai/ai-gpt?query=",
+          "path": "/ai/ai-gpt?prompt=",
           "status": "ready",
           "requireKey": false,
           "params": {
-            "query": "Pesan untuk Gpt Ai"
+            "prompt": "Pesan untuk Gpt Ai"
           }
         }       
       ]
