@@ -210,16 +210,16 @@
             "prompt": "Prompt untuk Buat gambar."
           }
         },
-        {
-          "name": "GPT Ai",
-          "desc": "Tanyakan Sesuatu Kepada Gpt Ai",
-          "path": "/ai/ai-gpt?prompt=",
-          "status": "ready",
-          "requireKey": false,
-          "params": {
-            "prompt": "Pesan untuk Gpt Ai"
-          }
-        }       
+{
+  "name": "GPT Ai",
+  "desc": "Tanyakan Sesuatu Kepada GPT AI",
+  "path": "/ai/ai-gpt?prompt=",
+  "status": "ready",
+  "requireKey": false,
+  "params": {
+    "prompt": "Tulis pertanyaanmu di sini"
+  }
+}
       ]
     },
     {
