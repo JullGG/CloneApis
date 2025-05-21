@@ -249,6 +249,16 @@
           "params": {
             "text": "Pesan untuk gemini ai"
           }
+        },        
+        {
+          "name": "Gemini Ai prompt",
+          "desc": "Chat dengan Gemini Ai dengan prompt",
+          "path": "/ai/geminiprompt?text=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "text": "Pesan untuk gemini ai (prompt)"
+          }
         },
         {
           "name": "Arting Ai",
