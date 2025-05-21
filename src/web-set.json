@@ -7,7 +7,7 @@
     "status": "Online!"
   },
   "apiSettings": {
-    "creator": "Jul, Pan pan, rian & RenvyTeam",
+    "creator": "Jul & RenvyTeam",
     "globalKey": ["yo"],
     "defaultRequireKey": true
   },
@@ -39,7 +39,7 @@
           "name": "Pinterest Search",
           "desc": "Temukan Gambar Pin Berdasarkan query",
           "path": "/search/pinsearch?query=",
-          "status": "error",
+          "status": "ready",
           "requireKey": false,
           "params": {
             "query": "Masukkan Query yang ingin dicari"
