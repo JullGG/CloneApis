@@ -245,7 +245,7 @@
           "desc": "Chat dengan Gemini Ai",
           "path": "/ai/gemini?text=",
           "status": "ready",
-          "requireKey": false,
+          "requireKey": true,
           "params": {
             "text": "Pesan untuk gemini ai"
           }
