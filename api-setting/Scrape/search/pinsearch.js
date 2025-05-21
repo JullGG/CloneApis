@@ -60,4 +60,4 @@ const pinterest = {
   }
 };
 
-module.exports = search;
+module.exports = pinterest;
