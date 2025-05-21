@@ -53,6 +53,26 @@
           "requireKey": false,
           "params": {
             "query": "Masukkan Query yang ingin dicari"
+         }
+        },
+        {
+          "name": "Spotify Search",
+          "desc": "Temukan lagu spotify Berdasarkan query",
+          "path": "/search/spotifysearch?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Masukkan Query yang ingin dicari"
+          }
+        },
+        {
+          "name": "Youtube Search",
+          "desc": "Temukan Dari Youtube",
+          "path": "/search/ytsearch?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Masukkan Query yang ingin dicari"
           }
         },
         {
