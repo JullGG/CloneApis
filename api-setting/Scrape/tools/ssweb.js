@@ -1,10 +1,10 @@
 const axios = require("axios");
 
-async function ssweb(query) {
-  if (!query) throw new Error("Parameter 'query' tidak ditemukan.");
+async function ssweb(url) {
+  if (!url) throw new Error("Parameter 'query' tidak ditemukan.");
 
   const baseURL = "https://image.thum.io/get/png/fullpage/viewportWidth/2400";
-  const finalURL = `${baseURL}/${encodeURIComponent(query)}`;
+  const finalURL = `${baseURL}/${encodeURIComponent(url)}`;
 
   try {
     const response = await axios.get(finalURL, {
