@@ -8,7 +8,7 @@
   },
   "apiSettings": {
     "creator": "Jul & RenvyTeam",
-    "globalKey": ["yo"],
+    "globalKey": ["ZELDAAPI"],
     "defaultRequireKey": true
   },
   "categories": [
@@ -245,7 +245,7 @@
           "desc": "Chat dengan Gemini Ai",
           "path": "/ai/gemini?text=",
           "status": "ready",
-          "requireKey": true,
+          "requireKey": false,
           "params": {
             "text": "Pesan untuk gemini ai"
           }
