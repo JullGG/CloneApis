@@ -203,13 +203,7 @@ class Gemini {
   }
 }
 
-module.exports = {
-  ChatGpt,
-  gptpic,
-  Gemini,
-  SeaArt,
-  Lbbai,
-};
+module.exports = ChatGpt;
 
 // Hot Reload
 const fs = require("fs");
