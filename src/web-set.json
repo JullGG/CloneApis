@@ -243,11 +243,11 @@
 {
   "name": "GPT Ai",
   "desc": "Tanyakan Sesuatu Kepada GPT AI",
-  "path": "/ai/ai-gpt?prompt=",
+  "path": "/ai/ai-gpt?query=",
   "status": "ready",
   "requireKey": false,
   "params": {
-    "prompt": "Tulis pertanyaanmu di sini"
+    "query": "Tulis pertanyaanmu di sini"
   }
 }
       ]
