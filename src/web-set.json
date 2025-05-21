@@ -141,6 +141,16 @@
           }
         },
         {
+          "name": "pinterest Downloader",
+          "desc": "Download pinterest image",
+          "path": "/downloader/pinterest?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url dari pin"
+          }
+        },
+        {
           "name": "Youtube Video Downloader",
           "desc": "Download Video Youtube",
           "path": "/downloader/ytv?url=",
