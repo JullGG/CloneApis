@@ -54,4 +54,4 @@
   });
 };
 
-module.exports = getFBInfo;
+module.exports = getFBInfo
