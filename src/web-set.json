@@ -260,6 +260,18 @@
             "text": "Pesan untuk gemini ai (prompt)",
             "prompt": "prompt untuk gemini"
           }
+        },        
+        {
+          "name": " Ai Prompt",
+          "desc": "Chat dengan Ai dengan prompt",
+          "path": "/ai/promptai?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "name": "nama untuk prompt ai",
+            "prompt": "prompt untuk ai",
+            "query": "pertanyaan / pesan untuk ai"
+          }
         },
         {
           "name": "Arting Ai",
