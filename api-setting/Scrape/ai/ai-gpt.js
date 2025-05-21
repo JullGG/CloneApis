@@ -1,12 +1,12 @@
 const axios = require('axios');
 const qs = require('qs');
  
-async function askChatbot(name, prompt, query) {
+async function askChatbot(query) {
   const data = qs.stringify({
     action: 'do_chat_with_ai',
     ai_chatbot_nonce: '22aa996020',
-    ai_name: name,
-    instruction: prompt,
+    ai_name: 'gpt ai',
+    instruction: 'kamu adalah gpt ai,salah satu ai paling pintar. kamu harus mampu menjawab semua pertanyaan',
     user_question: query
   });
  
