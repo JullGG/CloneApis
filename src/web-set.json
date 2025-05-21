@@ -243,11 +243,11 @@
         {
           "name": "Gemini Ai",
           "desc": "Chat dengan Gemini Ai",
-          "path": "/ai/gemini?q=",
-          "status": "maintenance",
+          "path": "/ai/gemini?text=",
+          "status": "ready",
           "requireKey": false,
           "params": {
-            "q": "Pesan untuk gemini ai"
+            "text": "Pesan untuk gemini ai"
           }
         },
         {
