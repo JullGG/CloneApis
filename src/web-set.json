@@ -193,11 +193,11 @@
         {
           "name": "Youtube Playlist",
           "desc": "Info Playlist",
-          "path": "/downloader/ytplaylist?url=",
+          "path": "/downloader/ytplaylist?playlistUrl=",
           "status": "ready",
           "requireKey": false,
           "params": {
-            "url": "url dari youtube (wajib playlist)"
+            "playlistUrl": "url dari youtube (wajib playlist)"
           }
         }                
       ]
