@@ -257,7 +257,8 @@
           "status": "ready",
           "requireKey": false,
           "params": {
-            "text": "Pesan untuk gemini ai (prompt)"
+            "text": "Pesan untuk gemini ai (prompt)",
+            "prompt": "prompt untuk gemini"
           }
         },
         {
