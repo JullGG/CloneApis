@@ -359,7 +359,6 @@
             }
         },        
         {
-          }
           "name": "Screenshot Website",
           "desc": "Screenshot website mu menggunakan url",
           "path": "/tools/ssweb?url=",
