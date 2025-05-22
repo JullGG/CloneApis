@@ -1,17 +1,17 @@
-// scraper yt playlist
-// credit © Nazir
+//scraper yt playlist
+//credit © Nazir
 
-const axios = require('axios');
-const cheerio = require('cheerio');
 
-async function ytPlaylist(url) {
+const cheerio = require ("cheerio")
+
+async function ytPlaylist(playlistUrl) {
     try {
         const headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         };
 
         // Fetch the playlist page
-        const response = await axios.get(url, { headers });
+        const response = await axios.get(playlistUrl, { headers });
         const html = response.data;
         const $ = cheerio.load(html);
 
@@ -21,7 +21,7 @@ async function ytPlaylist(url) {
 
         scripts.each((index, element) => {
             if (element.type === 'text') {
-                const match = element.data.match(/var ytInitialData\s*=\s*(\{.*\});/s);
+                const match = element.data.match(/var ytInitialData\s*=\s*({.*?});/);
                 if (match && match[1]) {
                     try {
                         ytInitialData = JSON.parse(match[1]);
@@ -39,12 +39,10 @@ async function ytPlaylist(url) {
         // Extract videos from the JSON data
         const videos = [];
         try {
-            const contents = ytInitialData?.contents?.twoColumnBrowseResultsRenderer?.tabs?.[0]
-                ?.tabRenderer?.content?.sectionListRenderer?.contents?.[0]
-                ?.itemSectionRenderer?.contents?.[0]
-                ?.playlistVideoListRenderer?.contents;
-
-            if (!contents) throw new Error('Video list not found');
+            const contents = ytInitialData.contents.twoColumnBrowseResultsRenderer.tabs[0]
+                .tabRenderer.content.sectionListRenderer.contents[0]
+                .itemSectionRenderer.contents[0]
+                .playlistVideoListRenderer.contents;
 
             for (const item of contents) {
                 if (item.playlistVideoRenderer) {
@@ -52,11 +50,11 @@ async function ytPlaylist(url) {
                     const videoId = video.videoId;
                     const title = video.title?.runs?.[0]?.text || 'No title';
                     const duration = video.lengthText?.simpleText || '0:00';
-                    const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+                    const url = `https://www.youtube.com/watch?v=${videoId}`;
 
                     videos.push({
                         title,
-                        url: videoUrl,
+                        url,
                         duration,
                         videoId
                     });
@@ -74,4 +72,4 @@ async function ytPlaylist(url) {
     }
 }
 
-module.exports = ytPlaylist;
+module.exports = ytPlaylist; 
