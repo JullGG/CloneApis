@@ -366,6 +366,14 @@
           "requireKey": false,
           "params": {
             "url": "url untuk Screenshot gambar website."
+            }
+        },        
+        {
+          "name": "Info Gempa",
+          "desc": "Info Gempa di wilayah Indonesia",
+          "path": "/tools/gempa",
+          "status": "ready",
+          "requireKey": false
           }
         }
       ]
