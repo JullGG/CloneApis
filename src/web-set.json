@@ -345,8 +345,21 @@
           "params": {
             "code": "masukkan codemu"
           }
-        },
+        },        
         {
+  "name": "Travel Distance",
+  "desc": "Hitung jarak dan estimasi waktu tempuh antara dua kota.",
+  "path": "/tools/distance?from=Jakarta&to=Bandung&unit=km",
+  "status": "ready",
+  "requireKey": false,
+  "params": {
+    "from": "Kota asal (contoh: Jakarta)",
+    "to": "Kota tujuan (contoh: Bandung)",
+    "unit": "Satuan (opsional, km atau mi)"
+            }
+        },        
+        {
+          }
           "name": "Screenshot Website",
           "desc": "Screenshot website mu menggunakan url",
           "path": "/tools/ssweb?url=",
