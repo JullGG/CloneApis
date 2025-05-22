@@ -359,6 +359,13 @@
             }
         },        
         {
+          "name": "Info Gempa",
+          "desc": "Info Gempa di wilayah Indonesia",
+          "path": "/tools/gempa",
+          "status": "ready",
+          "requireKey": false
+        },        
+        {
           "name": "Screenshot Website",
           "desc": "Screenshot website mu menggunakan url",
           "path": "/tools/ssweb?url=",
@@ -366,14 +373,6 @@
           "requireKey": false,
           "params": {
             "url": "url untuk Screenshot gambar website."
-            }
-        },        
-        {
-          "name": "Info Gempa",
-          "desc": "Info Gempa di wilayah Indonesia",
-          "path": "/tools/gempa",
-          "status": "ready",
-          "requireKey": false
           }
         }
       ]
