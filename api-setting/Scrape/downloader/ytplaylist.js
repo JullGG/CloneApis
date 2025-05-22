@@ -1,4 +1,8 @@
-const cheerio = require ("cheerio")
+// scraper yt playlist
+// credit © Nazir
+
+const axios = require('axios');
+const cheerio = require('cheerio');
 
 async function ytPlaylist(url) {
     try {
@@ -17,7 +21,7 @@ async function ytPlaylist(url) {
 
         scripts.each((index, element) => {
             if (element.type === 'text') {
-                const match = element.data.match(/var ytInitialData\s*=\s*({.*?});/);
+                const match = element.data.match(/var ytInitialData\s*=\s*(\{.*\});/s);
                 if (match && match[1]) {
                     try {
                         ytInitialData = JSON.parse(match[1]);
@@ -35,10 +39,12 @@ async function ytPlaylist(url) {
         // Extract videos from the JSON data
         const videos = [];
         try {
-            const contents = ytInitialData.contents.twoColumnBrowseResultsRenderer.tabs[0]
-                .tabRenderer.content.sectionListRenderer.contents[0]
-                .itemSectionRenderer.contents[0]
-                .playlistVideoListRenderer.contents;
+            const contents = ytInitialData?.contents?.twoColumnBrowseResultsRenderer?.tabs?.[0]
+                ?.tabRenderer?.content?.sectionListRenderer?.contents?.[0]
+                ?.itemSectionRenderer?.contents?.[0]
+                ?.playlistVideoListRenderer?.contents;
+
+            if (!contents) throw new Error('Video list not found');
 
             for (const item of contents) {
                 if (item.playlistVideoRenderer) {
@@ -46,11 +52,11 @@ async function ytPlaylist(url) {
                     const videoId = video.videoId;
                     const title = video.title?.runs?.[0]?.text || 'No title';
                     const duration = video.lengthText?.simpleText || '0:00';
-                    const url = `https://www.youtube.com/watch?v=${videoId}`;
+                    const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
 
                     videos.push({
                         title,
-                        url,
+                        url: videoUrl,
                         duration,
                         videoId
                     });
