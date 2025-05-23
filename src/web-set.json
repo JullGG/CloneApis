@@ -178,6 +178,16 @@
           "requireKey": false,
           "params": {
             "url": "url dari spotify"
+         }
+        },
+        {
+          "name": "Capcut Downloader",
+          "desc": "download video dari Capcut",
+          "path": "/downloader/capcut?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url dari capcut"
           }
         },
         {
