@@ -103,6 +103,16 @@
           "requireKey": false,
           "params": {
             "query": "Masukkan Query yang ingin dicari"
+         }
+        },
+        {
+          "name": "SoundCloud Search",
+          "desc": "Temukan lagu SoundCloud Berdasarkan query",
+          "path": "/search/soundcsearch?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Masukkan Query yang ingin dicari"
           }
         },
         {
