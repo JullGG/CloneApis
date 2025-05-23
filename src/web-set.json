@@ -366,9 +366,9 @@
           }
         },        
         {
-          "name": "DeepaSeek AI",
+          "name": "DeepSeek AI",
           "desc": "tanyakan sesuatu kepada deepseek ai",
-          "path": "/ai/deepsekai?query=",
+          "path": "/ai/deepseek?query=",
           "status": "ready",
           "requireKey": false,
           "params": {
