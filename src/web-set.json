@@ -281,6 +281,16 @@
           }
         },        
         {
+          "name": "Sea Art AI",
+          "desc": "Buat Gambar menggunakan sea art ai",
+          "path": "/ai/seeart?text=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "text": "text untuk membuat gambar"
+          }
+        },        
+        {
           "name": "Gemini Ai",
           "desc": "Chat dengan Gemini Ai",
           "path": "/ai/gemini?text=",
