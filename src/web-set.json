@@ -410,6 +410,16 @@
           }
         },
         {
+          "name": "track ip",
+          "desc": "mendapatkan informasi dari ip yang di tuju ",
+          "path": "/tools/iptrack?ip=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "ip": "ip anda yanv ingin di track"
+          }
+        },
+        {
           "name": "font converter",
           "desc": "ubah text anda menjadi font yang di inginkan",
           "path": "/tools/font?text=hlo&font=smallcaps",
