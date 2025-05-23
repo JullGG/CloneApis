@@ -387,6 +387,16 @@
     "from": "Kota asal (contoh: Jakarta)",
     "to": "Kota tujuan (contoh: Bandung)",
     "unit": "Satuan (opsional, km atau mi)"
+          }
+        },
+        {
+          "name": "HDR Image",
+          "desc": "Buat gambar anda menjadi lebih hd menggunakan remini",
+          "path": "/tools/hdr?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url image anda."
             }
         },        
         {
