@@ -261,6 +261,17 @@
           }
         },        
         {
+          "name": "Gemini Ai Image",
+          "desc": "Ubah Gambar dengan Gemini Ai",
+          "path": "/ai/geminiImage?prompt=&url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "prompt": "Pesan untuk gemini ai"
+            "url": "url image yang ingin di ubah"
+          }
+        },        
+        {
           "name": "Gemini Ai prompt",
           "desc": "Chat dengan Gemini Ai dengan prompt",
           "path": "/ai/geminiprompt?text=",
