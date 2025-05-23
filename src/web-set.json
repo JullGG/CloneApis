@@ -43,6 +43,16 @@
           "requireKey": false,
           "params": {
             "query": "Masukkan Query yang ingin dicari"
+         }
+        },
+        {
+          "name": "Github Search",
+          "desc": "Temukan Repository Github Berdasarkan query",
+          "path": "/search/ghs?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Masukkan Query yang ingin dicari"
           }
         },
         {
