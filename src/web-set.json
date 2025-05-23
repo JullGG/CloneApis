@@ -366,6 +366,26 @@
           }
         },        
         {
+          "name": "DeepaSeek AI",
+          "desc": "tanyakan sesuatu kepada deepseek ai",
+          "path": "/ai/deepsekai?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "text untuk membuat deepseek"
+          }
+        },        
+        {
+          "name": "Open AI",
+          "desc": "tanyakan sesuatu kepada Opem Ai",
+          "path": "/ai/openai?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "tanyakan sesuatu kepada Open Ai"
+          }
+        },        
+        {
           "name": "Sea Art AI",
           "desc": "Buat Gambar menggunakan sea art ai",
           "path": "/ai/seeart?text=",
