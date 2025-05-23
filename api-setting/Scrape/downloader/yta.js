@@ -1,33 +1,29 @@
 const axios = require('axios');
 
-async function yta(url) {
-  const apiUrl = 'https://cdn304.savetube.su/v2/info';
-  const headers = {
-    'accept': 'application/json, text/plain, */*',
-    'accept-language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
-    'content-type': 'application/json',
-    'origin': 'https://ytmp3.at',
-    'priority': 'u=1, i',
-    'referer': 'https://ytmp3.at/',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"Windows"',
-    'sec-fetch-dest': 'empty',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'cross-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36'
-  };
+async function ytmp3Downloader(youtubeUrl) {
+  const videoIdMatch = youtubeUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|v\/|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/i);
+  if (!videoIdMatch) throw new Error("URL YouTube tidak valid.");
 
-  const data = {
-    url: url
-  };
+  const videoId = videoIdMatch[1];
+  const fullUrl = `https://www.youtube.com/watch?v=${videoId}`;
+  const apiUrl = `https://fastrestapis.fasturl.cloud/downup/ytmp3?url=${encodeURIComponent(fullUrl)}&quality=128kbps&server=auto`;
 
-  try {
-    const response = await axios.post(apiUrl, data, { headers });
-    return response.data;
-  } catch (error) {
-    throw new Error(`Failed to fetch video info: ${error.message}`);
-  }
+  const { data } = await axios.get(apiUrl);
+
+  if (data.status !== 200) throw new Error("Gagal mengunduh audio dari API.");
+
+  const { title, metadata, author, url, media } = data.result;
+
+  return {
+    title,
+    channel: author.name,
+    duration: metadata.duration,
+    views: metadata.views,
+    thumbnail: metadata.thumbnail,
+    description: metadata.description || '',
+    url,
+    download: media
+  };
 }
 
-module.exports = yta;
+module.exports = ytmp3Downloader;
