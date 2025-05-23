@@ -267,7 +267,7 @@
           "status": "ready",
           "requireKey": false,
           "params": {
-            "prompt": "Pesan untuk gemini ai"
+            "prompt": "Pesan untuk gemini ai",
             "url": "url image yang ingin di ubah"
           }
         },        
