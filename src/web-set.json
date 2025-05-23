@@ -141,6 +141,13 @@
       "name": "Info",
       "items": [
         {
+          "name": "Komikindo Popular",
+          "desc": "Mengetahui Komik Yang Sedang populer di komikindo",
+          "path": "/info/komikpopular",
+          "status": "ready",
+          "requireKey": false
+            },
+        {
           "name": "Komikindo Detail",
           "desc": "Temukan Chapter synpiosis dll di dalam komikindo",
           "path": "/info/komikdetail?url=",
