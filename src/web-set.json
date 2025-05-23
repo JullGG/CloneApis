@@ -407,6 +407,17 @@
           "requireKey": false,
           "params": {
             "url": "url image anda."
+          }
+        },
+        {
+          "name": "font converter",
+          "desc": "ubah text anda menjadi font yang di inginkan",
+          "path": "/tools/font?text=hlo&font=smallcaps",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "text": "text anda.",
+            "font": "font yang di inginkan"
             }
         },        
         {
