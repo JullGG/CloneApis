@@ -196,6 +196,26 @@
           }
         },
         {
+          "name": "SoundCloud Downloader",
+          "desc": "download lagu dari SoundCloud",
+          "path": "/downloader/soumdcloud?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url dari SoundCloud"
+          }
+        },
+        {
+          "name": "Spotify Play",
+          "desc": "download Lagu dari Spotify menggunakan query",
+          "path": "/downloader/spotifyplay?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "masukan judul lagu nya"
+          }
+        },
+        {
           "name": "Github Downloader",
           "desc": "download Repository dari Github",
           "path": "/downloader/ghdl?url=",
@@ -263,6 +283,16 @@
           "requireKey": false,
           "params": {
             "url": "url dari youtube"
+          }
+        },
+        {
+          "name": "YouTube Play",
+          "desc": "download media dari YouTube menggunakan query",
+          "path": "/downloader/ytplay?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "judul video YouTube nya"
           }
         },
         {
