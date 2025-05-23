@@ -205,7 +205,7 @@
         {
           "name": "SoundCloud Downloader",
           "desc": "download lagu dari SoundCloud",
-          "path": "/downloader/soumdcloud?url=",
+          "path": "/downloader/soundcloud?url=",
           "status": "ready",
           "requireKey": false,
           "params": {
