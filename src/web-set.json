@@ -141,6 +141,16 @@
           }
         },
         {
+          "name": "Github Downloader",
+          "desc": "download Repository dari Github",
+          "path": "/downloader/ghdl?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url dari repo github"
+          }
+        },
+        {
           "name": "Downloader Profile Instagram",
           "desc": "Download Profile IG Via Username",
           "path": "/downloader/igdl-pp?username=",
