@@ -366,7 +366,7 @@
           "desc": "Created brat sticker",
           "path": "/sticker/brat?text",
           "status": "ready",
-          "requireKey": true,
+          "requireKey": false,
           "params": {
              "teks": "teks untuk brat"
           }
