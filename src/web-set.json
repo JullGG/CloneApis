@@ -56,6 +56,16 @@
          }
         },
         {
+          "name": "Komik Indo Search",
+          "desc": "Temukan Komik indo Berdasarkan query",
+          "path": "/search/komikindosearch?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Masukkan Query yang ingin dicari"
+         }
+        },
+        {
           "name": "Lyrics Search",
           "desc": "Temukan Lyric lagu Berdasarkan lagu yang anda cari",
           "path": "/search/lyricsearch?query=",
@@ -128,6 +138,21 @@
       ]
     },
     {
+      "name": "Info",
+      "items": [
+        {
+          "name": "Komikindo Detail",
+          "desc": "Temukan Chapter synpiosis dll di dalam komikindo",
+          "path": "/info/komikdetail?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+             "url": "url komik (dari komikindo4!)"
+          }
+        }
+      ]
+    },
+    {
       "name": "Downloader",
       "items": [
         {
@@ -148,6 +173,16 @@
           "requireKey": false,
           "params": {
             "url": "url dari instagram"
+         }
+        },
+        {
+          "name": "Komikindo Get Image",
+          "desc": "unduh gambar komik dari komikindo sesuai chapter",
+          "path": "/downloader/komikdown?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "Masukan Url chapter dari komikindo !"
           }
         },
         {
