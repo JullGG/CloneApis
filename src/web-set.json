@@ -33,6 +33,16 @@
           "requireKey": false,
           "params": {
             "q": "Masukkan Query yang ingin dicari"
+          }
+        },
+        {
+          "name": "Phone Search",
+          "desc": "Temukan spesifikasi hp anda",
+          "path": "/search/phonesearch?q=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "q": "Masukkan Hp yang ingin di cari (contoh: Iphone 13 Pro)"
          }
         },
         {
