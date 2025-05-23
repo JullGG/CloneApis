@@ -1,25 +1,22 @@
-const axios = require("axios");
+const axios = require('axios');
 
-async function ssweb(url) {
-  if (!url) throw new Error("Parameter 'query' tidak ditemukan.");
+async function getScreenshot(url) {
+  if (!url) throw new Error('URL tidak boleh kosong.');
 
-  const baseURL = "https://image.thum.io/get/png/fullpage/viewportWidth/2400";
-  const finalURL = `${baseURL}/${encodeURIComponent(url)}`;
+  const apiUrl = `https://loli-chan-api.vercel.app/api/ssweb?url=${encodeURIComponent(url)}`;
 
   try {
-    const response = await axios.get(finalURL, {
-      responseType: "arraybuffer"
-    });
+    const { data } = await axios.get(apiUrl);
 
-    return {
-      kode: 200,
-      mime: "image/png",
-      data: response.data,
-      url: query
-    };
-  } catch (e) {
-    throw new Error(`Gagal mengambil gambar: ${e.message}`);
+    if (!data.status || !data.result) {
+      throw new Error('Gagal mengambil screenshot.');
+    }
+
+    return data.result;
+  } catch (err) {
+    console.error('Gagal ambil screenshot:', err.message);
+    throw err;
   }
 }
 
-module.exports = ssweb;
+module.exports = getScreenshot;
