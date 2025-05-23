@@ -359,6 +359,21 @@
       ]
     },
     {
+      "name": "Sticker",
+      "items": [
+        {
+          "name": "Brat",
+          "desc": "Created brat sticker",
+          "path": "/sticker/brat?text",
+          "status": "ready",
+          "requireKey": true
+          "params": {
+             "teks": "teks untuk brat"
+          }
+        }
+      ]
+    },
+    {
       "name": "Uploader",
       "items": [
         {
