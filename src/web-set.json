@@ -46,6 +46,16 @@
          }
         },
         {
+          "name": "Lyrics Search",
+          "desc": "Temukan Lyric lagu Berdasarkan lagu yang anda cari",
+          "path": "/search/lyricsearch?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Masukkan lagu yang ingin dicari"
+         }
+        },
+        {
           "name": "Github Search",
           "desc": "Temukan Repository Github Berdasarkan query",
           "path": "/search/ghs?query=",
