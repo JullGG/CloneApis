@@ -1,123 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- icon animated -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.8/font-awesome-animation.min.css"/>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>Juul || APIs</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Font Awesome & Bootstrap CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <style>
+        /* Gabungkan css default dan style.css */
         body.dark-mode {
-            background-color: #1e1e2f;
+            background-color: #121212;
             color: #fff;
         }
+
         .sidebar {
-            background-color: #2d2d44;
-            min-height: 100vh;
+            background-color: #1f2937;
         }
-        .sidebar .nav-link {
-            color: #ddd;
+
+        .sidebar .nav-link,
+        .sidebar .sidebar-brand-text {
+            color: #fff;
         }
+
         .sidebar .nav-link:hover {
-            color: #fff;
-            background-color: #3a3a55;
+            background-color: #374151;
+            color: #fbbf24;
         }
-        .topbar {
-            background-color: #2c2c3e;
-        }
-        .card {
-            background-color: #2f2f4f;
-            color: #fff;
-            border: none;
-        }
+
         .sidebar-divider {
-            border-top: 1px solid #444;
+            border-top: 1px solid #374151;
+            margin: 0.75rem 1rem;
         }
-        .sticky-footer {
-            background-color: #2c2c3e;
-            color: #aaa;
-            padding: 10px 0;
+
+        .sidebar-heading {
+            color: #9ca3af;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 0 1rem;
+            margin-top: 1rem;
         }
+
+        .topbar {
+            background-color: #1f2937;
+            border-bottom: 1px solid #374151;
+        }
+
+        .topbar .navbar-nav .nav-link {
+            color: #9ca3af;
+        }
+
+        .topbar .navbar-nav .nav-link:hover {
+            color: #fbbf24;
+        }
+
+        .card {
+            background-color: #374151;
+            color: #fff;
+        }
+
+        footer.sticky-footer {
+            background-color: #1f2937;
+            color: #9ca3af;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background-color: #fbbf24;
+            border-color: #fbbf24;
+            color: #1f2937;
+        }
+
+        .btn-primary:hover {
+            background-color: #f59e0b;
+            border-color: #f59e0b;
+            color: #1f2937;
+        }
+
         .scroll-to-top {
             position: fixed;
-            bottom: 1rem;
             right: 1rem;
-            background: #6c63ff;
-            color: white;
+            bottom: 1rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            text-align: center;
+            color: #fbbf24;
+            background-color: #1f2937;
+            line-height: 2.5rem;
             border-radius: 50%;
-            padding: 10px 14px;
+            z-index: 1031;
         }
+
         .scroll-to-top:hover {
-            background-color: #574dcf;
+            color: #fff;
+            background-color: #fbbf24;
         }
     </style>
 </head>
 
 <body id="page-top" class="dark-mode">
-    <div class="d-flex" id="wrapper">
+    <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav sidebar sidebar-light accordion p-3" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center mb-4" href="index.html">
+        <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <i class="fa fa-smile-beam fa-2x"></i>
-                <div class="sidebar-brand-text mx-2">Juul APIs</div>
+                <div class="sidebar-brand-text mx-3">Juul APIs</div>
             </a>
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider my-0" />
             <li class="nav-item active">
                 <a class="nav-link" href="/stats">
-                    <i class="fas fa-thermometer-three-quarters"></i>
+                    <i class="fas fa-fw fa-thermometer-three-quarters"></i>
                     <span>Statistic</span>
                 </a>
             </li>
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider" />
+            <div class="sidebar-heading">Features</div>
             <li class="nav-item">
-                <a class="nav-link" href="./public/index.html" target="_blank">
-                    <i class="fas fa-book"></i>
-                    <span>Documentation</span>
+                <a class="nav-link" href="/index.html" target="_blank">
+                    <i class="fas fa-code"></i>
+                    <span>Document</span>
                 </a>
             </li>
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider" />
+            <div class="sidebar-heading">Contact</div>
             <li class="nav-item">
                 <a class="nav-link" href="https://wa.me/6282229412573" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                     <span>WhatsApp</span>
                 </a>
             </li>
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider" />
         </ul>
+        <!-- Sidebar -->
 
-        <!-- Page Content -->
-        <div id="content-wrapper" class="flex-grow-1 d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top">
-                    <button class="btn btn-link text-light" id="sidebarToggleTop">
+                <!-- TopBar -->
+                <nav
+                    class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top"
+                >
+                    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
                     <ul class="navbar-nav ml-auto">
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <li class="nav-item dropdown no-arrow">
+                            <!-- kosong -->
+                        </li>
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown">
-                                <i class="fas fa-bell"></i>
-                                <span class="badge badge-success badge-counter">2</span>
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="alertsDropdown"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                <i class="fas fa-bell fa-fw"></i>
+                                <span class="badge badge-success badge-counter">2 </span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header bg-info text-white">INFO CENTER</h6>
+                            <div
+                                class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown"
+                            >
+                                <h6 class="dropdown-header bg-info-gradient">INFO CENTER</h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="icon-circle bg-danger mr-3">
-                                        <i class="fas fa-info-circle text-white"></i>
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-danger">
+                                            <i class="fas fa-info-circle text-white"></i>
+                                        </div>
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">April 12, 2024</div>
-                                        <span style="font-size:12px;">Welcome to my rest apis</span>
+                                        <span style="font-size: 12px;">Welcome to my rest apis</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="icon-circle bg-danger mr-3">
-                                        <i class="fas fa-file-alt text-white"></i>
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-danger">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">April 02 2025</div>
-                                        <span style="font-size:14px;">Kelahiran Rest Api</span>
+                                        <span style="font-size: 14px;">Kelahiran Rest Api</span>
                                     </div>
                                 </a>
                             </div>
@@ -125,82 +198,120 @@
                     </ul>
                 </nav>
 
-                <!-- Main Container -->
-                <div class="container-fluid">
-                    <div class="card mb-4">
+                <!-- Container Fluid-->
+                <div class="container-fluid" id="container-wrapper">
+                    <div class="card h-50 mb-4">
                         <div class="card-body">
-                            <h3><i class="fas fa-ruler text-danger"></i> S&K</h3>
-                            <ol>
-                                <li>Jangan flooding requests.</li>
-                                <li>Owner dapat sewaktu waktu mengubah ketentuan di website ini, demi menjaga kualitas website.</li>
-                                <li>Semua fitur yang ada di sini free dan unlimited request</li>
-                                <li>Jangan ditembak atuh, sakit.</li>
-                                <li>Owner tidak bertanggung jawab atas apa yang Anda lakukan dalam penggunaan website ini.</li>
-                            </ol>
+                            <div class="row align-items-center">
+                                <div class="col mr-2">
+                                    <h3 style="margin-bottom: 0;">
+                                        <i class="fas fa-ruler text-danger"></i>S&K
+                                    </h3>
+
+                                    <div class="card-body mb-3">
+                                        <ol>
+                                            <li>Jangan flooding requests.</li>
+                                            <li>
+                                                Owner dapat sewaktu waktu mengubah ketentuan di website ini,
+                                                demi menjaga kualitas website.
+                                            </li>
+                                            <li>Semua fitur yang ada di sini free dan unlimited request</li>
+                                            <li>Jangan ditembak atuh, sakit.</li>
+                                            <li>
+                                                Owner tidak bertanggung jawab atas apa yang Anda lakukan dalam
+                                                penggunaan website ini.
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="col-auto"></div>
+                            </div>
                         </div>
                     </div>
-
                     <div class="row mb-3">
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <div class="text-uppercase small font-weight-bold">Baterai</div>
-                                        <div class="h5 mb-0 font-weight-bold"><span id="battery-level">Loading...</span>% <br><span id="charging-status"></span></div>
+                        <!-- Baterai Card -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card h-50">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">
+                                                Baterai
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold">
+                                                <span id="battery-level">Loading...</span>% <br /><span id="charging-status"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i
+                                                class="fas fa-battery-full faa-ring animated fa-2x text-primary"
+                                            ></i>
+                                        </div>
                                     </div>
-                                    <i class="fas fa-battery-full fa-2x text-primary"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <div class="text-uppercase small font-weight-bold">Address</div>
-                                        <div class="h5 mb-0 font-weight-bold"><span id="ip-address">Loading...</span></div>
+                        <!-- Address Card -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card h-50">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">
+                                                Address
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold">
+                                                <span id="ip-address">Loading...</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i
+                                                class="fas fa-solid fa-satellite-dish faa-ring animated fa-2x text-primary"
+                                            ></i>
+                                        </div>
                                     </div>
-                                    <i class="fas fa-satellite-dish fa-2x text-primary"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <!---Container Fluid-->
+            </div>
 
-                    <div class="text-center">
-                        <p>Someone want to donate me?</p>
-                        <a href="https://saweria.co/Jul" class="btn btn-primary btn-sm" target="_blank">
-                            <i class="fa fa-wallet"></i> Saweria
-                        </a>
-                    </div>
+            <!-- Footer -->
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    Someone want to donate me?
+                    <p>
+                        <a href="https://saweria.co/Jul" class="btn btn-primary btn-sm mr-2" target="_blank"
+                            ><i class="fa fa-fw fa-wallet"></i>&nbsp;Saweria</a
+                        >
+                    </p>
                 </div>
             </div>
 
-            <footer class="sticky-footer mt-auto">
-                <div class="container text-center">
-                    Made with <i class="fa fa-heart"></i> by
-                    <a href="https://github.com/JullGG" target="_blank" class="text-light">Juul Production</a>
+            <footer class="sticky-footer">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        Made with <i class="fa fa-heart faa-flash animated"></i> by
+                        <a href="https://github.com/JullGG" target="_blank" style="color: #fff;">Juul Production</a>
+                    </div>
                 </div>
             </footer>
+            <!-- Footer -->
         </div>
     </div>
 
     <!-- Scroll to top -->
-    <a class="scroll-to-top" href="#page-top">
+    <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Optional JS -->
-    <script>
-        navigator.getBattery && navigator.getBattery().then(battery => {
-            const level = Math.round(battery.level * 100);
-            document.getElementById('battery-level').innerText = level;
-            document.getElementById('charging-status').innerText = battery.charging ? "Charging..." : "Not Charging";
-        });
-
-        fetch("https://api.ipify.org?format=json")
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById("ip-address").innerText = data.ip;
-            });
-    </script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/ruang-admin.min.js"></script>
+    <script src="js/tampilan.js"></script>
 </body>
-</html>
+
+            </html>
