@@ -3,127 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Api's Zelda | Chat</title>
+  <title>Public Chat</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
   <style>
     body {
       background-color: #1e1e2f;
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .chat-container {
-      max-width: 700px;
-      margin: 50px auto;
-      background: #2d2d44;
-      border-radius: 15px;
-      padding: 20px;
+      color: white;
     }
     .chat-box {
-      max-height: 400px;
+      background-color: #2d2d44;
+      height: 400px;
       overflow-y: auto;
-      border: 1px solid #444;
-      padding: 15px;
       border-radius: 10px;
-      background-color: #262637;
+      padding: 1rem;
+      margin-bottom: 1rem;
     }
     .chat-message {
-      background-color: #39395a;
-      padding: 10px 15px;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      padding: 0.5rem;
+      border-bottom: 1px solid #444;
+    }
+    .chat-message:last-child {
+      border-bottom: none;
     }
     .chat-message strong {
-      color: #74b9ff;
+      color: #6c63ff;
     }
-    input, textarea {
-      background-color: #2c2c3e;
-      border: none;
-      color: #fff;
+    .form-control, .btn {
+      border-radius: 8px;
     }
-    input::placeholder, textarea::placeholder {
-      color: #aaa;
-    }
-    button {
+    .btn-primary {
       background-color: #6c63ff;
       border: none;
     }
-    button:hover {
+    .btn-primary:hover {
       background-color: #574dcf;
     }
   </style>
 </head>
 <body>
-  <div class="chat-container">
-    <h3 class="text-center mb-4"><i class="fas fa-comments"></i> Live Chat</h3>
-    
-    <div class="chat-box mb-4" id="message-list">
-      <!-- Pesan akan dimuat di sini -->
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Public Chat</h2>
+
+    <div class="chat-box" id="chat-box">
+      <!-- Messages will be loaded here -->
     </div>
 
     <form id="chat-form">
       <div class="form-group">
-        <input type="text" id="name" class="form-control" placeholder="Nama Anda" required />
+        <input type="text" id="name" class="form-control" placeholder="Your Name" required />
       </div>
       <div class="form-group">
-        <textarea id="message" rows="3" class="form-control" placeholder="Tulis komentar..." required></textarea>
+        <textarea id="message" class="form-control" rows="3" placeholder="Your Message" required></textarea>
       </div>
-      <button type="submit" class="btn btn-primary btn-block">Kirim</button>
+      <button type="submit" class="btn btn-primary btn-block">Send Message</button>
     </form>
   </div>
 
-  <!-- Font Awesome & Bootstrap JS -->
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
-  <!-- Chat JS -->
   <script>
-    const form = document.getElementById('chat-form');
-    const nameInput = document.getElementById('name');
-    const messageInput = document.getElementById('message');
-    const messageList = document.getElementById('message-list');
+    const chatBox = document.getElementById('chat-box');
 
     async function loadMessages() {
-      try {
-        const res = await fetch('/api/chat');
-        const data = await res.json();
+      const res = await fetch('/api/chat');
+      const data = await res.json();
+      chatBox.innerHTML = '';
 
-        messageList.innerHTML = '';
-        data.forEach(msg => {
-          const div = document.createElement('div');
-          div.className = 'chat-message';
-          div.innerHTML = \`<strong>\${msg.name}</strong>: \${msg.message}<br><small class="text-muted">\${msg.time}</small>\`;
-          messageList.appendChild(div);
-        });
-
-        messageList.scrollTop = messageList.scrollHeight;
-      } catch (e) {
-        console.error('Gagal memuat pesan:', e);
-      }
-    }
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const payload = {
-        name: nameInput.value.trim(),
-        message: messageInput.value.trim()
-      };
-
-      if (!payload.name || !payload.message) return;
-
-      await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+      data.forEach(msg => {
+        const div = document.createElement('div');
+        div.className = 'chat-message';
+        div.innerHTML = `<strong>${msg.name}</strong>: ${msg.message}`;
+        chatBox.appendChild(div);
       });
 
-      messageInput.value = '';
-      loadMessages();
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    document.getElementById('chat-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (name && message) {
+        await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, message })
+        });
+        document.getElementById('message').value = '';
+        loadMessages();
+      }
     });
 
-    // Refresh setiap 3 detik
-    setInterval(loadMessages, 3000);
+    // Initial load
     loadMessages();
+    // Auto refresh every 5 seconds
+    setInterval(loadMessages, 5000);
   </script>
 </body>
 </html>
