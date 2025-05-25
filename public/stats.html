@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Stats | Juul</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #111; color: #fff; padding: 20px; }
+    .card { background-color: #222; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 0 10px #000; }
+    h2 { margin-top: 0; }
+    .label { font-weight: bold; color: #ccc; }
+  </style>
+</head>
+<body>
+  <h1>API Performance Stats</h1>
+
+  <div class="card">
+    <h2>Client Info</h2>
+    <p><span class="label">Datetime:</span> <span id="datetime">Loading...</span></p>
+    <p><span class="label">Browser:</span> <span id="browser">Loading...</span></p>
+    <p><span class="label">Platform:</span> <span id="platform">Loading...</span></p>
+    <p><span class="label">Resolution:</span> <span id="resolution">Loading...</span></p>
+    <p><span class="label">Device:</span> <span id="device">Loading...</span></p>
+    <p><span class="label">IP Address:</span> <span id="ip">Loading...</span></p>
+  </div>
+
+  <div class="card">
+    <h2>API Endpoint Performance</h2>
+    <p><span class="label">Endpoint:</span> <span id="endpoint">/src/web-set.json</span></p>
+    <p><span class="label">Status:</span> <span id="status">Checking...</span></p>
+    <p><span class="label">Latency:</span> <span id="latency">-</span> ms</p>
+    <p><span class="label">Response Size:</span> <span id="size">-</span></p>
+    <p><span class="label">Checked At:</span> <span id="checked-time">-</span></p>
+  </div>
+
+  <script>
+    // Client Info
+    document.getElementById("datetime").innerText = new Date().toLocaleString();
+    document.getElementById("browser").innerText = navigator.userAgent.split(') ')[1] || navigator.userAgent;
+    document.getElementById("platform").innerText = navigator.platform;
+    document.getElementById("resolution").innerText = `${screen.width} x ${screen.height}`;
+    document.getElementById("device").innerText = /android/i.test(navigator.userAgent)
+      ? 'Android'
+      : /iPhone|iPad|iPod/i.test(navigator.userAgent)
+        ? 'iOS'
+        : 'Desktop';
+
+    fetch("https://api.ipify.org?format=json")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("ip").innerText = data.ip;
+      });
+
+    // API Performance Check
+    const endpoint = "/src/web-set.json"; // Ganti sesuai kebutuhan
+    document.getElementById("endpoint").innerText = endpoint;
+
+    const start = performance.now();
+    fetch(endpoint)
+      .then(res => {
+        const latency = performance.now() - start;
+        document.getElementById("status").innerText = res.status;
+        document.getElementById("latency").innerText = latency.toFixed(2);
+        document.getElementById("checked-time").innerText = new Date().toLocaleString();
+        return res.clone().text().then(text => {
+          const size = new Blob([text]).size;
+          const readableSize = size < 1024
+            ? `${size} B`
+            : size < 1024 * 1024
+              ? `${(size / 1024).toFixed(2)} KB`
+              : `${(size / 1024 / 1024).toFixed(2)} MB`;
+          document.getElementById("size").innerText = readableSize;
+        });
+      })
+      .catch(err => {
+        document.getElementById("status").innerText = "Error";
+        document.getElementById("latency").innerText = "-";
+        document.getElementById("size").innerText = "-";
+        document.getElementById("checked-time").innerText = new Date().toLocaleString();
+      });
+  </script>
+</body>
+</html>
