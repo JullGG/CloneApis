@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Juul || APIs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Font Awesome & Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body.dark-mode {
+            background-color: #1e1e2f;
+            color: #fff;
+        }
+        .sidebar {
+            background-color: #2d2d44;
+            min-height: 100vh;
+        }
+        .sidebar .nav-link {
+            color: #ddd;
+        }
+        .sidebar .nav-link:hover {
+            color: #fff;
+            background-color: #3a3a55;
+        }
+        .topbar {
+            background-color: #2c2c3e;
+        }
+        .card {
+            background-color: #2f2f4f;
+            color: #fff;
+            border: none;
+        }
+        .sidebar-divider {
+            border-top: 1px solid #444;
+        }
+        .sticky-footer {
+            background-color: #2c2c3e;
+            color: #aaa;
+            padding: 10px 0;
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: #6c63ff;
+            color: white;
+            border-radius: 50%;
+            padding: 10px 14px;
+        }
+        .scroll-to-top:hover {
+            background-color: #574dcf;
+        }
+    </style>
+</head>
+
+<body id="page-top" class="dark-mode">
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav sidebar sidebar-light accordion p-3" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center mb-4" href="index.html">
+                <i class="fa fa-smile-beam fa-2x"></i>
+                <div class="sidebar-brand-text mx-2">Juul APIs</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/stats">
+                    <i class="fas fa-thermometer-three-quarters"></i>
+                    <span>Statistic</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="./public/index.html" target="_blank">
+                    <i class="fas fa-book"></i>
+                    <span>Documentation</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="https://wa.me/6282229412573" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+        </ul>
+
+        <!-- Page Content -->
+        <div id="content-wrapper" class="flex-grow-1 d-flex flex-column">
+            <div id="content">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top">
+                    <button class="btn btn-link text-light" id="sidebarToggleTop">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge badge-success badge-counter">2</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header bg-info text-white">INFO CENTER</h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="icon-circle bg-danger mr-3">
+                                        <i class="fas fa-info-circle text-white"></i>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">April 12, 2024</div>
+                                        <span style="font-size:12px;">Welcome to my rest apis</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="icon-circle bg-danger mr-3">
+                                        <i class="fas fa-file-alt text-white"></i>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">April 02 2025</div>
+                                        <span style="font-size:14px;">Kelahiran Rest Api</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Main Container -->
+                <div class="container-fluid">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3><i class="fas fa-ruler text-danger"></i> S&K</h3>
+                            <ol>
+                                <li>Jangan flooding requests.</li>
+                                <li>Owner dapat sewaktu waktu mengubah ketentuan di website ini, demi menjaga kualitas website.</li>
+                                <li>Semua fitur yang ada di sini free dan unlimited request</li>
+                                <li>Jangan ditembak atuh, sakit.</li>
+                                <li>Owner tidak bertanggung jawab atas apa yang Anda lakukan dalam penggunaan website ini.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="text-uppercase small font-weight-bold">Baterai</div>
+                                        <div class="h5 mb-0 font-weight-bold"><span id="battery-level">Loading...</span>% <br><span id="charging-status"></span></div>
+                                    </div>
+                                    <i class="fas fa-battery-full fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="text-uppercase small font-weight-bold">Address</div>
+                                        <div class="h5 mb-0 font-weight-bold"><span id="ip-address">Loading...</span></div>
+                                    </div>
+                                    <i class="fas fa-satellite-dish fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p>Someone want to donate me?</p>
+                        <a href="https://saweria.co/Jul" class="btn btn-primary btn-sm" target="_blank">
+                            <i class="fa fa-wallet"></i> Saweria
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="sticky-footer mt-auto">
+                <div class="container text-center">
+                    Made with <i class="fa fa-heart"></i> by
+                    <a href="https://github.com/JullGG" target="_blank" class="text-light">Juul Production</a>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scroll to top -->
+    <a class="scroll-to-top" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Optional JS -->
+    <script>
+        navigator.getBattery && navigator.getBattery().then(battery => {
+            const level = Math.round(battery.level * 100);
+            document.getElementById('battery-level').innerText = level;
+            document.getElementById('charging-status').innerText = battery.charging ? "Charging..." : "Not Charging";
+        });
+
+        fetch("https://api.ipify.org?format=json")
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("ip-address").innerText = data.ip;
+            });
+    </script>
+</body>
+</html>
