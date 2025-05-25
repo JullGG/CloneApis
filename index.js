@@ -130,6 +130,10 @@ app.get('/documentation', (req, res) => {
     res.sendFile(path.join(__dirname, 'home', 'index.html'));
 });
 
+app.get('/stats', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'stats.html'));
+});
+
 // 404 fallback
 app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
