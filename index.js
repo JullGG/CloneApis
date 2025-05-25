@@ -134,6 +134,10 @@ app.get('/stats', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'stats.html'));
 });
 
+app.get('/chat', (req, res) => {
+    res.sendFile(path.join(__dirname, 'home', 'chat.html'));
+});
+
 // 404 fallback
 app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
