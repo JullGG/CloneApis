@@ -66,7 +66,6 @@ const checkApiKey = (req, res, next) => {
         return next();
     }
 
-    
     if (!endpoint.config.requireKey) {
         return next();
     }
@@ -89,6 +88,7 @@ const checkApiKey = (req, res, next) => {
     next();
 };
 
+// Register dynamic scraper endpoints
 Object.entries(scrapers).forEach(([route, { handler, config }]) => {
     app.get(route, checkApiKey, async (req, res) => {
         try {
@@ -110,7 +110,6 @@ Object.entries(scrapers).forEach(([route, { handler, config }]) => {
         }
     });
 
-    
     if (config.path && config.path.includes('?')) {
         app.get(config.path.split('?')[0], checkApiKey, (req, res) => {
             res.status(400).json({
@@ -122,10 +121,16 @@ Object.entries(scrapers).forEach(([route, { handler, config }]) => {
     }
 });
 
+// Routes for frontend pages
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
 
+app.get('/documentation', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// 404 fallback
 app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });
