@@ -127,7 +127,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/documentation', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'home', 'index.html'));
 });
 
 // 404 fallback
