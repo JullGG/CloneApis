@@ -25,14 +25,18 @@
       --text: var(--text-dark);
     }
 
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      padding: 0;
       background: var(--bg);
       color: var(--text);
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
-      height: 100vh;
     }
 
     .chat-container {
@@ -120,10 +124,18 @@
 </head>
 <body>
   <div class="chat-container" id="chatContainer">
-    <!-- Chat messages will be injected here -->
+    <!-- Pesan awal bot -->
+    <div class="message bot">
+      <div class="avatar">🤖</div>
+      <div class="bubble">
+        <div>Hai! Bagaimana kabarmu hari ini? Ada yang seru ingin kamu bahas?</div>
+        <div class="meta">Zelda</div>
+      </div>
+    </div>
   </div>
+
   <form class="chat-input" id="chatForm">
-    <input type="text" id="userInput" placeholder="Type your message here..." required />
+    <input type="text" id="userInput" placeholder="Ketik pesan di sini..." required />
     <button type="submit">➤</button>
   </form>
 
@@ -159,21 +171,22 @@
       addMessage(message, 'user');
       userInput.value = '';
 
-      // Bot thinking...
+      // Bot loading
       addMessage('...', 'bot');
       const loader = chatContainer.querySelector('.message.bot:last-child .bubble div:first-child');
 
       try {
-        const res = await fetch('/api-setting/Scrape/ai/ai-gpt', {
+        const res = await axios.get('./api-setting/Scrape/ai/ai-gpt', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({ prompt: message })
         });
 
         const data = await res.json();
-        loader.innerText = data.response || 'Bot tidak membalas.';
+        loader.innerText = data.response || 'Bot tidak memberikan respon.';
       } catch (err) {
-        loader.innerText = 'Terjadi kesalahan: ' + err.message;
+        loader.innerText = 'Terjadi kesalahan.';
+        console.error('Fetch error:', err);
       }
     });
   </script>
