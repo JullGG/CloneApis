@@ -178,7 +178,7 @@ app.get('/chat', (req, res) => {
 });
 
 app.get('/chatai', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'chatai.html'));
+    res.sendFile(path.join(__dirname, 'public', 'aichat.html'));
 });
 
 
