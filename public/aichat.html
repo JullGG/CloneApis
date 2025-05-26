@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zelda AI Chat</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <style>
     :root {
       --bg-light: #f7f9fc;
@@ -120,19 +121,32 @@
     .chat-input button:hover {
       background: #2563eb;
     }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      background: #ffffff;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .topbar button {
+      padding: 6px 12px;
+      border: none;
+      background: #ddd;
+      border-radius: 6px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <div class="chat-container" id="chatContainer">
-    <!-- Pesan awal bot -->
-    <div class="message bot">
-      <div class="avatar">🤖</div>
-      <div class="bubble">
-        <div>Hai! Bagaimana kabarmu hari ini? Ada yang seru ingin kamu bahas?</div>
-        <div class="meta">Zelda</div>
-      </div>
-    </div>
+  <div class="topbar">
+    <strong>Zelda AI</strong>
+    <button onclick="toggleTheme()">Ganti Tema</button>
   </div>
+
+  <div class="chat-container" id="chatContainer"></div>
 
   <form class="chat-input" id="chatForm">
     <input type="text" id="userInput" placeholder="Ketik pesan di sini..." required />
@@ -143,6 +157,21 @@
     const chatContainer = document.getElementById('chatContainer');
     const chatForm = document.getElementById('chatForm');
     const userInput = document.getElementById('userInput');
+
+    function speak(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'id-ID';
+      speechSynthesis.speak(utterance);
+    }
+
+    function saveChat() {
+      localStorage.setItem('zeldaChat', chatContainer.innerHTML);
+    }
+
+    function loadChat() {
+      const saved = localStorage.getItem('zeldaChat');
+      if (saved) chatContainer.innerHTML = saved;
+    }
 
     function addMessage(content, sender = 'user') {
       const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
@@ -161,6 +190,14 @@
       message.appendChild(bubble);
       chatContainer.appendChild(message);
       chatContainer.scrollTop = chatContainer.scrollHeight;
+      saveChat();
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const newTheme = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
     }
 
     chatForm.addEventListener('submit', async (e) => {
@@ -171,24 +208,25 @@
       addMessage(message, 'user');
       userInput.value = '';
 
-      // Bot loading
       addMessage('...', 'bot');
       const loader = chatContainer.querySelector('.message.bot:last-child .bubble div:first-child');
 
       try {
-        const res = await fetch('/api-setting/Scrape/ai/ai-gpt', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({ prompt: message })
-        });
-
-        const data = await res.json();
-        loader.innerText = data.response || 'Bot tidak memberikan respon.';
+        const res = await axios.get(`https://api.juul-web-id.xyz/ai/ai-gpt?query=${encodeURIComponent(message)}`);
+        const reply = res.data.result?.data || 'Bot tidak memberikan respon.';
+        loader.innerText = reply;
+        speak(reply);
       } catch (err) {
         loader.innerText = 'Terjadi kesalahan.';
-        console.error('Fetch error:', err);
+        console.error(err);
       }
+      saveChat();
     });
+
+    // Initial Load
+    loadChat();
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
   </script>
 </body>
 </html>
