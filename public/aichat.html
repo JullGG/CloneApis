@@ -3,228 +3,209 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zelda AI Chat</title>
+  <title>Zelda AI - Axy UI</title>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <style>
     :root {
-      --bg-light: #f7f9fc;
-      --bg-dark: #1e1e2f;
-      --text-light: #333;
-      --text-dark: #eee;
-      --bot-bg: #e5f0ff;
-      --user-bg: #e6e6e6;
-      --bubble-radius: 16px;
+      --bg-light: #f4f5f7;
+      --bg-dark: #1c1e26;
+      --text-light: #111;
+      --text-dark: #f4f4f4;
+      --card-bg-light: #ffffff;
+      --card-bg-dark: #2a2d3a;
+      --primary: #6366f1;
     }
 
     [data-theme="light"] {
       --bg: var(--bg-light);
       --text: var(--text-light);
+      --card-bg: var(--card-bg-light);
     }
 
     [data-theme="dark"] {
       --bg: var(--bg-dark);
       --text: var(--text-dark);
+      --card-bg: var(--card-bg-dark);
     }
 
-    html, body {
-      height: 100%;
+    * {
       margin: 0;
       padding: 0;
-      background: var(--bg);
-      color: var(--text);
+      box-sizing: border-box;
     }
 
     body {
+      background-color: var(--bg);
+      color: var(--text);
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
+      height: 100vh;
     }
 
-    .chat-container {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .message {
-      display: flex;
-      align-items: flex-end;
-      max-width: 80%;
-    }
-
-    .message.user {
-      align-self: flex-end;
-      flex-direction: row-reverse;
-    }
-
-    .message.bot {
-      align-self: flex-start;
-    }
-
-    .avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #ccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      margin: 0 8px;
-    }
-
-    .bubble {
-      background: var(--user-bg);
-      padding: 10px 14px;
-      border-radius: var(--bubble-radius);
-      position: relative;
-    }
-
-    .message.bot .bubble {
-      background: var(--bot-bg);
-    }
-
-    .bubble .meta {
-      font-size: 10px;
-      color: gray;
-      margin-top: 4px;
-      text-align: right;
-    }
-
-    .chat-input {
-      display: flex;
-      padding: 12px;
-      border-top: 1px solid #ccc;
-      background: white;
-    }
-
-    .chat-input input {
-      flex: 1;
-      padding: 10px;
-      border-radius: 20px 0 0 20px;
-      border: 1px solid #ccc;
-      outline: none;
-    }
-
-    .chat-input button {
-      background: #3b82f6;
-      border: none;
-      padding: 10px 16px;
-      color: white;
-      border-radius: 0 20px 20px 0;
-      cursor: pointer;
-    }
-
-    .chat-input button:hover {
-      background: #2563eb;
-    }
-
-    .topbar {
+    header {
+      padding: 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 16px;
-      background: #ffffff;
-      border-bottom: 1px solid #ccc;
+      background: var(--card-bg);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
 
-    .topbar button {
-      padding: 6px 12px;
-      border: none;
-      background: #ddd;
-      border-radius: 6px;
+    header h1 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .toggle-theme {
       cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 20px;
+    }
+
+    .chat-box {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bubble {
+      padding: 12px 16px;
+      border-radius: 18px;
+      max-width: 80%;
+      white-space: pre-wrap;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: var(--primary);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background: var(--card-bg);
+      border-bottom-left-radius: 4px;
+      color: var(--text);
+    }
+
+    form {
+      display: flex;
+      padding: 12px;
+      background: var(--card-bg);
+      box-shadow: 0 -1px 4px rgba(0,0,0,0.05);
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 14px;
+    }
+
+    button {
+      background: none;
+      border: none;
+      margin-left: 8px;
+      font-size: 20px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    .placeholder-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      max-width: 400px;
+      margin: auto;
+      margin-top: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .placeholder-card h2 {
+      margin-bottom: 8px;
+    }
+
+    .placeholder-card p {
+      color: gray;
+      font-size: 14px;
+    }
+
+    .placeholder-card small {
+      display: block;
+      margin-top: 8px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <strong>Zelda AI</strong>
-    <button onclick="toggleTheme()">Ganti Tema</button>
+  <header>
+    <h1>Zelda AI</h1>
+    <button class="toggle-theme" onclick="toggleTheme()">🌓</button>
+  </header>
+
+  <div id="chatBox" class="chat-box">
+    <div class="placeholder-card">
+      <h2>Welcome to Zelda AI</h2>
+      <p>Ask anything. Coding, writing, tips & more.</p>
+      <small>Powered by JUUL API</small>
+    </div>
   </div>
 
-  <div class="chat-container" id="chatContainer"></div>
-
-  <form class="chat-input" id="chatForm">
-    <input type="text" id="userInput" placeholder="Ketik pesan di sini..." required />
-    <button type="submit">➤</button>
+  <form id="chatForm">
+    <input type="text" id="userInput" placeholder="Type your message here..." required />
+    <button type="submit">✈️</button>
   </form>
 
   <script>
-    const chatContainer = document.getElementById('chatContainer');
+    const chatBox = document.getElementById('chatBox');
     const chatForm = document.getElementById('chatForm');
     const userInput = document.getElementById('userInput');
 
-    function speak(text) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'id-ID';
-      speechSynthesis.speak(utterance);
-    }
-
-    function saveChat() {
-      localStorage.setItem('zeldaChat', chatContainer.innerHTML);
-    }
-
-    function loadChat() {
-      const saved = localStorage.getItem('zeldaChat');
-      if (saved) chatContainer.innerHTML = saved;
-    }
-
-    function addMessage(content, sender = 'user') {
-      const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-      const message = document.createElement('div');
-      message.className = `message ${sender}`;
-
-      const avatar = document.createElement('div');
-      avatar.className = 'avatar';
-      avatar.innerHTML = sender === 'user' ? '🧑' : '🤖';
-
+    function appendBubble(message, sender = 'user') {
       const bubble = document.createElement('div');
-      bubble.className = 'bubble';
-      bubble.innerHTML = `<div>${content}</div><div class="meta">${time}</div>`;
-
-      message.appendChild(avatar);
-      message.appendChild(bubble);
-      chatContainer.appendChild(message);
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-      saveChat();
+      bubble.className = `bubble ${sender}`;
+      bubble.innerText = message;
+      chatBox.appendChild(bubble);
+      chatBox.scrollTop = chatBox.scrollHeight;
     }
 
     function toggleTheme() {
-      const current = document.documentElement.getAttribute('data-theme');
-      const newTheme = current === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
+      const theme = document.documentElement.getAttribute('data-theme');
+      const next = theme === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
     }
 
     chatForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const message = userInput.value.trim();
-      if (!message) return;
+      const msg = userInput.value.trim();
+      if (!msg) return;
 
-      addMessage(message, 'user');
+      appendBubble(msg, 'user');
       userInput.value = '';
-
-      addMessage('...', 'bot');
-      const loader = chatContainer.querySelector('.message.bot:last-child .bubble div:first-child');
+      appendBubble('...', 'bot');
+      const botBubble = chatBox.querySelector('.bot:last-child');
 
       try {
-        const res = await axios.get(`https://api.juul-web-id.xyz/ai/ai-gpt?query=${encodeURIComponent(message)}`);
-        const reply = res.data.result?.data || 'Bot tidak memberikan respon.';
-        loader.innerText = reply;
-        speak(reply);
+        const res = await axios.get(`https://api.juul-web-id.xyz/ai/ai-gpt?query=${encodeURIComponent(msg)}`);
+        const reply = res.data?.result?.data || "Gagal merespon.";
+        botBubble.innerText = reply;
       } catch (err) {
-        loader.innerText = 'Terjadi kesalahan.';
+        botBubble.innerText = "Terjadi kesalahan.";
         console.error(err);
       }
-      saveChat();
     });
 
-    // Initial Load
-    loadChat();
+    // Load theme
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
   </script>
