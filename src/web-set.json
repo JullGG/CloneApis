@@ -466,6 +466,16 @@
             "prompt": "Prompt untuk Buat gambar."
           }
         },
+        {
+          "name": "GptImage Ai",
+          "desc": "Buat gambar mu dari gptImage",
+          "path": "/ai/gptimage?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "query untuk Buat gambar."
+          }
+        },
 {
   "name": "GPT Ai",
   "desc": "Tanyakan Sesuatu Kepada GPT AI",
