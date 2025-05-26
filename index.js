@@ -177,6 +177,11 @@ app.get('/chat', (req, res) => {
     res.sendFile(path.join(__dirname, 'home', 'chat.html'));
 });
 
+app.get('/chatai', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'chatai.html'));
+});
+
+
 // Fallback 404
 app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
