@@ -434,6 +434,16 @@
           }
         },        
         {
+          "name": "BlackBox Ai",
+          "desc": "Tanyakan Sesuatu kepada blackbox Ai !",
+          "path": "/ai/blackbox?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Pesan untuk blackbox ai",
+          }
+        },        
+        {
           "name": "Gemini Ai prompt",
           "desc": "Chat dengan Gemini Ai dengan prompt",
           "path": "/ai/geminiprompt?text=",
