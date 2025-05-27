@@ -3,107 +3,287 @@
 <head>
   <meta charset="utf-8" />
   <title>Juul || APIs</title>
-  <meta property="og:image" content="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
+  <meta property="og:image" content="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg"> 
+  <link rel="icon" href="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
   <style>
-    body.dark-mode {
-      background-color: #1e1e2f;
-      color: #fff;
+    /* ==== Color variables ==== */
+    :root {
+      --blue-dark: #0a1a3f;
+      --blue-light: #3a6eff;
+      --blue-glow: #6699ff;
+      --text-light: #cbd5e1;
+      --bg-dark: #121827;
     }
-    .sidebar {
-      background-color: #2d2d44;
+
+    /* ==== Body and layout ==== */
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      margin: 0;
       min-height: 100vh;
     }
+
+    /* Sidebar */
+    .sidebar {
+      background: linear-gradient(145deg, var(--blue-dark), #111a2e);
+      box-shadow: 0 0 20px var(--blue-glow);
+      min-height: 100vh;
+      transition: background 0.5s ease;
+      padding-top: 1rem;
+      width: 250px;
+      flex-shrink: 0;
+    }
     .sidebar .nav-link {
-      color: #ddd;
+      color: var(--text-light);
+      font-weight: 600;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      border-radius: 8px;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
     }
     .sidebar .nav-link:hover {
-      color: #fff;
-      background-color: #3a3a55;
-    }
-    .topbar {
-      background-color: #2c2c3e;
-    }
-    .card {
-      background-color: #2f2f4f;
-      color: #fff;
-      border: none;
+      color: white;
+      background: var(--blue-light);
+      box-shadow: 0 0 8px var(--blue-glow);
+      text-decoration: none;
     }
     .sidebar-divider {
-      border-top: 1px solid #444;
+      border-top: 1px solid #223158;
+      margin: 1rem 0;
     }
-    .sticky-footer {
-      background-color: #2c2c3e;
-      color: #aaa;
-      padding: 10px 0;
+
+    /* Sidebar brand with glowing pulse scan */
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 5px var(--blue-glow);
+        color: var(--blue-light);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 20px var(--blue-glow);
+        color: #a3b8ff;
+        transform: scale(1.05);
+      }
+      100% {
+        box-shadow: 0 0 5px var(--blue-glow);
+        color: var(--blue-light);
+        transform: scale(1);
+      }
     }
+    .sidebar-brand {
+      animation: pulseGlow 3s ease-in-out infinite;
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      user-select: none;
+      padding: 0.5rem 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue-light);
+      margin-bottom: 1rem;
+    }
+    .sidebar-brand i {
+      margin-right: 0.5rem;
+      filter: drop-shadow(0 0 3px var(--blue-glow));
+    }
+
+    /* Topbar */
+    .topbar {
+      background: linear-gradient(90deg, var(--blue-dark), #0b1b44);
+      box-shadow: 0 2px 10px rgba(54, 92, 204, 0.5);
+      color: var(--text-light);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .topbar .btn-outline-light {
+      border-color: var(--blue-light);
+      color: var(--blue-light);
+      font-weight: 600;
+      box-shadow: 0 0 10px var(--blue-glow);
+      transition: all 0.3s ease;
+    }
+    .topbar .btn-outline-light:hover {
+      background-color: var(--blue-light);
+      color: #121827;
+      box-shadow: 0 0 25px var(--blue-glow);
+    }
+
+    /* Cards */
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .card {
+      background: linear-gradient(145deg, #1e2a54, #12214a);
+      border-radius: 12px;
+      color: var(--text-light);
+      border: none;
+      box-shadow:
+        0 0 10px rgba(54, 92, 204, 0.5),
+        inset 0 0 10px #2c3b82;
+      opacity: 0;
+      animation: fadeSlideUp 1s ease forwards;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+    }
+    .card:nth-of-type(1) {
+      animation-delay: 0.3s;
+    }
+    .card:nth-of-type(2) {
+      animation-delay: 0.5s;
+    }
+
+    /* Shimmer loading effect on cards */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+      transform: skewX(-20deg);
+      animation: shimmer 2.5s infinite;
+      pointer-events: none;
+      border-radius: 12px;
+      z-index: 1;
+    }
+    @keyframes shimmer {
+      100% {
+        left: 125%;
+      }
+    }
+
+    /* Scroll to top button */
     .scroll-to-top {
+      background: var(--blue-light);
+      box-shadow: 0 0 12px var(--blue-glow);
+      transition: background-color 0.4s ease, transform 0.3s ease;
       position: fixed;
       bottom: 1rem;
       right: 1rem;
-      background: #6c63ff;
-      color: white;
       border-radius: 50%;
       padding: 10px 14px;
+      color: white;
+      font-size: 1.25rem;
+      z-index: 1050;
+      cursor: pointer;
+      border: none;
     }
     .scroll-to-top:hover {
-      background-color: #574dcf;
+      background-color: #3254ff;
+      box-shadow: 0 0 20px #558bff;
+      transform: scale(1.1);
+    }
+
+    /* Saweria button with neon pulse */
+    @keyframes neonPulse {
+      0%, 100% {
+        box-shadow: 0 0 10px var(--blue-glow), 0 0 20px var(--blue-glow);
+      }
+      50% {
+        box-shadow: 0 0 20px var(--blue-glow), 0 0 30px var(--blue-glow);
+      }
+    }
+    .btn-primary {
+      background-color: var(--blue-light);
+      border: none;
+      font-weight: 700;
+      animation: neonPulse 3s infinite ease-in-out;
+      box-shadow: 0 0 10px var(--blue-glow);
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #2a55e0;
+      animation: none;
+      box-shadow: 0 0 25px var(--blue-glow);
+    }
+
+    /* Dropdown info */
+    .dropdown-header.bg-info {
+      background-color: var(--blue-light) !important;
+      color: #121827 !important;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .icon-circle.bg-danger {
+      background-color: var(--blue-light) !important;
+    }
+
+    /* Utility tweaks */
+    a.text-light:hover {
+      color: var(--blue-light) !important;
+      text-decoration: underline;
     }
   </style>
 </head>
 
 <body id="page-top" class="dark-mode">
-  <div class="d-flex" id="wrapper">
+  <div class="d-flex" id="wrapper" style="min-height: 100vh;">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion p-3" id="accordionSidebar">
       <a class="sidebar-brand d-flex align-items-center justify-content-center mb-4" href="index.html">
         <i class="fa fa-smile-beam fa-2x"></i>
         <div class="sidebar-brand-text mx-2">Juul APIs</div>
       </a>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" />
       <li class="nav-item active">
         <a class="nav-link" href="/stats">
-          <i class="fas fa-thermometer-three-quarters"></i>
+          <i class="fas fa-thermometer-three-quarters mr-2"></i>
           <span>Statistic</span>
         </a>
       </li>
-      <hr class="sidebar-divider">
+      <hr class="sidebar-divider" />
       <li class="nav-item">
-        <a class="nav-link" href="https://juul-web-id.xyz">
-          <i class="fas fa-book"></i>
+        <a class="nav-link" href="https://juul-web-id.xyz" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-book mr-2"></i>
           <span>Profile Jul</span>
         </a>
       </li>
-      <hr class="sidebar-divider">
+      <hr class="sidebar-divider" />
       <li class="nav-item">
         <a class="nav-link" href="/chat">
-          <i class="fas fa-book"></i>
+          <i class="fas fa-comments mr-2"></i>
           <span>Feedback</span>
         </a>
       </li>
-      <hr class="sidebar-divider">
+      <hr class="sidebar-divider" />
       <li class="nav-item">
         <a class="nav-link" href="/chatai">
-          <i class="fas fa-book"></i>
+          <i class="fas fa-robot mr-2"></i>
           <span>Chat Ai</span>
         </a>
       </li>
-      <hr class="sidebar-divider">
+      <hr class="sidebar-divider" />
       <li class="nav-item">
-        <a class="nav-link" href="https://wa.me/6282229412573" target="_blank">
-          <i class="fab fa-whatsapp"></i>
+        <a class="nav-link" href="https://wa.me/6282229412573" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp mr-2"></i>
           <span>WhatsApp</span>
         </a>
       </li>
-      <hr class="sidebar-divider">
+      <hr class="sidebar-divider" />
     </ul>
 
     <!-- Page Content -->
     <div id="content-wrapper" class="flex-grow-1 d-flex flex-column">
-      <div id="content">
+      <div id="content" style="padding: 1rem 2rem; flex-grow: 1;">
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top">
           <button id="sidebarToggle" class="btn btn-link text-white d-md-none rounded-circle mr-3">
@@ -112,30 +292,30 @@
           <button class="btn btn-outline-light ml-2" onclick="window.location.href='/documentation'">
             <i class="fas fa-book"></i> Documentation
           </button>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown">
+          <ul class="navbar-nav ml-auto d-flex align-items-center" style="list-style:none; margin:0; padding:0;">
+            <li class="nav-item dropdown no-arrow mx-1" style="position: relative;">
+              <a class="nav-link dropdown-toggle text-light" href="#" id="alertsDropdown" role="button" data-toggle="dropdown">
                 <i class="fas fa-bell"></i>
-                <span class="badge badge-success badge-counter">2</span>
+                <span class="badge badge-success badge-counter" style="position: absolute; top: -5px; right: -10px; font-size: 0.7rem;">2</span>
               </a>
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown" style="background: var(--blue-dark); color: var(--text-light); min-width: 250px; border-radius: 10px;">
                 <h6 class="dropdown-header bg-info text-white">INFO CENTER</h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="icon-circle bg-danger mr-3">
+                <a class="dropdown-item d-flex align-items-center text-light" href="#" style="padding: 0.5rem 1rem;">
+                  <div class="icon-circle bg-danger mr-3" style="background-color: var(--blue-light); padding: 8px; border-radius: 50%;">
                     <i class="fas fa-info-circle text-white"></i>
                   </div>
                   <div>
-                    <div class="small text-gray-500">April 12, 2024</div>
-                    <span style="font-size:12px;">Welcome to my rest apis</span>
+                    <div class="small text-light">Updates</div>
+                    <span>New API endpoints launched!</span>
                   </div>
                 </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="icon-circle bg-danger mr-3">
-                    <i class="fas fa-file-alt text-white"></i>
+                <a class="dropdown-item d-flex align-items-center text-light" href="#" style="padding: 0.5rem 1rem;">
+                  <div class="icon-circle bg-danger mr-3" style="background-color: var(--blue-light); padding: 8px; border-radius: 50%;">
+                    <i class="fas fa-info-circle text-white"></i>
                   </div>
                   <div>
-                    <div class="small text-gray-500">April 02 2025</div>
-                    <span style="font-size:14px;">Kelahiran Rest Api</span>
+                    <div class="small text-light">Maintenance</div>
+                    <span>Scheduled downtime on Sunday.</span>
                   </div>
                 </a>
               </div>
@@ -143,113 +323,42 @@
           </ul>
         </nav>
 
-        <!-- Main Content -->
+        <!-- Main content cards -->
         <div class="container-fluid">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h3><i class="fas fa-ruler text-danger"></i> S&K</h3>
-              <ol>
-                <li>Jangan flooding requests.</li>
-                <li>Owner dapat sewaktu waktu mengubah ketentuan di website ini.</li>
-                <li>Semua fitur yang ada di sini free dan unlimited request.</li>
-                <li>Jangan ditembak atuh, sakit.</li>
-                <li>Owner tidak bertanggung jawab atas penggunaan website ini.</li>
-              </ol>
-            </div>
+          <div class="card">
+            <h3>Welcome to Juul APIs</h3>
+            <p>Explore the best free APIs with unlimited requests.</p>
           </div>
 
-          <div class="row mb-3">
-            <div class="col-md-6 mb-4">
-              <div class="card h-100">
-                <div class="card-body">
-                  <div class="text-uppercase small font-weight-bold">Battery</div>
-                  <div class="h5 mb-0 font-weight-bold">
-                    <span id="battery-level">Loading...</span>% <br>
-                    <span id="charging-status"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-4">
-              <div class="card h-100">
-                <div class="card-body">
-                  <div class="text-uppercase small font-weight-bold">Client Info</div>
-                  <div class="h6 mb-0 font-weight-bold">
-                    IP: <span id="ip-address">Loading...</span><br>
-                    Waktu: <span id="current-datetime">...</span><br>
-                    OS: <span id="device-os">...</span><br>
-                    Resolusi: <span id="resolution">...</span><br>
-                    Browser: <span id="browser">...</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="text-center">
-            <p>Someone want to donate me?</p>
-            <a href="https://saweria.co/Jul" class="btn btn-primary btn-sm" target="_blank">
-              <i class="fa fa-wallet"></i> Saweria
-            </a>
+          <div class="card">
+            <h3><i class="fas fa-ruler text-danger"></i> S&K</h3>
+            <ol>
+              <li>Jangan flooding requests.</li>
+              <li>Owner dapat sewaktu waktu mengubah ketentuan di website ini.</li>
+              <li>Semua fitur yang ada di sini free dan unlimited request.</li>
+              <li>Jangan ditembak atuh, sakit.</li>
+              <li>Owner tidak bertanggung jawab atas penggunaan website ini.</li>
+            </ol>
           </div>
         </div>
       </div>
 
-      <footer class="sticky-footer mt-auto">
-        <div class="container text-center">
-          Made with <i class="fa fa-heart"></i> by
-          <a href="https://github.com/JullGG" target="_blank" class="text-light">Juul Production</a>
-        </div>
+      <!-- Footer -->
+      <footer class="bg-dark text-center text-light py-3" style="box-shadow: inset 0 1px 5px #334;">
+        &copy; 2025 Juul APIs - All rights reserved.
       </footer>
     </div>
   </div>
 
-  <!-- Scroll to top -->
-  <a class="scroll-to-top" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- JS Libraries -->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <!-- Bootstrap & jQuery JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom JS -->
+  
   <script>
-    // Sidebar toggle
-    $('#sidebarToggle').on('click', function () {
-      $('#accordionSidebar').toggleClass('d-none');
+    // Sidebar toggle for small screens
+    document.getElementById('sidebarToggle').addEventListener('click', function () {
+      document.querySelector('.sidebar').classList.toggle('d-none');
     });
-
-    // Battery Info
-    navigator.getBattery && navigator.getBattery().then(battery => {
-      const level = Math.round(battery.level * 100);
-      document.getElementById('battery-level').innerText = level;
-      document.getElementById('charging-status').innerText = battery.charging ? "Charging..." : "Not Charging";
-    });
-
-    // IP Info
-    fetch("https://api.ipify.org?format=json")
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("ip-address").innerText = data.ip;
-      });
-
-    // Extra info
-    document.getElementById("current-datetime").innerText = new Date().toLocaleString();
-    document.getElementById("device-os").innerText = /android/i.test(navigator.userAgent)
-      ? "Android"
-      : /iphone|ipad/i.test(navigator.userAgent)
-        ? "iOS"
-        : "Unknown";
-    document.getElementById("resolution").innerText = `${screen.width}x${screen.height}`;
-    document.getElementById("browser").innerText = (() => {
-      const ua = navigator.userAgent;
-      if (ua.includes("Chrome")) return "Chrome";
-      if (ua.includes("Firefox")) return "Firefox";
-      if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
-      if (ua.includes("Opera") || ua.includes("OPR")) return "Opera";
-      return "Unknown";
-    })();
   </script>
 </body>
   </html>
