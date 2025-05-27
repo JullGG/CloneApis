@@ -30,13 +30,13 @@
       color: #ccc;
     }
     .error {
-      color: #ff4d4d;
+      color: #f44336; /* merah */
     }
-    .success {
-      color: #4dff88;
+    .ready {
+      color: #4caf50; /* hijau */
     }
-    ul {
-      padding-left: 20px;
+    .endpoint-status {
+      font-weight: bold;
     }
   </style>
 </head>
@@ -55,19 +55,17 @@
 
   <div class="card">
     <h2>API Endpoint Performance</h2>
-    <p><span class="label">Endpoint JSON:</span> <span id="endpoint">/src/web-set.json</span></p>
-    <p><span class="label">Status HTTP:</span> <span id="status">Checking...</span></p>
+    <p><span class="label">Endpoint:</span> <span id="endpoint">Loading...</span></p>
+    <p><span class="label">Status:</span> <span id="status">Checking...</span></p>
     <p><span class="label">Latency:</span> <span id="latency">-</span> ms</p>
     <p><span class="label">Response Size:</span> <span id="size">-</span></p>
-    <p><span class="label">Total Endpoints:</span> <span id="total-endpoints">-</span></p>
-    <p><span class="label">Success:</span> <span id="success-count">-</span></p>
-    <p><span class="label">Error:</span> <span id="error-count">-</span></p>
     <p><span class="label">Checked At:</span> <span id="checked-time">-</span></p>
+  </div>
 
-    <h3>Detail Endpoints:</h3>
-    <ul id="endpoint-list">
-      <li>Loading...</li>
-    </ul>
+  <div class="card">
+    <h2>API Endpoints Overview</h2>
+    <p><span class="label">Total Endpoints:</span> <span id="total-endpoints">Loading...</span></p>
+    <div id="endpoints-list">Loading endpoints...</div>
   </div>
 
   <script>
@@ -76,7 +74,8 @@
     document.getElementById("browser").innerText =
       navigator.userAgent.split(") ")[1] || navigator.userAgent;
     document.getElementById("platform").innerText = navigator.platform;
-    document.getElementById("resolution").innerText = `${screen.width} x ${screen.height}`;
+    document.getElementById("resolution").innerText =
+      screen.width + " x " + screen.height;
     document.getElementById("device").innerText = /android/i.test(navigator.userAgent)
       ? "Android"
       : /iPhone|iPad|iPod/i.test(navigator.userAgent)
@@ -89,65 +88,80 @@
         document.getElementById("ip").innerText = data.ip;
       });
 
-    const endpoint = "/src/web-set.json"; // Ganti sesuai kebutuhan
-    document.getElementById("endpoint").innerText = endpoint;
+    // Example API base URL (ubah sesuai kebutuhan)
+    const API_BASE_URL = "https://api.juul-web-id.xyz";
 
-    const start = performance.now();
-    fetch(endpoint)
-      .then((res) => {
+    // Path ke file konfigurasi JSON
+    const configPath = "/src/web-set.json";
+
+    // Fungsi check endpoint status
+    async function checkEndpointStatus(endpoint) {
+      const url = API_BASE_URL + endpoint;
+      const start = performance.now();
+      try {
+        const res = await fetch(url);
         const latency = performance.now() - start;
-        document.getElementById("status").innerText = res.status;
-        document.getElementById("latency").innerText = latency.toFixed(2);
-        document.getElementById("checked-time").innerText = new Date().toLocaleString();
+        const size = res.headers.get("content-length") || "-";
+        return {
+          status: res.status,
+          latency: latency.toFixed(2),
+          size,
+          error: false,
+        };
+      } catch {
+        return {
+          status: "Error",
+          latency: "-",
+          size: "-",
+          error: true,
+        };
+      }
+    }
 
-        return res.clone().text().then((text) => {
-          const size = new Blob([text]).size;
-          const readableSize =
-            size < 1024
-              ? `${size} B`
-              : size < 1024 * 1024
-              ? `${(size / 1024).toFixed(2)} KB`
-              : `${(size / 1024 / 1024).toFixed(2)} MB`;
-          document.getElementById("size").innerText = readableSize;
+    // Load config dan cek semua endpoint
+    fetch(API_BASE_URL + configPath)
+      .then((res) => res.json())
+      .then(async (data) => {
+        const categories = data.categories || [];
+        const endpointsContainer = document.getElementById("endpoints-list");
+        let totalEndpoints = 0;
+        let html = "";
 
-          // Parsing JSON untuk cek fitur
-          const data = JSON.parse(text);
-          let total = 0;
-          let success = 0;
-          let error = 0;
-          let listHTML = "";
-
-          for (const kategori in data) {
-            const fiturArray = data[kategori];
-            total += fiturArray.length;
-            fiturArray.forEach((fitur) => {
-              if (fitur.status && fitur.status.toLowerCase() === "error") {
-                error++;
-                listHTML += `<li><span class="error">${fitur.name} [${fitur.status}]</span></li>`;
-              } else {
-                success++;
-                listHTML += `<li><span class="success">${fitur.name} [${fitur.status || "OK"}]</span></li>`;
-              }
-            });
+        for (const category of categories) {
+          html += `<h3>${category.name} (${category.items.length})</h3><ul>`;
+          for (const item of category.items) {
+            totalEndpoints++;
+            const statusInfo = await checkEndpointStatus(item.path);
+            html += `<li>${item.name} - <span class="${
+              statusInfo.error ? "error" : "ready"
+            }">${statusInfo.status}</span> (Latency: ${statusInfo.latency} ms, Size: ${
+              statusInfo.size === "-" ? "-" : statusInfo.size + " bytes"
+            })</li>`;
           }
+          html += "</ul>";
+        }
 
-          document.getElementById("total-endpoints").innerText = total;
-          document.getElementById("success-count").innerText = success;
-          document.getElementById("error-count").innerText = error;
-          document.getElementById("endpoint-list").innerHTML =
-            listHTML || "<li>Tidak ada fitur</li>";
-        });
+        document.getElementById("total-endpoints").innerText = totalEndpoints;
+        endpointsContainer.innerHTML = html;
+
+        // Update the API Endpoint Performance card with the first endpoint checked
+        if (categories.length > 0 && categories[0].items.length > 0) {
+          const first = categories[0].items[0];
+          const firstStatus = await checkEndpointStatus(first.path);
+          document.getElementById("endpoint").innerText = first.path;
+          document.getElementById("status").innerText = firstStatus.status;
+          document.getElementById("latency").innerText = firstStatus.latency;
+          document.getElementById("size").innerText =
+            firstStatus.size === "-" ? "-" : firstStatus.size + " bytes";
+          document.getElementById("checked-time").innerText =
+            new Date().toLocaleString();
+        }
       })
       .catch((err) => {
-        document.getElementById("status").innerText = "Error";
-        document.getElementById("latency").innerText = "-";
-        document.getElementById("size").innerText = "-";
-        document.getElementById("total-endpoints").innerText = "-";
-        document.getElementById("success-count").innerText = "-";
-        document.getElementById("error-count").innerText = "-";
-        document.getElementById("checked-time").innerText = new Date().toLocaleString();
-        document.getElementById("endpoint-list").innerHTML = `<li style="color: #f00;">${err.message}</li>`;
+        document.getElementById("endpoints-list").innerText =
+          "Failed to load API config.";
+        document.getElementById("total-endpoints").innerText = "0";
       });
   </script>
 </body>
-</html>
+         </html>
