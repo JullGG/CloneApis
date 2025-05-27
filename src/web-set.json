@@ -567,6 +567,16 @@
           }
         },
         {
+          "name": "remove background",
+          "desc": "Hapus background anda melalui url image",
+          "path": "/tools/removebg?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url image anda."
+          }
+        },
+        {
           "name": "track ip",
           "desc": "mendapatkan informasi dari ip yang di tuju ",
           "path": "/tools/iptrack?ip=",
