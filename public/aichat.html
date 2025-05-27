@@ -14,6 +14,9 @@
       --card-bg-light: #ffffff;
       --card-bg-dark: #2a2d3a;
       --primary: #6366f1;
+      --primary-hover: #4f52e3;
+      --btn-bg: #e0e0ff;
+      --btn-bg-hover: #c3c3ff;
     }
 
     [data-theme="light"] {
@@ -37,7 +40,7 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       flex-direction: column;
       height: 100vh;
@@ -49,19 +52,52 @@
       justify-content: space-between;
       align-items: center;
       background: var(--card-bg);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 10;
     }
 
     header h1 {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+    }
+
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    button {
+      background: var(--btn-bg);
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--primary);
+      transition: background-color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+    button:hover {
+      background: var(--btn-bg-hover);
     }
 
     .toggle-theme {
-      cursor: pointer;
+      font-size: 20px;
+      padding: 8px 10px;
       background: none;
       border: none;
-      font-size: 20px;
+      color: var(--primary);
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+    .toggle-theme:hover {
+      color: var(--primary-hover);
     }
 
     .chat-box {
@@ -70,14 +106,26 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
+      background: var(--bg);
+      scroll-behavior: smooth;
     }
 
     .bubble {
-      padding: 12px 16px;
+      position: relative;
+      padding: 14px 18px;
       border-radius: 18px;
       max-width: 80%;
       white-space: pre-wrap;
+      font-size: 15px;
+      line-height: 1.4;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.06);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(6px);}
+      to {opacity: 1; transform: translateY(0);}
     }
 
     .user {
@@ -92,56 +140,87 @@
       background: var(--card-bg);
       border-bottom-left-radius: 4px;
       color: var(--text);
+      padding-right: 44px; /* ruang tombol copy */
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--primary);
+      font-size: 16px;
+      opacity: 0.6;
+      transition: opacity 0.15s ease;
+    }
+    .copy-btn:hover {
+      opacity: 1;
     }
 
     form {
       display: flex;
-      padding: 12px;
+      padding: 14px 16px;
       background: var(--card-bg);
-      box-shadow: 0 -1px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 -1px 8px rgba(0,0,0,0.08);
+      gap: 12px;
     }
 
     input[type="text"] {
       flex: 1;
-      padding: 10px 14px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
+      padding: 12px 18px;
+      border-radius: 24px;
+      border: 1.5px solid #ccc;
       outline: none;
-      font-size: 14px;
+      font-size: 15px;
+      transition: border-color 0.2s ease;
+    }
+    input[type="text"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 8px var(--primary);
     }
 
-    button {
-      background: none;
-      border: none;
-      margin-left: 8px;
-      font-size: 20px;
-      color: var(--primary);
-      cursor: pointer;
+    form button[type="submit"] {
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    }
+    form button[type="submit"]:hover {
+      background: var(--primary-hover);
     }
 
     .placeholder-card {
       background: var(--card-bg);
-      border-radius: 16px;
-      padding: 32px;
+      border-radius: 20px;
+      padding: 36px;
       text-align: center;
-      max-width: 400px;
+      max-width: 420px;
       margin: auto;
-      margin-top: 40px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 60px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      color: #777;
+      font-weight: 600;
+      user-select: none;
     }
-
     .placeholder-card h2 {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      font-size: 24px;
+      color: var(--primary);
     }
-
     .placeholder-card p {
-      color: gray;
-      font-size: 14px;
+      font-size: 16px;
+      margin-bottom: 4px;
     }
-
     .placeholder-card small {
-      display: block;
-      margin-top: 8px;
+      font-size: 12px;
       color: #aaa;
     }
   </style>
@@ -149,7 +228,10 @@
 <body>
   <header>
     <h1>Zelda AI</h1>
-    <button class="toggle-theme" onclick="toggleTheme()">🌓</button>
+    <div class="header-buttons">
+      <button class="reset-btn" title="Mulai Ulang Chat">🔄 Mulai Ulang</button>
+      <button class="toggle-theme" title="Toggle Tema">🌓</button>
+    </div>
   </header>
 
   <div id="chatBox" class="chat-box">
@@ -161,19 +243,39 @@
   </div>
 
   <form id="chatForm">
-    <input type="text" id="userInput" placeholder="Type your message here..." required />
-    <button type="submit">✈️</button>
+    <input type="text" id="userInput" placeholder="Type your message here..." autocomplete="off" required />
+    <button type="submit" title="Send">✈️</button>
   </form>
 
   <script>
     const chatBox = document.getElementById('chatBox');
     const chatForm = document.getElementById('chatForm');
     const userInput = document.getElementById('userInput');
+    const resetBtn = document.querySelector('.reset-btn');
+    const toggleThemeBtn = document.querySelector('.toggle-theme');
 
     function appendBubble(message, sender = 'user') {
       const bubble = document.createElement('div');
       bubble.className = `bubble ${sender}`;
       bubble.innerText = message;
+
+      // Jika balon dari bot, tambahkan tombol copy
+      if(sender === 'bot') {
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-btn';
+        copyBtn.title = 'Salin jawaban';
+        copyBtn.innerText = '📋';
+        copyBtn.onclick = () => {
+          navigator.clipboard.writeText(message)
+            .then(() => {
+              copyBtn.innerText = '✔️';
+              setTimeout(() => copyBtn.innerText = '📋', 1500);
+            })
+            .catch(() => alert('Gagal menyalin teks.'));
+        };
+        bubble.appendChild(copyBtn);
+      }
+
       chatBox.appendChild(bubble);
       chatBox.scrollTop = chatBox.scrollHeight;
     }
@@ -190,8 +292,14 @@
       const msg = userInput.value.trim();
       if (!msg) return;
 
+      // Hapus placeholder jika ada
+      const placeholder = chatBox.querySelector('.placeholder-card');
+      if (placeholder) placeholder.remove();
+
       appendBubble(msg, 'user');
       userInput.value = '';
+      userInput.focus();
+
       appendBubble('...', 'bot');
       const botBubble = chatBox.querySelector('.bot:last-child');
 
@@ -199,13 +307,42 @@
         const res = await axios.get(`https://api.juul-web-id.xyz/ai/ai-gpt?query=${encodeURIComponent(msg)}`);
         const reply = res.data?.result?.data || "Gagal merespon.";
         botBubble.innerText = reply;
+
+        // Tambahkan tombol copy setelah update text
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-btn';
+        copyBtn.title = 'Salin jawaban';
+        copyBtn.innerText = '📋';
+        copyBtn.onclick = () => {
+          navigator.clipboard.writeText(reply)
+            .then(() => {
+              copyBtn.innerText = '✔️';
+              setTimeout(() => copyBtn.innerText = '📋', 1500);
+            })
+            .catch(() => alert('Gagal menyalin teks.'));
+        };
+        botBubble.appendChild(copyBtn);
+
       } catch (err) {
         botBubble.innerText = "Terjadi kesalahan.";
         console.error(err);
       }
     });
 
-    // Load theme
+    resetBtn.addEventListener('click', () => {
+      chatBox.innerHTML = `
+      <div class="placeholder-card">
+        <h2>Welcome to Zelda AI</h2>
+        <p>Ask anything. Coding, writing, tips & more.</p>
+        <small>Powered by JUUL API</small>
+      </div>`;
+      userInput.value = '';
+      userInput.focus();
+    });
+
+    toggleThemeBtn.addEventListener('click', toggleTheme);
+
+    // Load theme from localStorage
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
   </script>
