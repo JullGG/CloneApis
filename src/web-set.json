@@ -36,6 +36,16 @@
           }
         },
         {
+          "name": "Apk Mod Search",
+          "desc": "Temukan Apk Mod Berdasarkan Query",
+          "path": "/search/apkmods?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Masukkan Query yang ingin dicari"
+          }
+        },
+        {
           "name": "Phone Search",
           "desc": "Temukan spesifikasi hp anda",
           "path": "/search/phonesearch?q=",
@@ -158,6 +168,16 @@
           "requireKey": false
             },
         {
+          "name": "Apk Mod Info",
+          "desc": "Temukan Informasi Apk mod berdasarkan url aplikasi",
+          "path": "/info/apkmodinfo?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "Masukkan Url aplikasi yang ingin dicari"
+          }
+        },
+        {
           "name": "Komikindo Detail",
           "desc": "Temukan Chapter synpiosis dll di dalam komikindo",
           "path": "/info/komikdetail?url=",
@@ -179,7 +199,17 @@
           "status": "ready",
           "requireKey": false,
           "params": {
-            "url": "url dari Twitter/X"
+            "url": "url dari Twitteter"
+          }
+        },
+        {
+          "name": "Apk Mod Downloader",
+          "desc": "Unduh aplikasi mod berdasarkan url.",
+          "path": "/downloader/apkmoddl?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "Masukkan url yang ingin didownload"
           }
         },
         {
