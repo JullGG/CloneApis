@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zelda AI - Axy UI</title>
+  <title>Zelda AI - Chat Ai</title>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <style>
     :root {
@@ -304,7 +304,7 @@
       const botBubble = chatBox.querySelector('.bot:last-child');
 
       try {
-        const res = await axios.get(`https://api.juul-web-id.xyz/ai/ai-gpt?query=${encodeURIComponent(msg)}`);
+        const res = await axios.get(`https://api.juul-web-id.xyz/ai/ai-lumin?text=${encodeURIComponent(msg)}`);
         const reply = res.data?.result?.data || "Gagal merespon.";
         botBubble.innerText = reply;
 
