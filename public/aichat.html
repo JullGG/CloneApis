@@ -305,7 +305,7 @@
 
       try {
         const res = await axios.get(`https://api.juul-web-id.xyz/ai/ai-lumin?text=${encodeURIComponent(msg)}`);
-        const reply = res.data?.result?.data || "Gagal merespon.";
+        const reply = res.result?.result?.result || "Gagal merespon.";
         botBubble.innerText = reply;
 
         // Tambahkan tombol copy setelah update text
