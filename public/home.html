@@ -343,6 +343,64 @@
         </div>
       </div>
 
+
+<!-- INFO CARD TAMBAHAN -->
+<div class="container-fluid">
+  <div class="card info-card" id="userInfoCard">
+    <h4 class="mb-3"><i class="fas fa-info-circle text-info"></i> User Information</h4>
+    <ul style="list-style: none; padding-left: 0;">
+      <li><strong>IP Address:</strong> <span id="ip-address">Loading...</span></li>
+      <li><strong>Date/Time:</strong> <span id="date-time">Loading...</span></li>
+      <li><strong>Browser:</strong> <span id="browser-info">Loading...</span></li>
+      <li><strong>Device Type:</strong> <span id="device-type">Loading...</span></li>
+      <li><strong>Total Request Endpoint:</strong> <span id="total-req">1.912.613 🚀</span></li>
+      <li><strong>Total Endpoint:</strong> <span id="total-endpoint">60</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Script Tambahan -->
+<script>
+  // Tanggal & Waktu
+  document.getElementById('date-time').innerText = new Date().toLocaleString();
+
+  // Browser & OS detection
+  const userAgent = navigator.userAgent;
+  let browser = "Unknown";
+  if (userAgent.indexOf("Chrome") > -1) browser = "Chrome";
+  else if (userAgent.indexOf("Safari") > -1) browser = "Safari";
+  else if (userAgent.indexOf("Firefox") > -1) browser = "Firefox";
+  else if (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf("Trident/") > -1) browser = "Internet Explorer";
+
+  document.getElementById('browser-info').innerText = browser;
+
+  // OS Type
+  const isAndroid = /android/i.test(userAgent);
+  const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+  document.getElementById('device-type').innerText = isAndroid ? "Android" : isIOS ? "iOS" : "Other";
+
+  // Get IP from public API
+  fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('ip-address').innerText = data.ip;
+    })
+    .catch(() => {
+      document.getElementById('ip-address').innerText = "Unavailable";
+    });
+</script>
+
+<!-- Background Gambar -->
+<style>
+  body.dark-mode {
+    background-image: url('https://files.catbox.moe/xub0bm.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+</style>
+
       <!-- Footer -->
       <footer class="bg-dark text-center text-light py-3" style="box-shadow: inset 0 1px 5px #334;">
         &copy; 2025 Juul APIs - All rights reserved.
@@ -361,4 +419,4 @@
     });
   </script>
 </body>
-  </html>
+</html>
