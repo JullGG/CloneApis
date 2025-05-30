@@ -233,7 +233,78 @@
       text-decoration: underline;
     }
   </style>
+ <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    .header {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .feature {
+      background-color: #1a1a1a;
+      border-radius: 16px;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .number {
+      font-size: 48px;
+      font-weight: bold;
+      color: #f3e6e6;
+    }
+
+    .icon {
+      font-size: 40px;
+      color: #ff2c94;
+      margin: 10px 0;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: #bbb;
+    }
+
+    @media (min-width: 768px) {
+      .features {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .feature {
+        width: 30%;
+      }
+    }
+  </style>
 </head>
+<body>
 
 <body id="page-top" class="dark-mode">
   <div class="d-flex" id="wrapper" style="min-height: 100vh;">
@@ -400,6 +471,32 @@
     background-position: center center;
   }
 </style>
+
+  <div class="container">
+    <div class="header">EX APIS</div>
+    
+    <div class="features">
+      
+      <div class="feature">
+        <div class="number">01</div>
+        <div class="icon">🔍</div>
+        <div class="title">Respon Cepat</div>
+        <div class="desc">Respon API lumayan cepat dan tidak delay 🚀</div>
+      </div>
+      
+      <div class="feature">
+        <div class="number">02</div>
+        <div class="icon">📂✅</div>
+        <div class="title">Free Request</div>
+        <div class="desc">Bisa request endpoint API yang ingin ditambahkan ke API, kirim kepada Owner.</div>
+      </div>
+      
+      <div class="feature">
+        <div class="number">03</div>
+        <div class="icon">📈</div>
+        <div class="title">Up To Date</div>
+        <div class="desc">Update secara berkala dan lengkapi dengan endpoint terbaru.</div>
+      </div>
 
       <!-- Footer -->
       <footer class="bg-dark text-center text-light py-3" style="box-shadow: inset 0 1px 5px #334;">
