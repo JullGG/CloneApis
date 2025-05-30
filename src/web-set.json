@@ -190,7 +190,7 @@
         {
           "name": "AnimeIndo Detail",
           "desc": "Temukan detail anime berdasarkan url dari animeindo seperti judul,episode,dll",
-          "path": "/indo/animeindodetail?url=",
+          "path": "/info/animeindodetail?url=",
           "status": "ready",
           "requireKey": false,
           "params": {
