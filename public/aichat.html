@@ -304,7 +304,7 @@
       const botBubble = chatBox.querySelector('.bot:last-child');
 
       try {
-        const res = await axios.get(`https://api.juul-web-id.xyz/ai/ai-lumin?text=${encodeURIComponent(msg)}`);
+        const res = await axios.get(`https://api.juul-web-id.xyz/ai/deepseek?text=${encodeURIComponent(msg)}`);
         const reply = res.data?.result?.result || "Gagal merespon.";
         botBubble.innerText = reply;
 
