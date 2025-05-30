@@ -26,6 +26,16 @@
           }
         },
         {
+          "name": "AnimeIndo Search",
+          "desc": "Temukan anime berdasarkan query dari animeindo",
+          "path": "/search/animeindo?q=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "q": "Masukan judul anime !"
+          }
+        },
+        {
           "name": "Douyin Search",
           "desc": "Temukan Douyinmu Berdasarkan Kriteria",
           "path": "/search/douyinsearch?q=",
@@ -178,6 +188,16 @@
           }
         },
         {
+          "name": "AnimeIndo Detail",
+          "desc": "Temukan detail anime berdasarkan url dari animeindo seperti judul,episode,dll",
+          "path": "/indo/animeindodetail?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "Masukan url anime !"
+          }
+        },
+        {
           "name": "Komikindo Detail",
           "desc": "Temukan Chapter synpiosis dll di dalam komikindo",
           "path": "/info/komikdetail?url=",
@@ -201,6 +221,16 @@
           "params": {
             "url": "url dari Twitteter"
           }
+        },
+        {
+          "name": "AnimeIndo Downloader",
+          "desc": "Download video anime berdasarkan url episode !",
+          "path": "/downloader/animeindodl?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "Masukan url episode anime !"
+            }
         },
         {
           "name": "Apk Mod Downloader",
