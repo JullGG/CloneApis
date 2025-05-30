@@ -213,6 +213,16 @@
           }
         },
         {
+          "name": "Aio Downloader",
+          "desc": "Unduh semua media dari medsos (seperti, Instagram YouTube Faebook Dll).",
+          "path": "/downloader/aio?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "Masukkan url yang ingin didownload"
+          }
+        },
+        {
           "name": "Instagram",
           "desc": "download media dari instagram",
           "path": "/downloader/dlig?url=",
