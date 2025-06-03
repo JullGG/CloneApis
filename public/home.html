@@ -232,6 +232,95 @@
       color: var(--blue-light) !important;
       text-decoration: underline;
     }
+
+margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to top, #1e1e2f, #2e2e3f);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .clouds {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/clouds.png');
+      opacity: 0.05;
+      animation: moveClouds 60s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes moveClouds {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 2.5rem;
+      z-index: 1;
+      position: relative;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      padding: 40px 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      z-index: 1;
+      position: relative;
+    }
+
+    .card {
+      flex: 0 0 300px;
+      background: #29293d;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      scroll-snap-align: start;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 28px rgba(255, 255, 255, 0.15);
+    }
+
+    .name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .team {
+      font-size: 1rem;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      font-size: 0.95rem;
+    }
+
+    /* Scrollbar style */
+    .container::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .container::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 5px;
+    }
+    
+    .container::-webkit-scrollbar-track {
+      background: transparent;
+
+    }
   </style>
  <style>
     body {
@@ -497,6 +586,36 @@
         <div class="title">Up To Date</div>
         <div class="desc">Update secara berkala dan lengkapi dengan endpoint terbaru.</div>
       </div>
+
+    <div class="clouds"></div>
+
+  <h1>Thanks To / TQTO</h1>
+
+  <div class="container">
+    <div class="card">
+      <div class="name">Rian</div>
+      <div class="team">RenvyTeam</div>
+      <div class="desc">Supported Jul API's and Contributor Scrape</div>
+    </div>
+
+    <div class="card">
+      <div class="name">Pan Pan</div>
+      <div class="team">RenvyTeam</div>
+      <div class="desc">Admin Rest API's and my friend</div>
+    </div>
+
+    <div class="card">
+      <div class="name">Daffa</div>
+      <div class="team">NB SCRIPT</div>
+      <div class="desc">Contributor Scrape</div>
+    </div>
+
+    <div class="card">
+      <div class="name">Xyzan</div>
+      <div class="team">Anomaki</div>
+      <div class="desc">Supporter Scrape</div>
+    </div>
+  </div>
 
       <!-- Footer -->
       <footer class="bg-dark text-center text-light py-3" style="box-shadow: inset 0 1px 5px #334;">
