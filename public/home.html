@@ -18,7 +18,6 @@
   --bg-dark: #121827;
 }
 
-/* ==== Body and layout ==== */
 body.dark-mode {
   background-color: var(--bg-dark);
   color: var(--text-light);
@@ -34,7 +33,6 @@ body.dark-mode {
   position: relative;
 }
 
-/* Clouds background */
 .clouds {
   position: absolute;
   top: 0;
@@ -51,7 +49,6 @@ body.dark-mode {
   to { transform: translateX(-50%); }
 }
 
-/* Sidebar */
 .sidebar {
   background: linear-gradient(145deg, var(--blue-dark), #111a2e);
   box-shadow: 0 0 20px var(--blue-glow);
@@ -80,7 +77,6 @@ body.dark-mode {
   color: white;
   background: var(--blue-light);
   box-shadow: 0 0 8px var(--blue-glow);
-  text-decoration: none;
 }
 .sidebar-divider {
   border-top: 1px solid #223158;
@@ -116,24 +112,17 @@ body.dark-mode {
   }
 }
 
-/* Content Wrapper */
 #wrapper {
   display: flex;
-  padding-left: 250px; /* make space for fixed sidebar */
+  flex-direction: row;
   min-height: 100vh;
-  flex-direction: column;
+  padding-left: 250px;
 }
-
-/* Content */
 #content-wrapper {
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
   padding: 1rem 2rem;
   margin-left: 250px;
 }
-
-/* Topbar */
 .topbar {
   background: linear-gradient(90deg, var(--blue-dark), #0b1b44);
   box-shadow: 0 2px 10px rgba(54, 92, 204, 0.5);
@@ -159,15 +148,12 @@ body.dark-mode {
   box-shadow: 0 0 25px var(--blue-glow);
 }
 
-/* Cards */
 .card {
   background: linear-gradient(145deg, #1e2a54, #12214a);
   border-radius: 12px;
   color: var(--text-light);
   border: none;
-  box-shadow:
-    0 0 10px rgba(54, 92, 204, 0.5),
-    inset 0 0 10px #2c3b82;
+  box-shadow: 0 0 10px rgba(54, 92, 204, 0.5), inset 0 0 10px #2c3b82;
   margin-bottom: 1.5rem;
   padding: 1.5rem;
   position: relative;
@@ -175,24 +161,13 @@ body.dark-mode {
   opacity: 0;
   animation: fadeSlideUp 1s ease forwards;
 }
-.card:nth-of-type(1) {
-  animation-delay: 0.3s;
-}
-.card:nth-of-type(2) {
-  animation-delay: 0.5s;
-}
-@keyframes fadeSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+.card:nth-of-type(1) { animation-delay: 0.3s; }
+.card:nth-of-type(2) { animation-delay: 0.5s; }
 
-/* Shimmer loading effect on cards */
+@keyframes fadeSlideUp {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 .card::before {
   content: '';
   position: absolute;
@@ -207,12 +182,9 @@ body.dark-mode {
   z-index: 1;
 }
 @keyframes shimmer {
-  100% {
-    left: 125%;
-  }
+  100% { left: 125%; }
 }
 
-/* Scroll to top button */
 .scroll-to-top {
   background: var(--blue-light);
   box-shadow: 0 0 12px var(--blue-glow);
@@ -234,7 +206,6 @@ body.dark-mode {
   transform: scale(1.1);
 }
 
-/* Buttons */
 .btn-primary {
   background-color: var(--blue-light);
   border: none;
@@ -257,7 +228,6 @@ body.dark-mode {
   }
 }
 
-/* Dropdown info */
 .dropdown-header.bg-info {
   background-color: var(--blue-light) !important;
   color: #121827 !important;
@@ -268,13 +238,11 @@ body.dark-mode {
   background-color: var(--blue-light) !important;
 }
 
-/* Sidebar brand & nav */
 a.text-light:hover {
   color: var(--blue-light) !important;
   text-decoration: underline;
 }
 
-/* Container and cards (horizontal scroll section) */
 .container {
   max-width: 900px;
   margin: 0 auto 40px;
@@ -294,9 +262,35 @@ a.text-light:hover {
   border-radius: 5px;
 }
 .container::-webkit-scrollbar-track {
-  background
-      }
-    }
+  background: #222;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    box-shadow: none;
+  }
+
+  #wrapper, #content-wrapper {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .sidebar-brand {
+    font-size: 1.2rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
   </style>
 </head>
 <body>
@@ -393,7 +387,7 @@ a.text-light:hover {
         <div class="container-fluid">
           <div class="card">
             <h3>Welcome to Juul APIs</h3>
-            <p>Explore the best free APIs with unlimited requests.</p>
+            <p>Api gratis yang menyediakan berbagai endpoint yang sedang trending tanpa apikey!, cukup bayar pakai makasih kami sudah senang :v.</p>
           </div>
 
           <div class="card">
