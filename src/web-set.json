@@ -33,6 +33,26 @@
           "requireKey": false,
           "params": {
             "q": "Masukan judul anime !"
+            }
+        },
+        {
+          "name": "bkpindoh Search",
+          "desc": "Temukan vid porn berdasarkan query dari bkpindoh",
+          "path": "/search/bkpindoh?q=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "q": "Masukan judul porn !"
+          }
+        },
+        {
+          "name": "komikuind Search",
+          "desc": "Temukan manga berdasarkan query dari komikuind",
+          "path": "/search/komikuind?q=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "q": "Masukan judul manga !"
           }
         },
         {
@@ -185,6 +205,16 @@
           "requireKey": false,
           "params": {
             "url": "Masukkan Url aplikasi yang ingin dicari"
+          }
+        },
+        {
+          "name": "komikuind Info",
+          "desc": "Temukan Informasi Chapter dll berdasarkan url komikuind",
+          "path": "/info/komikudtl?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "Masukkan Url manga yang ingin dicari"
           }
         },
         {
@@ -511,6 +541,16 @@
           "requireKey": false,
           "params": {
             "query": "Pesan untuk blackbox ai"
+          }
+        },        
+        {
+          "name": "Ghibli Ai",
+          "desc": "Buat gambar dengan ghibli style melalui prompt !",
+          "path": "/ai/ghibli?prompt=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "prompt": "Prompt untuk gambar"
           }
         },        
         {
