@@ -137,7 +137,7 @@
         <header class="bg-gray-800 text-gray-100 p-4 rounded-t-xl flex items-center justify-between">
             <div class="flex items-center">
                 <img src="https://img.icons8.com/ios-filled/50/ffffff/sleeping-in-bed.png" alt="Hoshino Icon" class="w-7 h-7 mr-3 filter invert brightness-200">
-                <h1 class="text-xl sm:text-2xl font-semibold">Hoshino Oji-san</h1>
+                <h1 class="text-xl sm:text-2xl font-semibold">Zelda Chat Ai</h1>
             </div>
             <button id="clear-chat-button" title="Bersihkan Percakapan" class="p-2 rounded-md hover:bg-gray-700 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-300"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
@@ -147,7 +147,7 @@
         <div id="chat-output" class="flex-grow p-4 sm:p-6 space-y-5 overflow-y-auto bg-gray-50" aria-live="polite">
             </div>
         <div id="typing-indicator" class="p-4 text-sm text-gray-600 hidden items-center space-x-2 bg-gray-50 border-t border-gray-200">
-            <span class="font-medium">Hoshino sedang mikir</span>
+            <span class="font-medium">Zelda sedang mikir</span>
             <div class="typing-dots"><span></span><span></span><span></span></div>
         </div>
         <div id="image-preview-area" class="p-3 bg-gray-100 border-t border-gray-200 hidden">
@@ -420,8 +420,8 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
             try {
                 const initialPayloadContents = [
                     { role: "user", parts: [{ text: hoshinoInitialPrompt }] },
-                    {role: "model", parts: [{text: "Uhe~ Oji-san di sini. Ada yang bisa dibantu?"}]},
-                    {role: "user", parts: [{text: "Sapa Oji-san dengan gaya khasmu yang baru bangun tidur."}]}
+                    {role: "model", parts: [{text: "Yo Wassap Zelabdi sini rek 😹. Ada yang bisa dibantu?"}]},
+                    {role: "user", parts: [{text: "Sapa gw dengan gaya khasmu yang baru bangun tidur."}]}
                 ];
 
 
@@ -440,11 +440,11 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
 
                 if (!response.ok) {
                     const errorData = await response.json(); 
-                    let errorText = `Uhe~ Kayaknya ada masalah pas Oji-san mau nyapa. Maaf ya. (${errorData.error?.message || response.statusText})`;
+                    let errorText = ` Kayaknya ada masalah pas Gw mau nyapa. Maaf ya. (${errorData.error?.message || response.statusText})`;
                     if (response.status === 400 && errorData.error?.message.toLowerCase().includes("api key not valid")) {
-                         errorText = "Uhe~ API Key-nya Oji-san nggak valid nih. Coba cek lagi ya Sensei, atau dapatkan yang baru dari Google AI Studio.";
+                         errorText = "Maaf jir API Key-nya nggak valid nih. Coba cek lagi ya Sensei, atau dapatkan yang baru dari Google AI Studio.";
                     } else if (response.status === 403) {
-                         errorText = "Uhe~ Oji-san nggak diizinin pakai API Key ini. Mungkin Sensei salah kasih kunci? Atau kuota Oji-san habis...";
+                         errorText = "Woy Lu nggak diizinin pakai API Key ini. Mungkin lu salah kasih kunci? Atau kuota lu habis..";
                     }
                     finalBubbleElement = displayAIMessage({ text: errorText }, true, true);
                     accumulatedGreeting = errorText;
@@ -478,7 +478,7 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
                     }
                 }
                 if (!accumulatedGreeting && !finalBubbleElement) { 
-                     accumulatedGreeting = "Uhe~ Oji-san di sini... Zzz...";
+                     accumulatedGreeting = "Zelda san di sini... Zzz...";
                      finalBubbleElement = displayAIMessage({ text: accumulatedGreeting }, false, true);
                 }
                 
@@ -492,9 +492,9 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
 
             } catch (error) {
                 console.error("Error initializing app:", error);
-                let errMsg = 'Uhe~ Maaf, Oji-san lagi ngantuk berat, koneksinya juga ikutan tidur. Coba refresh halaman ya.';
+                let errMsg = 'sorry gw lagi ngantuk berat😹, koneksinya juga ikutan tidur. Coba refresh halaman ya.';
                 if (error.message.includes("API Key belum diatur")) {
-                     errMsg = error.message + " Oji-san nggak bisa ngobrol kalau nggak ada kuncinya... Uhe~";
+                     errMsg = error.message + " lu nggak bisa ngobrol kalau nggak ada kuncinya... ";
                 }
                 finalBubbleElement = displayAIMessage({ text: errMsg }, true, true);
                 chatHistory = [];
@@ -549,11 +549,11 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
 
                 if (!response.ok) {
                     const errorData = await response.json();
-                    let errorText = `Uheee~ Maaf, Oji-san gagal gambarnya... ${errorData.error?.message || response.statusText || "Tintanya habis kali ya..."}`;
+                    let errorText = `Sorry rek gagal gambarnya... ${errorData.error?.message || response.statusText || "Tintanya habis kali ya..."}`;
                      if (response.status === 400 && errorData.error?.message.toLowerCase().includes("api key not valid")) {
-                         errorText = "Uhe~ API Key-nya Oji-san nggak valid buat gambar. Coba cek lagi ya Sensei.";
+                         errorText = "Amboy API Key-nya lu nggak valid buat gambar. Coba cek lagi ya Sensei.";
                     } else if (response.status === 403) {
-                         errorText = "Uhe~ Oji-san nggak diizinin pakai API Key ini buat gambar. Mungkin Sensei salah kasih kunci? Atau kuota Oji-san habis...";
+                         errorText = "lu nggak diizinin pakai API Key ini buat gambar. Mungkin lu salah kasih kunci? Atau kuota lu habis...";
                     }
                     const errorBubble = displayAIMessage({ text: errorText }, true, false);
                     if (errorText.trim() !== "") addCopyButtonToBubble(errorBubble, errorText);
@@ -563,7 +563,7 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
                 const result = await response.json();
                 if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
                     const imageUrl = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
-                    let hoshinoPostText = "Nah, ini dia hasilnya! Gimana menurutmu? Oji-san ngantuk lagi nih... Zzz...";
+                    let hoshinoPostText = "Nah, ini dia hasilnya! Gimana menurutmu?gw ngantuk lagi nih... Zzz...";
                     const imgBubble = displayAIMessage({ text: hoshinoPostText, imageUrl: imageUrl }, false, false);
                     if (hoshinoPostText.trim() !== "") addCopyButtonToBubble(imgBubble, hoshinoPostText);
                     chatHistory.push({ role: "model", parts: [{ text: hoshinoPostText }, {text: "[Gambar telah dibuat oleh Hoshino Oji-san]"}] }); saveChatHistory();
@@ -575,9 +575,9 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
                 }
             } catch (error) {
                 console.error("Error generating image:", error);
-                let errorText = "Uhe~ Aduh, pas mau gambar ada yang error... Oji-san pusing...";
+                let errorText = "amboy pas mau gambar ada yang error... gw pusing...";
                 if (error.message.includes("API Key belum diatur")) {
-                     errorText = error.message + " Oji-san nggak bisa gambar kalau nggak ada kuncinya... Uhe~";
+                     errorText = error.message + " gw nggak bisa gambar kalau nggak ada kuncinya...";
                 }
                 const catchBubble = displayAIMessage({ text: errorText }, true, false);
                 if (errorText.trim() !== "") addCopyButtonToBubble(catchBubble, errorText);
@@ -614,7 +614,7 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
                     if (imageGenPrompt.startsWith(":") || imageGenPrompt.startsWith(",")) {
                         imageGenPrompt = imageGenPrompt.substring(1).trim();
                     }
-                    if (!imageGenPrompt) imageGenPrompt = "sesuatu yang lucu dan mengantuk seperti Hoshino Oji-san";
+                    if (!imageGenPrompt) imageGenPrompt = "sesuatu yang lucu dan mengantuk seperti Zelda ";
                     break;
                 }
             }
