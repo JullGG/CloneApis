@@ -162,7 +162,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
                     <input type="file" id="image-input" accept="image/*" class="hidden">
                 </label>
-                <input type="text" id="chat-input" class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent outline-none placeholder-gray-500" placeholder="Tanya Hoshino Oji-san...">
+                <input type="text" id="chat-input" class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent outline-none placeholder-gray-500" placeholder="Tanya Zelda...">
                 <button id="send-button" class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-3 px-4 sm:px-5 rounded-lg transition-all duration-150 ease-in-out disabled:opacity-50 disabled:bg-gray-400 disabled:cursor-not-allowed" title="Kirim Pesan">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 </button>
@@ -649,11 +649,11 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
 
                 if (!response.ok) {
                     const errorData = await response.json();
-                    let errorText = `Uhe~ Maaf, Oji-san lagi bingung: ${errorData.error?.message || response.statusText}. Nanti tanya lagi ya.`;
+                    let errorText = `amboy Maaf, gw lagi bingung: ${errorData.error?.message || response.statusText}. Nanti tanya lagi ya.`;
                     if (response.status === 400 && errorData.error?.message.toLowerCase().includes("api key not valid")) {
-                         errorText = "Uhe~ API Key-nya Oji-san nggak valid nih. Coba cek lagi ya Sensei, atau dapatkan yang baru dari Google AI Studio.";
+                         errorText = "API Key-nya Gw nggak valid nih. Coba cek lagi ya Le😹, atau dapatkan yang baru dari Google AI Studio.";
                     } else if (response.status === 403) {
-                         errorText = "Uhe~ Oji-san nggak diizinin pakai API Key ini. Mungkin Sensei salah kasih kunci? Atau kuota Oji-san habis...";
+                         errorText = "gw nggak diizinin pakai API Key ini. Mungkin Sensei salah kasih kunci? Atau kuota Lu habis...";
                     }
                     finalBubbleForCopyButton = displayAIMessage({ text: errorText }, true, true);
                     accumulatedResponse = errorText;
@@ -687,7 +687,7 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
                     }
                 }
                 if (!accumulatedResponse && !finalBubbleForCopyButton) { 
-                     accumulatedResponse = "Uhe~ Oji-san nggak ada ide mau ngomong apa... Zzz...";
+                     accumulatedResponse = "Jir gw nggak ada ide mau ngomong apa... Zzz...";
                      finalBubbleForCopyButton = displayAIMessage({ text: accumulatedResponse }, false, true);
                 }
                 chatHistory.push({ role: "model", parts: [{ text: accumulatedResponse }] });
@@ -698,9 +698,9 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
 
             } catch (error) {
                 console.error("Error sending message:", error);
-                let netErrorMsg = 'Uhe~ Aduh, kayaknya Oji-san salah pencet atau koneksinya lagi tidur siang. Coba lagi ya.';
+                let netErrorMsg = ' Aduh, kayaknya Gw salah pencet atau koneksinya lagi tidur siang. Coba lagi ya.';
                 if (error.message.includes("API Key belum diatur")) {
-                     netErrorMsg = error.message + " Oji-san nggak bisa ngobrol kalau nggak ada kuncinya... Uhe~";
+                     netErrorMsg = error.message + " Gw nggak bisa ngobrol kalau nggak ada kuncinya... Uhe~";
                 }
                 finalBubbleForCopyButton = displayAIMessage({ text: netErrorMsg }, true, true);
                 chatHistory.push({ role: "model", parts: [{ text: netErrorMsg }] });
@@ -719,7 +719,7 @@ Gaskeun 😼🔥!. mulai kata kata dengan mengantuk, seolah-olah baru bangun tid
             const file = event.target.files[0];
             if (file) {
                 if (file.size > 4 * 1024 * 1024) {
-                    displayAIMessage({text: "Uhe~ Gambarnya kegedean, Oji-san gak kuat angkatnya. Coba yang lebih kecil ya (maks 4MB)."}, true, false);
+                    displayAIMessage({text: "Gambarnya kegedean, Gw gak kuat angkatnya. Coba yang lebih kecil ya (maks 4MB)."}, true, false);
                     clearImagePreview(); return;
                 }
                 selectedImageFile = file;
