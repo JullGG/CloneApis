@@ -687,6 +687,17 @@
           }
         },
         {
+          "name": "Orkut create qris",
+          "desc": "Buat qris anda agar pembayaran lebih mudah dan fleksibel ",
+          "path": "/tools/orkut?amount=10.000&qris=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "amount": "jumlah uang yang ingin di transaksi kan",
+            "qris": "kode akun orkut anda"
+          }
+        },
+        {
           "name": "remove background",
           "desc": "Hapus background anda melalui url image",
           "path": "/tools/removebg?url=",
