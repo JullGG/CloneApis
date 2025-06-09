@@ -450,7 +450,7 @@
         {
           "name": "Tiktok Stalk",
           "desc": "Simple Tiktok Stalk",
-          "path": "/stalker/ttstalk?id=",
+          "path": "/stalker/ttstalk?username=",
           "status": "ready",
           "requireKey": false,
           "params": {
