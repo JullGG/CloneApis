@@ -471,7 +471,7 @@
           "name": "Instagram Stalk",
           "desc": "Stalker Instagram Via Username",
           "path": "/stalker/igstalk?username=",
-          "status": "error",
+          "status": "ready",
           "requireKey": false,
           "params": {
             "username": "Username tanpa @"
