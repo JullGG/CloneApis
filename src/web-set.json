@@ -448,6 +448,25 @@
           }
         },
         {
+          "name": "Tiktok Stalk",
+          "desc": "Simple Tiktok Stalk",
+          "path": "/stalker/ttstalk?id=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+          }
+        },
+        {
+          "name": "Minecraft Stalk",
+          "desc": "Simple Minecraft Stalk",
+          "path": "/stalker/mcstalk?nick=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "nick": "masukkan nickname player"
+          }
+        },
+        {
           "name": "Instagram Stalk",
           "desc": "Stalker Instagram Via Username",
           "path": "/stalker/igstalk?username=",
