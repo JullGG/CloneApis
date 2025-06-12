@@ -2,787 +2,31 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Zelda Apis - Koleksi API gratis untuk kebutuhan pengembangan aplikasi Anda">
-    <meta name="keywords" content="API, Rest API, Zelda, Developer Tools, Free API">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anomaki Apis - Koleksi API gratis">
+    <meta name="keywords" content="API gratis, Rest API, Anomaki, Tools Developer, API publik.">
     <meta name="author" content="Renvy Team">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1a7a8c">
 
-   <link rel="icon" href="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
-   <meta property="og:image" content="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
-   <meta property="og:url" content="https://zafira-s-developer.vercel.app">
-   <meta property="og:type" content="website">
-  
-    <meta property="og:title" content="Zelda Apis">
-    <meta property="og:description" content="Koleksi API gratis">
+    <link rel="icon" href="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
+    <meta property="og:image" content="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
+    <meta property="og:url" content="https://api.juul-web-id.xyz">
     <meta property="og:type" content="website">
-    <title>Zelda Apis | API Gratis</title>
+    <meta property="og:title" content="JulxyZ Apis | Koleksi API Gratis.">
+    <meta property="og:description" content="Koleksi API gratis.">
+    
+    <title>julxyZ Apis | Koleksi API Gratis Tema Aquatic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #FF3D3D;
-            --primary-dark: #C62828;
-            --primary-light: #FF6B6B;
-            --secondary: #333333;
-            --text: #222222;
-            --text-secondary: #555555;
-            --bg: #FFFFFF;
-            --card-bg: #F8F8F8;
-            --border-color: #000000;
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --highlight: #FFEB3B;
-            --banner-bg: #FF5722;
-            --comic-border: 3px solid var(--border-color);
-            --comic-shadow: 5px 5px 0 var(--shadow-color);
-        }
-
-        [data-theme="dark"] {
-            --primary: #FF5252;
-            --primary-dark: #FF1744;
-            --primary-light: #FF8A80;
-            --secondary: #212121;
-            --text: #E0E0E0;
-            --text-secondary: #9E9E9E;
-            --bg: #121212;
-            --card-bg: #1E1E1E;
-            --border-color: #424242;
-            --shadow-color: rgba(0, 0, 0, 0.5);
-            --highlight: #FFC107;
-            --banner-bg: #E64A19;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Comic Sans MS', 'Marker Felt', 'Arial Rounded MT Bold', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            background-image: radial-gradient(circle at 1px 1px, var(--border-color) 1px, transparent 0);
-            background-size: 20px 20px;
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .comic-banner {
-            position: relative;
-            margin: 0 auto 30px;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            overflow: hidden;
-            max-width: 100%;
-            height: auto;
-            background-color: var(--banner-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .comic-banner::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                -45deg,
-                rgba(0,0,0,0.05),
-                rgba(0,0,0,0.05) 10px,
-                transparent 10px,
-                transparent 20px
-            );
-            z-index: 1;
-        }
-
-        .comic-banner img {
-            max-width: 100%;
-            height: auto;
-            border: 3px solid black;
-            box-shadow: 3px 3px 0 var(--shadow-color);
-            position: relative;
-            z-index: 2;
-            transition: transform 0.3s ease;
-        }
-
-        .comic-banner img:hover {
-            transform: rotate(-2deg) scale(1.02);
-        }
-
-        .comic-banner .banner-caption {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            background-color: rgba(0,0,0,0.7);
-            color: white;
-            padding: 5px;
-            font-size: 0.8rem;
-            z-index: 3;
-        }
-
-        .comic-banner .speech-bubble {
-            position: absolute;
-            background-color: white;
-            border: var(--comic-border);
-            border-radius: 50%;
-            padding: 15px;
-            max-width: 200px;
-            box-shadow: var(--comic-shadow);
-            z-index: 4;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .comic-banner .speech-bubble::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-            border: 15px solid transparent;
-            border-top-color: white;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-            background-color: var(--banner-bg);
-            color: white;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            position: relative;
-            border-radius: 0;
-            clip-path: polygon(
-                0% 0%, 100% 0%, 100% 75%,
-                75% 75%, 75% 100%, 50% 75%,
-                0% 75%
-            );
-        }
-
-        header::after {
-            content: "";
-            position: absolute;
-            bottom: -20px;
-            left: 50px;
-            border-width: 20px 20px 0;
-            border-style: solid;
-            border-color: var(--banner-bg) transparent;
-            display: block;
-            width: 0;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: white;
-            text-shadow: 3px 3px 0 var(--shadow-color);
-            letter-spacing: 1px;
-        }
-
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--primary);
-            border: var(--comic-border);
-            padding: 5px 10px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 3px 3px 0 var(--shadow-color);
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:active {
-            transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0 var(--shadow-color);
-        }
-
-        .search-container {
-            margin: 20px auto;
-            max-width: 600px;
-            position: relative;
-            width: 100%;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 20px;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            font-size: 1.1rem;
-            background-color: var(--card-bg);
-            color: var(--text);
-        }
-
-        .status {
-            display: inline-block;
-            padding: 5px 15px;
-            background-color: #4CAF50;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            border: 2px solid black;
-            box-shadow: 3px 3px 0 var(--shadow-color);
-            font-weight: bold;
-        }
-
-        .description {
-            max-width: 800px;
-            margin: 0 auto 20px;
-            background-color: var(--highlight);
-            padding: 15px;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            position: relative;
-        }
-
-        .category {
-            margin-bottom: 40px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .category.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .category-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 4px solid var(--primary);
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 0 var(--shadow-color);
-        }
-
-        .api-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
-        }
-
-        .api-card {
-            background-color: var(--card-bg);
-            border-radius: 0;
-            padding: 20px;
-            transition: transform 0.3s;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .api-card:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 8px 8px 0 var(--shadow-color);
-        }
-
-        .api-name {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            font-weight: bold;
-        }
-
-        .api-desc {
-            margin-bottom: 15px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            word-wrap: break-word;
-        }
-
-        .api-path-container {
-            position: relative;
-            margin-bottom: 15px;
-            background-color: white;
-            border: var(--comic-border);
-            padding: 5px;
-            overflow-x: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary) var(--card-bg);
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .api-path-container::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .api-path-container::-webkit-scrollbar-track {
-            background: var(--card-bg);
-        }
-
-        .api-path-container::-webkit-scrollbar-thumb {
-            background-color: var(--primary);
-            border-radius: 3px;
-        }
-
-        .api-path {
-            background-color: var(--card-bg);
-            padding: 8px 35px 8px 12px;
-            border-radius: 0;
-            font-family: 'Courier New', Courier, monospace;
-            display: inline-block;
-            white-space: nowrap;
-            min-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .copy-path-btn {
-            position: sticky;
-            right: 5px;
-            top: 5px;
-            float: right;
-            background: var(--primary);
-            border: 2px solid black;
-            color: white;
-            cursor: pointer;
-            padding: 3px 8px;
-            font-weight: bold;
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            margin-left: 10px;
-            z-index: 1;
-        }
-
-        .api-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 3px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 15px;
-            border: 2px solid black;
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            font-weight: bold;
-        }
-
-        .status-ready {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .status-update {
-            background-color: #FFC107;
-            color: black;
-        }
-
-        .status-offline {
-            background-color: #F44336;
-            color: white;
-        }
-
-        .status-error {
-            background-color: #F44336;
-            color: white;
-        }
-
-        .status-maintenance {
-            background-color: #FF9800;
-            color: black;
-        }
-
-        .api-key-badge {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            background-color: var(--primary);
-            color: white;
-            border: 2px solid black;
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            font-weight: bold;
-        }
-
-        .api-key-badge.public {
-            background-color: #4CAF50;
-        }
-
-        .param-title {
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-            color: var(--text-secondary);
-            font-weight: bold;
-        }
-
-        .param-list {
-            margin-bottom: 15px;
-            border-left: 3px solid var(--primary);
-            padding-left: 10px;
-        }
-
-        .param-item {
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            word-break: break-word;
-        }
-
-        .param-name {
-            font-family: 'Courier New', Courier, monospace;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .try-btn {
-            background-color: var(--primary);
-            color: white;
-            border: 2px solid black;
-            padding: 8px 15px;
-            border-radius: 0;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            width: 100%;
-            margin-top: 10px;
-            box-shadow: 3px 3px 0 var(--shadow-color);
-            text-transform: uppercase;
-        }
-
-        .try-btn:hover:not(.disabled) {
-            background-color: var(--primary-dark);
-            transform: translate(1px, 1px);
-            box-shadow: 2px 2px 0 var(--shadow-color);
-        }
-
-        .try-btn.disabled {
-            background-color: #9E9E9E;
-            cursor: not-allowed;
-            opacity: 0.7;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .try-btn.disabled::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(0,0,0,0.1) 10px,
-                rgba(0,0,0,0.1) 20px
-            );
-        }
-
-        .try-container {
-            margin-top: 20px;
-            display: none;
-            border: var(--comic-border);
-            padding: 15px;
-            background-color: var(--card-bg);
-            box-shadow: inset 3px 3px 0 var(--shadow-color);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .input-group {
-            margin-bottom: 10px;
-            width: 100%;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 8px;
-            background-color: var(--card-bg);
-            border: var(--comic-border);
-            color: var(--text);
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            box-sizing: border-box;
-        }
-
-        .execute-btn {
-            background-color: var(--primary);
-            color: white;
-            border: 2px solid black;
-            padding: 8px 15px;
-            border-radius: 0;
-            cursor: pointer;
-            margin-right: 10px;
-            font-weight: bold;
-            box-shadow: 3px 3px 0 var(--shadow-color);
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-
-        .execute-btn:active {
-            transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0 var(--shadow-color);
-        }
-
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .popup-content {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            max-width: 90%;
-            width: 800px;
-            max-height: 80vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .popup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid var(--primary);
-        }
-
-        .popup-title {
-            font-size: 1.5rem;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .close-popup {
-            background: var(--primary);
-            color: white;
-            border: 2px solid black;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            transition: all 0.3s;
-        }
-
-        .close-popup:active {
-            transform: translate(1px, 1px);
-            box-shadow: 1px 1px 0 var(--shadow-color);
-        }
-
-        .popup-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 2px solid var(--border-color);
-            background-color: var(--bg);
-        }
-
-        .result-content {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .popup-footer {
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .copy-btn {
-            background-color: var(--primary);
-            color: white;
-            border: 2px solid black;
-            padding: 5px 10px;
-            border-radius: 0;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            transition: all 0.3s;
-        }
-
-        .copy-btn:active {
-            transform: translate(1px, 1px);
-            box-shadow: 1px 1px 0 var(--shadow-color);
-        }
-
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(0,0,0,.3);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
-        }
-
-        .error-message {
-            color: white;
-            padding: 10px;
-            background-color: var(--primary-dark);
-            border-radius: 0;
-            margin-top: 10px;
-            border: var(--comic-border);
-            box-shadow: 2px 2px 0 var(--shadow-color);
-        }
-
-        .status-notification {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary);
-            color: white;
-            padding: 15px 25px;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            z-index: 1001;
-            font-weight: bold;
-            text-align: center;
-            display: none;
-            max-width: 90%;
-            animation: bounceIn 0.5s;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes bounceIn {
-            0% { transform: translateX(-50%) scale(0.5); opacity: 0; }
-            70% { transform: translateX(-50%) scale(1.1); }
-            100% { transform: translateX(-50%) scale(1); opacity: 1; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 50px;
-            border-top: 4px solid var(--primary);
-            color: var(--text-secondary);
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .api-grid {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .container {
-                padding: 15px;
-            }
-
-            header {
-                clip-path: polygon(
-                    0% 0%, 100% 0%, 100% 90%,
-                    75% 90%, 75% 100%, 50% 90%,
-                    0% 90%
-                );
-                padding-bottom: 40px;
-            }
-
-            .theme-toggle {
-                position: relative;
-                top: auto;
-                right: auto;
-                display: block;
-                margin: 10px auto;
-            }
-
-            .comic-banner .speech-bubble {
-                max-width: 150px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .execute-btn {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            
-            .api-path {
-                padding-right: 30px;
-            }
-            
-            .popup-content {
-                width: 95%;
-                padding: 15px;
-            }
-
-            .comic-banner .speech-bubble {
-                display: none;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1a7a8c;}body{background-color:var(--bg);}*{margin-left:0;}:root{--primary-dark:#0d4b5a;}*{margin-bottom:0;}:root{--primary-light:#2aa5c0;}:root{--secondary:#0a2e38;}:root{--text:#e0f7ff;}*{margin-right:0;}:root{--text-secondary:#a8d8e6;}:root{--bg:#051a22;}body{color:var(--text);}body{line-height:1.6;}*{margin-top:0;}:root{--card-bg:#0a2e38;}*{padding-left:0;}:root{--border-color:#2aa5c0;}:root{--highlight:#4fc3f7;}*{padding-bottom:0;}:root{--comic-border:1.5pt solid #2aa5c0;}:root{--comic-shadow:0 3pt .5pc rgba(42,165,192,.3);}*{padding-right:0;}body{overflow-x:hidden;}:root{--string-color:#ce9178;}:root{--number-color:#b5cea8;}:root{--boolean-color:#569cd6;}:root{--null-color:#569cd6;}:root{--key-color:#9cdcfe;}*{padding-top:0;}*{box-sizing:border-box;}:root{--wave-color:rgba(42,165,192,.1);}*{font-family:"Poppins",sans-serif;}body{background-image:radial-gradient(circle at 10% 20%,var(--wave-color) 0%,transparent 20%),radial-gradient(circle at 90% 80%,var(--wave-color) 0%,transparent 20%),radial-gradient(circle at 30% 50%,var(--wave-color) 0%,transparent 25%),radial-gradient(circle at 70% 30%,var(--wave-color) 0%,transparent 25%);}body{background-size:200% 200%;}body{animation:waterMovement 15s infinite alternate;}@keyframes waterMovement{0%{background-position:0% 0%;}100%{background-position:100% 100%;}}[class~=container]{max-width:1200px;}header{text-align:center;}header,[class~=container]{padding-left:1.25pc;}header{padding-bottom:2.5pc;}header,[class~=container]{padding-right:1.25pc;}[class~=container]{margin-left:auto;}header::before,h1::after,[class~=status]::after{content:"";}header{padding-top:2.5pc;}header{margin-bottom:.3125in;}[class~=container]{margin-bottom:0;}header{background:linear-gradient(135deg,var(--primary-dark),var(--primary));}[class~=status]::after,header::before,h1::after{position:absolute;}header{color:white;}[class~=container]{margin-right:auto;}header{border-left-width:medium;}header{border-bottom-width:medium;}[class~=container]{margin-top:0;}header{border-right-width:medium;}header::before{top:0;}[class~=container]{padding-bottom:1.25pc;}header,[class~=status]{border-top-width:medium;}header::before,h1::after{left:0;}[class~=status],header{border-left-style:none;}header{border-bottom-style:none;}[class~=container]{padding-top:1.25pc;}header{border-right-style:none;}header::before{right:0;}[class~=container],header{position:relative;}[class~=container]{z-index:1;}[class~=status]{display:inline-block;}header::before{bottom:0;}[class~=status]{padding-left:.9375pc;}header,[class~=status]{border-top-style:none;}header::before{background:url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" preserveAspectRatio=\"none\"><path fill=\"rgba(255,255,255,0.1)\" d=\"M0,0 L100,0 L100,100 Q50,80 0,100 Z\"></path></svg>");}header{border-left-color:var(--comic-border);}header::before{background-size:100% 37.5pt;}h1:hover::after{transform:scaleX(1);}[class~=status]{padding-bottom:4.5pt;}[class~=status]{padding-right:.9375pc;}header::before{background-repeat:repeat-x;}header::before{background-position:bottom;}[class~=status],header{border-bottom-color:var(--comic-border);}[class~=status]{padding-top:4.5pt;}[class~=status]{background-color:#4caf50;}[class~=status],header{border-right-color:var(--comic-border);}[class~=status]{border-radius:1.25pc;}header::before{opacity:.5;}h1::after{bottom:-.3125pc;}[class~=status],header{border-top-color:var(--comic-border);}h1::after{width:100%;}h1::after{height:3px;}[class~=status]{font-size:.9rem;}h1::after{background:var(--highlight);}[class~=status]{margin-bottom:15px;}h1::after{transform:scaleX(0);}[class~=status]::after{top:-50%;}h1::after{transform-origin:right;}h1::after{transition:transform .5s ease;}[class~=status]{border-left-width:medium;}header{border-image:none;}[class~=status]{border-bottom-width:medium;}[class~=status]{border-right-width:medium;}[class~=status],header{box-shadow:var(--comic-shadow);}header{border-radius:6pt;}header,[class~=status]{overflow:hidden;}h1{font-size:2.5rem;}h1{margin-bottom:7.5pt;}[class~=status]{border-bottom-style:none;}[class~=status],h1{color:white;}[class~=status]::after{left:-50%;}[class~=status]{border-right-style:none;}h1{font-family:"Montserrat",sans-serif;}h1{text-shadow:0 1.5pt .25pc rgba(0,0,0,.3);}h1,[class~=status]{position:relative;}[class~=status]::after{width:200%;}[class~=status]::after{height:200%;}[class~=status]{border-left-color:var(--comic-border);}h1{display:inline-block;}[class~=status]::after{background:linear-gradient(to bottom right,rgba(255,255,255,0) 0%,rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 100%);}[class~=status]::after{transform:rotate(30deg);}[class~=status]{border-image:none;}[class~=status]{font-weight:bold;}[class~=status]::after{animation:shine 3s infinite;}h1:hover::after{transform-origin:left;}@keyframes shine{0%{transform:translateX(-100%) rotate(30deg);}100%{transform:translateX(100%) rotate(30deg);}}[class~=description]{max-width:800px;}[class~=search-container],[class~=description]{margin-left:auto;}[class~=search-container],[class~=description]{margin-bottom:.208333333in;}[class~=search-input]:focus{outline:none;}[class~=search-container],[class~=description]{margin-right:auto;}[class~=search-input]:focus{box-shadow:0 0 0 .125pc var(--highlight),var(--comic-shadow);}[class~=category][class~=visible]{opacity:1;}[class~=description]{margin-top:0;}[class~=description]{background-color:var(--primary);}[class~=description]{padding-left:.15625in;}[class~=description]{padding-bottom:.15625in;}[class~=description]{padding-right:.15625in;}[class~=description]{padding-top:.15625in;}[class~=description]{border-left-width:medium;}[class~=category][class~=visible]{transform:translateY(0);}[class~=description]{border-bottom-width:medium;}[class~=description]{border-right-width:medium;}[class~=description]{border-top-width:medium;}[class~=description]{border-left-style:none;}[class~=category-title]::after,[class~=description]::before{content:"";}[class~=description]{border-bottom-style:none;}[class~=description]{border-right-style:none;}[class~=description]{border-top-style:none;}[class~=description]{border-left-color:var(--comic-border);}[class~=api-card][class~=premium]{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);}[class~=description]{border-bottom-color:var(--comic-border);}[class~=description]{border-right-color:var(--comic-border);}[class~=description]{border-top-color:var(--comic-border);}[class~=api-card][class~=premium]{border-left-width:.125pc;}[class~=description]{border-image:none;}[class~=search-input],[class~=description]{box-shadow:var(--comic-shadow);}[class~=description],[class~=search-container]{position:relative;}[class~=description]{border-radius:6pt;}[class~=category-title]::after,[class~=description]::before{position:absolute;}[class~=api-card]:hover::before{transform:scaleX(1);}[class~=description]::before{top:0;}[class~=search-container]{margin-top:.208333333in;}[class~=search-container]{max-width:450pt;}[class~=description]::before,[class~=category-title]::after{left:0;}[class~=search-input]{width:100%;}[class~=api-card][class~=premium]{border-bottom-width:.125pc;}[class~=search-input]{padding-left:1.25pc;}[class~=api-card][class~=premium]{border-right-width:.125pc;}[class~=search-input]{padding-bottom:.75pc;}[class~=api-card][class~=premium]{border-top-width:.125pc;}[class~=search-input]{padding-right:1.25pc;}[class~=search-input]{padding-top:.75pc;}[class~=api-card][class~=premium]{border-left-style:solid;}[class~=description]::before{right:0;}[class~=api-card][class~=premium]{border-bottom-style:solid;}[class~=api-card][class~=premium]{border-right-style:solid;}[class~=description]::before,[class~=category-title]::after{height:2.25pt;}[class~=try-btn]:hover:not([class~=disabled]){transform:translateY(-2px);}[class~=description]::before{background:linear-gradient(90deg,transparent,var(--highlight),transparent);}[class~=search-input]{border-left-width:medium;}[class~=search-input]{border-bottom-width:medium;}[class~=search-input]{border-right-width:medium;}[class~=search-input]{border-top-width:medium;}[class~=search-input]{border-left-style:none;}[class~=api-card][class~=premium]{border-top-style:solid;}[class~=search-input]{border-bottom-style:none;}[class~=search-input]{border-right-style:none;}[class~=category-title]::after{bottom:-.1875pc;}[class~=search-input]{border-top-style:none;}[class~=search-input]{border-left-color:var(--comic-border);}[class~=api-card][class~=premium]{border-left-color:gold;}[class~=search-input]{border-bottom-color:var(--comic-border);}[class~=search-input]{border-right-color:var(--comic-border);}[class~=search-input]{border-top-color:var(--comic-border);}[class~=search-input]{border-image:none;}[class~=category-title]::after{width:3.125pc;}[class~=api-card][class~=premium]{border-bottom-color:gold;}[class~=search-input]{font-size:1rem;}[class~=api-card],[class~=search-input]{background-color:var(--card-bg);}[class~=search-input]{color:var(--text);}[class~=search-input]{border-radius:1.875pc;}[class~=search-input]{transition:all .3s ease;}[class~=category]{margin-bottom:40px;}[class~=category]{opacity:0;}[class~=category]{transform:translateY(20px);}[class~=api-card][class~=premium]{border-right-color:gold;}[class~=category]{transition:opacity .5s ease,transform .5s ease;}[class~=category-title]::after,[class~=copy-path-btn]:hover{background:var(--highlight);}[class~=api-card],.api-path-container,[class~=category],.category-title{position:relative;}[class~=api-card][class~=premium]{border-top-color:gold;}[class~=try-btn][class~=disabled]::after,[class~=api-card]::before{content:"";}.category-title{font-size:1.8rem;}.category-title{margin-bottom:20px;}.category-title{padding-bottom:7.5pt;}.category-title{border-bottom-width:.03125in;}.category-title{border-bottom-style:solid;}.category-title{border-bottom-color:var(--primary);}.category-title,[class~=api-card][class~=premium]{border-image:none;}[class~=api-name],.category-title{color:var(--highlight);}[class~=api-card]:hover{transform:translateY(-5px);}[class~=api-card]::before{position:absolute;}.category-title{font-family:"Montserrat",sans-serif;}[class~=api-grid]{display:grid;}[class~=api-grid]{grid-template-columns:repeat(auto-fill,minmax(350px,1fr));}[class~=api-grid]{gap:.208333333in;}[class~=api-card]:hover{box-shadow:0 .083333333in 1pc rgba(42,165,192,.4);}[class~=api-card]::before{top:0;}[class~=api-card]{border-radius:.083333333in;}[class~=api-card]{padding-left:.208333333in;}[class~=api-card]{padding-bottom:.208333333in;}[class~=api-card]{padding-right:.208333333in;}[class~=api-card]{padding-top:.208333333in;}[class~=api-card]{transition:all .3s;}[class~=api-card]{border-left-width:medium;}[class~=api-card]{border-bottom-width:medium;}[class~=api-card]{border-right-width:medium;}[class~=api-card]{border-top-width:medium;}[class~=api-card]{border-left-style:none;}[class~=api-key-badge][class~=premium]{background:linear-gradient(135deg,#ffd700 0%,#ffa500 100%);}[class~=api-key-badge][class~=premium]{color:black;}[class~=api-card]{border-bottom-style:none;}[class~=api-card]{border-right-style:none;}[class~=api-card]::before{left:0;}[class~=api-card]{border-top-style:none;}[class~=api-card]{border-left-color:var(--comic-border);}[class~=api-card]{border-bottom-color:var(--comic-border);}[class~=api-card]{border-right-color:var(--comic-border);}[class~=api-card]{border-top-color:var(--comic-border);}[class~=api-key-badge][class~=premium]{border-left-width:.020833333in;}[class~=api-card]{border-image:none;}[class~=api-card]{box-shadow:var(--comic-shadow);}[class~=api-card]{overflow:hidden;}[class~=api-name]{font-size:1.3rem;}[class~=api-card]::before{right:0;}[class~=api-card]::before{height:.1875pc;}[class~=api-name]{margin-bottom:7.5pt;}[class~=api-key-badge][class~=premium]{border-bottom-width:.020833333in;}[class~=try-btn]:hover:not([class~=disabled]){box-shadow:0 .375pc 12px rgba(42,165,192,.4);}[class~=api-name]{display:flex;}[class~=api-name]{align-items:center;}[class~=api-name]{gap:.625pc;}[class~=api-name]{font-weight:bold;}[class~=api-card]::before{background:var(--highlight);}[class~=api-card]::before{transform:scaleX(0);}[class~=api-key-badge][class~=premium]{border-right-width:.020833333in;}[class~=api-name]{font-family:"Montserrat",sans-serif;}[class~=api-desc],.api-path-container{margin-bottom:.15625in;}[class~=api-card]::before{transform-origin:left;}[class~=api-desc]{color:var(--text-secondary);}[class~=api-key-badge][class~=premium]{border-top-width:.020833333in;}[class~=api-desc]{line-height:1.5;}[class~=api-card]::before{transition:transform .3s ease;}[class~=api-key-badge][class~=premium]{border-left-style:solid;}.try-btn::after{content:"";}.api-path-container{background-color:rgba(0,0,0,.2);}.api-path-container{border-left-width:medium;}.api-path-container{border-bottom-width:medium;}[class~=api-key-badge][class~=premium]{border-bottom-style:solid;}[class~=api-key-badge][class~=premium]{border-right-style:solid;}.api-path-container{border-right-width:medium;}.api-path-container{border-top-width:medium;}[class~=api-key-badge][class~=premium]{border-top-style:solid;}.api-path-container{border-left-style:none;}.try-btn::after,[class~=try-btn][class~=disabled]::after{position:absolute;}.api-path-container{border-bottom-style:none;}.api-path-container{border-right-style:none;}.api-path-container{border-top-style:none;}.try-btn::after{top:-50%;}.api-path-container{border-left-color:var(--comic-border);}[class~=api-key-badge][class~=premium]{border-left-color:white;}[class~=api-key-badge][class~=premium]{border-bottom-color:white;}[class~=api-key-badge][class~=premium]{border-right-color:white;}.api-path-container{border-bottom-color:var(--comic-border);}.try-btn::after{left:-50%;}.api-path-container{border-right-color:var(--comic-border);}.api-path-container{border-top-color:var(--comic-border);}.api-path-container{border-image:none;}.api-path-container{padding-left:.083333333in;}[class~=api-path],.api-path-container{padding-bottom:.083333333in;}.api-path-container{padding-right:.083333333in;}[class~=api-key-badge][class~=premium]{border-top-color:white;}.try-btn::after{width:200%;}.try-btn::after{height:200%;}.api-path-container,[class~=api-path]{padding-top:.083333333in;}.api-path-container{overflow-x:auto;}.api-path-container{border-radius:3pt;}[class~=api-key-badge][class~=premium]{border-image:none;}[class~=api-path]{background-color:transparent;}[class~=api-path]{padding-left:12px;}[class~=api-path]{padding-right:26.25pt;}.try-btn::after{background:linear-gradient(to bottom right,rgba(255,255,255,0) 0%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 100%);}[class~=try-btn][class~=premium]{background:linear-gradient(135deg,#ffd700 0%,#ffa500 100%);}[class~=api-path]{font-family:"Courier New",Courier,monospace;}.try-btn::after{transform:rotate(30deg);}[class~=api-path]{display:inline-block;}.try-btn::after{animation:shine 3s infinite;}[class~=api-path]{white-space:nowrap;}[class~=api-path]{min-width:100%;}[class~=try-btn][class~=premium]{color:black;}[class~=api-path]{color:var(--highlight);}[class~=copy-path-btn]{position:sticky;}[class~=try-btn][class~=premium]{border-left-width:.020833333in;}[class~=copy-path-btn]{right:6pt;}[class~=input-group] label{display:block;}[class~=copy-path-btn]{top:6pt;}[class~=copy-path-btn]{float:right;}[class~=input-group] label{margin-bottom:.375pc;}[class~=copy-path-btn]{background:var(--primary);}[class~=copy-path-btn],[class~=input-group] input{border-left-width:medium;}[class~=input-group] input,[class~=copy-path-btn]{border-bottom-width:medium;}[class~=copy-path-btn],[class~=input-group] label{font-weight:bold;}[class~=copy-path-btn],[class~=input-group] input{border-right-width:medium;}[class~=try-btn][class~=premium]{border-bottom-width:.020833333in;}[class~=input-group] input,[class~=copy-path-btn]{border-top-width:medium;}[class~=input-group] input{width:100%;}[class~=input-group] input{padding-left:7.5pt;}[class~=copy-path-btn],[class~=input-group] input{border-left-style:none;}[class~=input-group] input,[class~=copy-path-btn]{border-bottom-style:none;}[class~=input-group] input,[class~=copy-path-btn]{border-right-style:none;}[class~=copy-path-btn],[class~=input-group] input{border-top-style:none;}[class~=input-group] input{padding-bottom:7.5pt;}[class~=copy-path-btn]{border-left-color:var(--comic-border);}[class~=try-btn][class~=premium]{border-right-width:.020833333in;}[class~=copy-path-btn]{border-bottom-color:var(--comic-border);}[class~=copy-path-btn]{border-right-color:var(--comic-border);}[class~=try-btn][class~=premium]{border-top-width:.020833333in;}[class~=copy-path-btn]{border-top-color:var(--comic-border);}[class~=copy-path-btn]{border-image:none;}[class~=copy-path-btn]{color:white;}[class~=input-group] input{padding-right:7.5pt;}[class~=copy-path-btn]{cursor:pointer;}[class~=input-group] input{padding-top:7.5pt;}[class~=input-group] input{background-color:rgba(0,0,0,.2);}[class~=copy-path-btn]{padding-left:8px;}[class~=try-btn][class~=premium]{border-left-style:solid;}[class~=copy-path-btn]{padding-bottom:3pt;}[class~=copy-path-btn]{padding-right:8px;}[class~=copy-path-btn]{padding-top:3pt;}[class~=try-btn][class~=premium]{border-bottom-style:solid;}[class~=api-status],[class~=copy-path-btn]{box-shadow:var(--comic-shadow);}[class~=copy-path-btn]{z-index:1;}[class~=try-btn][class~=premium]{border-right-style:solid;}[class~=try-btn][class~=premium]{border-top-style:solid;}[class~=copy-path-btn]{border-radius:3pt;}[class~=copy-path-btn]{transition:all .2s;}[class~=api-status]{display:inline-flex;}[class~=try-btn][class~=disabled]::after{top:0;}[class~=api-status]{align-items:center;}[class~=api-status]{gap:6px;}[class~=api-status]{padding-left:9pt;}[class~=api-status]{padding-bottom:3.75pt;}[class~=api-status]{padding-right:9pt;}[class~=api-status]{padding-top:3.75pt;}[class~=api-key-badge],[class~=api-status]{border-radius:.208333333in;}[class~=api-status],[class~=api-key-badge]{font-size:.8rem;}[class~=api-status]{margin-bottom:15px;}[class~=api-status]{border-left-width:medium;}[class~=try-btn][class~=premium]{border-left-color:white;}[class~=api-status]{border-bottom-width:medium;}[class~=api-status]{border-right-width:medium;}[class~=try-btn][class~=premium]{border-bottom-color:white;}[class~=api-status]{border-top-width:medium;}[class~=api-status]{border-left-style:none;}[class~=try-btn][class~=premium]{border-right-color:white;}[class~=api-status]{border-bottom-style:none;}[class~=api-status]{border-right-style:none;}[class~=api-status]{border-top-style:none;}[class~=api-status],[class~=input-group] input{border-left-color:var(--comic-border);}[class~=input-group] input,[class~=api-status]{border-bottom-color:var(--comic-border);}[class~=input-group] input,[class~=api-status]{border-right-color:var(--comic-border);}[class~=input-group] input,[class~=api-status]{border-top-color:var(--comic-border);}[class~=api-status]{border-image:none;}[class~=try-btn][class~=premium]{border-top-color:white;}[class~=api-status],[class~=api-key-badge]{font-weight:bold;}[class~=status-ready]{background-color:#4caf50;}[class~=status-ready]{color:white;}[class~=status-update]{background-color:#ffc107;}[class~=status-update]{color:black;}[class~=status-offline],.status-error{background-color:#f44336;}.status-error,[class~=status-offline]{color:white;}.status-maintenance{background-color:#ff9800;}.status-maintenance{color:black;}[class~=api-key-badge]{display:inline-block;}[class~=api-key-badge]{padding-left:.104166667in;}[class~=try-btn][class~=premium]{border-image:none;}[class~=api-key-badge]{padding-bottom:3pt;}[class~=api-key-badge]{padding-right:.104166667in;}[class~=try-btn][class~=disabled]{background-color:#616161;}[class~=api-key-badge]{padding-top:3pt;}[class~=try-btn][class~=disabled]{cursor:not-allowed;}[class~=try-btn],[class~=api-key-badge]{background-color:var(--primary);}[class~=api-key-badge]{color:white;}[class~=api-key-badge]{border-left-width:medium;}[class~=api-key-badge]{border-bottom-width:medium;}[class~=api-key-badge]{border-right-width:medium;}[class~=api-key-badge]{border-top-width:medium;}[class~=api-key-badge]{border-left-style:none;}[class~=api-key-badge]{border-bottom-style:none;}[class~=api-key-badge]{border-right-style:none;}[class~=api-key-badge]{border-top-style:none;}[class~=api-key-badge]{border-left-color:var(--comic-border);}[class~=api-key-badge]{border-bottom-color:var(--comic-border);}[class~=api-key-badge]{border-right-color:var(--comic-border);}[class~=api-key-badge]{border-top-color:var(--comic-border);}[class~=try-btn][class~=disabled]{position:relative;}[class~=api-key-badge],[class~=input-group] input{border-image:none;}[class~=try-btn][class~=disabled]{overflow:hidden;}[class~=input-group] input,[class~=api-key-badge]{box-shadow:var(--comic-shadow);}[class~=try-container][class~=premium]{background:linear-gradient(135deg,rgba(13,75,90,.8) 0%,rgba(26,122,140,.8) 100%);}[class~=param-item],[class~=param-title]{font-size:.9rem;}[class~=try-container][class~=premium]{border-left-width:1.5pt;}[class~=param-title]{margin-bottom:.083333333in;}[class~=param-title]{color:var(--text-secondary);}[class~=try-container][class~=premium]{border-bottom-width:1.5pt;}[class~=param-name],[class~=param-title]{font-weight:bold;}[class~=param-list]{margin-bottom:15px;}[class~=param-list]{border-left-width:.03125in;}[class~=try-container][class~=premium]{border-right-width:1.5pt;}[class~=try-container][class~=premium],[class~=param-list]{border-left-style:solid;}[class~=param-list]{border-left-color:var(--primary);}[class~=param-list]{border-image:none;}[class~=param-list]{padding-left:.75pc;}[class~=try-container][class~=premium]{border-top-width:1.5pt;}[class~=param-item]{margin-bottom:6px;}[class~=param-name]{font-family:"Courier New",Courier,monospace;}[class~=param-name]{color:var(--highlight);}[class~=try-container][class~=premium]{border-bottom-style:solid;}[class~=try-container][class~=premium]{border-right-style:solid;}[class~=input-group] input{color:var(--text);}[class~=try-container][class~=premium]{border-top-style:solid;}[class~=try-btn][class~=disabled]::after{left:0;}[class~=try-btn]{color:white;}[class~=try-btn]{border-left-width:medium;}[class~=try-btn]{border-bottom-width:medium;}[class~=try-btn]{border-right-width:medium;}[class~=try-btn]{border-top-width:medium;}[class~=try-btn][class~=disabled]::after{right:0;}[class~=try-btn]{border-left-style:none;}[class~=try-container][class~=premium]{border-left-color:gold;}[class~=try-btn]{border-bottom-style:none;}[class~=try-btn]{border-right-style:none;}[class~=try-container][class~=premium]{border-bottom-color:gold;}[class~=try-container][class~=premium]{border-right-color:gold;}[class~=try-btn]{border-top-style:none;}[class~=try-btn]{border-left-color:var(--comic-border);}[class~=try-btn]{border-bottom-color:var(--comic-border);}[class~=input-group] input{border-radius:3pt;}[class~=try-btn]{border-right-color:var(--comic-border);}[class~=try-container][class~=premium]{border-top-color:gold;}[class~=try-btn]{border-top-color:var(--comic-border);}[class~=try-container][class~=premium],[class~=try-btn]{border-image:none;}[class~=try-btn]{padding-left:11.25pt;}[class~=try-btn]{padding-bottom:.625pc;}[class~=execute-btn][class~=premium]{background:linear-gradient(135deg,#ffd700 0%,#ffa500 100%);}[class~=execute-btn][class~=premium]{color:black;}[class~=input-group] input,[class~=try-btn]{transition:all .2s;}[class~=try-btn]{padding-right:11.25pt;}[class~=try-btn]{padding-top:.625pc;}[class~=try-btn]{border-radius:.5pc;}.popup-content::before{content:"";}[class~=try-btn]{cursor:pointer;}[class~=try-btn]{font-weight:bold;}[class~=try-btn]{width:100%;}[class~=try-container],[class~=try-btn]{margin-top:11.25pt;}[class~=try-btn]{box-shadow:var(--comic-shadow);}[class~=try-btn]{text-transform:uppercase;}.popup-content::before{position:absolute;}[class~=try-btn][class~=disabled]::after{bottom:0;}[class~=execute-btn][class~=premium]{border-left-width:1.5pt;}[class~=try-btn]{position:relative;}[class~=execute-btn][class~=premium]{border-bottom-width:1.5pt;}[class~=try-btn][class~=disabled]::after{background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(0,0,0,.1) 8px,rgba(0,0,0,.1) 16px);}[class~=try-btn]{overflow:hidden;}[class~=try-container]{display:none;}[class~=try-container]{border-left-width:medium;}.popup-content::before{top:0;}[class~=execute-btn][class~=premium]{border-right-width:1.5pt;}[class~=execute-btn][class~=premium]{border-top-width:1.5pt;}[class~=try-container]{border-bottom-width:medium;}[class~=try-container]{border-right-width:medium;}[class~=try-container]{border-top-width:medium;}[class~=try-container]{border-left-style:none;}[class~=try-container]{border-bottom-style:none;}[class~=execute-btn][class~=premium]{border-left-style:solid;}[class~=try-container]{border-right-style:none;}.popup-content::before{left:0;}[class~=try-container]{border-top-style:none;}[class~=try-container]{border-left-color:var(--comic-border);}[class~=execute-btn][class~=premium]{border-bottom-style:solid;}[class~=try-container]{border-bottom-color:var(--comic-border);}[class~=input-group] input:focus{outline:none;}[class~=execute-btn][class~=premium]{border-right-style:solid;}[class~=try-container]{border-right-color:var(--comic-border);}[class~=execute-btn][class~=premium]{border-top-style:solid;}[class~=execute-btn][class~=premium]{border-left-color:white;}.popup-content::before{right:0;}[class~=execute-btn][class~=premium]{border-bottom-color:white;}.popup-content::before{height:3px;}[class~=try-container]{border-top-color:var(--comic-border);}[class~=execute-btn][class~=premium]{border-right-color:white;}[class~=execute-btn][class~=premium]{border-top-color:white;}.popup-content::before{background:var(--highlight);}[class~=execute-btn][class~=premium],[class~=try-container]{border-image:none;}[class~=try-container]{padding-left:.15625in;}[class~=try-container]{padding-bottom:.15625in;}[class~=try-container]{padding-right:.15625in;}.execute-btn:hover{transform:translateY(-2px);}[class~=try-container]{padding-top:.15625in;}[class~=try-container]{background-color:var(--card-bg);}[class~=try-container]{box-shadow:inset 0 3px 4.5pt rgba(0,0,0,.2);}[class~=try-container],[class~=execute-btn]{border-radius:.083333333in;}[class~=input-group]{margin-bottom:.125in;}[class~=execute-btn]{background-color:var(--primary);}[class~=execute-btn]{color:white;}[class~=execute-btn]{border-left-width:medium;}[class~=execute-btn]{border-bottom-width:medium;}[class~=execute-btn]{border-right-width:medium;}[class~=execute-btn]{border-top-width:medium;}.execute-btn:hover{box-shadow:0 .375pc .75pc rgba(42,165,192,.4);}[class~=execute-btn]{border-left-style:none;}.popup.premium{background-color:rgba(0,0,0,.9);}[class~=execute-btn]{border-bottom-style:none;}[class~=execute-btn]{border-right-style:none;}[class~=execute-btn]{border-top-style:none;}[class~=execute-btn]{border-left-color:var(--comic-border);}[class~=execute-btn]{border-bottom-color:var(--comic-border);}[class~=execute-btn]{border-right-color:var(--comic-border);}.popup-content.premium{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);}[class~=execute-btn]{border-top-color:var(--comic-border);}[class~=execute-btn]{border-image:none;}[class~=execute-btn],[class~=popup-content]{padding-left:.208333333in;}[class~=execute-btn]{padding-bottom:.625pc;}[class~=popup-content],[class~=execute-btn]{padding-right:.208333333in;}[class~=execute-btn]{padding-top:.625pc;}.popup-content.premium{border-left-width:.125pc;}[class~=execute-btn]{cursor:pointer;}[class~=execute-btn]{margin-right:.625pc;}.popup-content.premium{border-bottom-width:.125pc;}[class~=execute-btn]{font-weight:bold;}[class~=popup-content],[class~=execute-btn]{box-shadow:var(--comic-shadow);}[class~=execute-btn]{text-transform:uppercase;}[class~=execute-btn]{transition:all .2s;}.popup{display:none;}.popup{position:fixed;}[class~=input-group] input:focus{box-shadow:0 0 0 .125pc var(--highlight),var(--comic-shadow);}.popup{top:0;}.popup{left:0;}.popup{width:100%;}.popup{height:100%;}.popup{background-color:rgba(0,0,0,.8);}.popup{z-index:1000;}.popup{justify-content:center;}.popup{align-items:center;}[class~=popup-content]{background-color:var(--card-bg);}[class~=popup-content]{padding-bottom:.208333333in;}.popup-content.premium{border-right-width:.125pc;}[class~=popup-content]{padding-top:.208333333in;}[class~=popup-content]{border-left-width:medium;}[class~=popup-content]{border-bottom-width:medium;}[class~=popup-content]{border-right-width:medium;}[class~=popup-content]{border-top-width:medium;}[class~=popup-content]{border-left-style:none;}.popup-content.premium{border-top-width:.125pc;}[class~=popup-content]{border-bottom-style:none;}[class~=popup-content]{border-right-style:none;}.popup-content.premium{border-left-style:solid;}[class~=popup-content]{border-top-style:none;}.popup-content.premium{border-bottom-style:solid;}[class~=popup-content]{border-left-color:var(--comic-border);}[class~=popup-content]{border-bottom-color:var(--comic-border);}[class~=popup-content]{border-right-color:var(--comic-border);}.popup-content.premium{border-right-style:solid;}[class~=popup-content]{border-top-color:var(--comic-border);}.popup-content.premium{border-top-style:solid;}[class~=popup-content]{border-image:none;}.popup-content.premium{border-left-color:gold;}[class~=popup-content]{max-width:90%;}[class~=popup-content]{width:800px;}[class~=popup-content]{max-height:80vh;}.popup-content.premium{border-bottom-color:gold;}[class~=popup-content]{display:flex;}[class~=popup-content]{flex-direction:column;}[class~=popup-content]{border-radius:8px;}[class~=popup-content]{animation:popupOpen .3s forwards;}[class~=popup-content]{position:relative;}[class~=popup-content]{overflow:hidden;}.popup-content.premium{border-right-color:gold;}.popup-content.premium{border-top-color:gold;}.popup-content.premium{border-image:none;}.popup-content.premium{box-shadow:0 0 1.25pc rgba(255,215,0,.5);}@keyframes popupOpen{from{transform:scale(.9);opacity:0;}to{transform:scale(1);opacity:1;}}[class~=popup-title][class~=premium]{color:gold;}[class~=popup-title][class~=premium]{text-shadow:0 0 7.5pt rgba(255,215,0,.5);}.close-popup,[class~=popup-header]{display:flex;}[class~=close-popup][class~=premium]{background:gold;}[class~=popup-header]{justify-content:space-between;}.close-popup,[class~=popup-header]{align-items:center;}[class~=popup-header]{margin-bottom:11.25pt;}[class~=popup-header]{padding-bottom:10px;}[class~=popup-header]{border-bottom-width:.03125in;}[class~=close-popup][class~=premium]{color:black;}[class~=popup-body][class~=premium],[class~=popup-header]{border-bottom-style:solid;}[class~=popup-header]{border-bottom-color:var(--primary);}[class~=popup-header]{border-image:none;}[class~=close-popup]:hover{transform:rotate(10deg);}[class~=popup-title]{font-size:1.5rem;}[class~=popup-title]{color:var(--highlight);}[class~=popup-title],.close-popup{font-weight:bold;}[class~=popup-title]{font-family:"Montserrat",sans-serif;}.close-popup{background:var(--primary);}.close-popup{color:white;}.close-popup{border-left-width:medium;}[class~=close-popup]:hover{background:var(--highlight);}.close-popup{border-bottom-width:medium;}[class~=popup-body][class~=premium]{background-color:rgba(0,0,0,.5);}.close-popup{border-right-width:medium;}.close-popup{border-top-width:medium;}.close-popup{border-left-style:none;}.close-popup{border-bottom-style:none;}[class~=popup-body][class~=premium]{border-left-width:.125pc;}[class~=popup-body][class~=premium]{border-bottom-width:.125pc;}.close-popup{border-right-style:none;}.close-popup{border-top-style:none;}.close-popup{border-left-color:var(--comic-border);}.close-popup{border-bottom-color:var(--comic-border);}.close-popup{border-right-color:var(--comic-border);}[class~=popup-body][class~=premium]{border-right-width:.125pc;}.close-popup{border-top-color:var(--comic-border);}[class~=popup-body][class~=premium]{border-top-width:.125pc;}.close-popup{border-image:none;}[class~=popup-body][class~=premium]{border-left-style:solid;}.close-popup{width:22.5pt;}.close-popup{height:30px;}.close-popup{justify-content:center;}.close-popup{cursor:pointer;}.close-popup{box-shadow:var(--comic-shadow);}.close-popup{transition:all .2s;}.close-popup{border-radius:50%;}[class~=popup-body]{flex:1;}[class~=popup-body]{padding-left:.9375pc;}[class~=popup-body]{padding-bottom:.9375pc;}[class~=popup-body]{padding-right:.9375pc;}[class~=popup-body]{padding-top:.9375pc;}[class~=popup-body]{margin-bottom:11.25pt;}[class~=popup-body]{border-left-width:medium;}[class~=popup-body]{border-bottom-width:medium;}[class~=popup-body]{border-right-width:medium;}[class~=popup-body]{border-top-width:medium;}[class~=popup-body]{border-left-style:none;}[class~=popup-body][class~=premium]{border-right-style:solid;}[class~=popup-body]{border-bottom-style:none;}[class~=popup-body]{border-right-style:none;}[class~=popup-body]{border-top-style:none;}[class~=popup-body]{border-left-color:var(--comic-border);}[class~=popup-body]{border-bottom-color:var(--comic-border);}[class~=popup-body]{border-right-color:var(--comic-border);}[class~=popup-body][class~=premium]{border-top-style:solid;}[class~=popup-body]{border-top-color:var(--comic-border);}[class~=popup-body]{border-image:none;}[class~=popup-body]{background-color:#1e1e1e;}[class~=popup-body],[class~=result-content]{font-family:"Courier New",Courier,monospace;}[class~=popup-body][class~=premium]{border-left-color:rgba(255,215,0,.3);}[class~=popup-body]{font-size:.9rem;}[class~=popup-body]{line-height:1.6;}[class~=popup-body][class~=premium]{border-bottom-color:rgba(255,215,0,.3);}[class~=popup-body],[class~=result-content]{white-space:pre-wrap;}[class~=result-content],[class~=popup-body]{word-wrap:break-word;}[class~=popup-body]{overflow-y:auto;}[class~=popup-body]{color:var(--text);}[class~=popup-body],[class~=copy-btn]{border-radius:.25pc;}[class~=popup-body][class~=premium]{border-right-color:rgba(255,215,0,.3);}[class~=popup-footer],[class~=loading-container]{display:flex;}[class~=popup-body][class~=premium]{border-top-color:rgba(255,215,0,.3);}[class~=popup-footer]{justify-content:flex-end;}[class~=copy-btn]{background-color:var(--primary);}[class~=copy-btn]{color:white;}[class~=copy-btn]{border-left-width:medium;}[class~=copy-btn]{border-bottom-width:medium;}[class~=copy-btn]{border-right-width:medium;}[class~=copy-btn]{border-top-width:medium;}[class~=copy-btn]{border-left-style:none;}[class~=copy-btn]{border-bottom-style:none;}[class~=copy-btn]{border-right-style:none;}[class~=copy-btn]{border-top-style:none;}[class~=copy-btn]{border-left-color:var(--comic-border);}[class~=copy-btn]{border-bottom-color:var(--comic-border);}[class~=popup-body][class~=premium]{border-image:none;}[class~=copy-btn]{border-right-color:var(--comic-border);}[class~=copy-btn]{border-top-color:var(--comic-border);}.result-content .string{color:var(--string-color);}[class~=result-content] [class~=number]{color:var(--number-color);}[class~=copy-btn]{border-image:none;}[class~=copy-btn]{padding-left:15px;}[class~=copy-btn]{padding-bottom:6pt;}[class~=copy-btn]{padding-right:15px;}[class~=copy-btn]{padding-top:6pt;}[class~=result-content] [class~=boolean]{color:var(--boolean-color);}[class~=copy-btn]{cursor:pointer;}[class~=copy-btn]{font-weight:bold;}[class~=copy-btn]{box-shadow:var(--comic-shadow);}[class~=result-content] [class~=null]{color:var(--null-color);}[class~=result-content] [class~=key]{color:var(--key-color);}[class~=copy-btn]{transition:all .2s;}[class~=loading-container]{flex-direction:column;}[class~=loading-container]{align-items:center;}[class~=loading-container]{justify-content:center;}[class~=loading-container]{height:100px;}.loading{display:inline-block;}.loading{width:.25in;}.loading{height:1.5pc;}.loading{border-left-width:.1875pc;}[class~=copy-btn][class~=premium]{background:gold;}.loading{border-bottom-width:.1875pc;}.loading{border-right-width:.1875pc;}.loading{border-top-width:.1875pc;}.loading{border-left-style:solid;}.loading{border-bottom-style:solid;}.loading{border-right-style:solid;}[class~=copy-btn][class~=premium]{color:black;}.loading{border-top-style:solid;}.loading{border-left-color:rgba(255,255,255,.3);}.loading{border-bottom-color:rgba(255,255,255,.3);}.loading{border-right-color:rgba(255,255,255,.3);}.loading{border-top-color:var(--highlight);}[class~=copy-btn]:hover{transform:translateY(-2px);}[class~=copy-btn]:hover{background:var(--highlight);}.loading.premium{border-top-color:gold;}.loading{border-image:none;}.loading{border-radius:50%;}.loading{animation:spin 1s linear infinite;}.loading{margin-bottom:11.25pt;}@keyframes spin{to{transform:rotate(360deg);}}[class~=status-notification]{position:fixed;}[class~=status-notification]{top:20px;}[class~=status-notification]{left:50%;}[class~=status-notification]{transform:translateX(-50%);}[class~=status-notification]{background-color:var(--primary);}[class~=status-notification]{color:white;}[class~=status-notification]{padding-left:25px;}[class~=status-notification]{padding-bottom:12px;}[class~=status-notification]{padding-right:25px;}[class~=status-notification]{padding-top:12px;}[class~=status-notification]{border-left-width:medium;}[class~=status-notification]{border-bottom-width:medium;}[class~=status-notification]{border-right-width:medium;}[class~=status-notification]{border-top-width:medium;}[class~=status-notification]{border-left-style:none;}[class~=status-notification]{border-bottom-style:none;}[class~=status-notification]{border-right-style:none;}[class~=status-notification]{border-top-style:none;}[class~=status-notification]{border-left-color:var(--comic-border);}[class~=status-notification]{border-bottom-color:var(--comic-border);}[class~=status-notification]{border-right-color:var(--comic-border);}[class~=status-notification]{border-top-color:var(--comic-border);}[class~=status-notification]{border-image:none;}[class~=status-notification]{box-shadow:var(--comic-shadow);}[class~=status-notification]{z-index:1001;}[class~=status-notification]{font-weight:bold;}[class~=status-notification]{text-align:center;}[class~=status-notification]{display:none;}[class~=status-notification]{max-width:90%;}[class~=status-notification]{animation:bounceIn .3s;}[class~=status-notification]{border-radius:1.875pc;}@keyframes bounceIn{0%{transform:translateX(-50%) scale(.8);opacity:0;}70%{transform:translateX(-50%) scale(1.1);}100%{transform:translateX(-50%) scale(1);opacity:1;}}footer{text-align:center;}footer::before{content:"";}footer{padding-left:0;}footer::before{position:absolute;}footer{padding-bottom:22.5pt;}footer::before{top:0;}footer{padding-right:0;}footer::before{left:50%;}footer{padding-top:22.5pt;}footer::before{transform:translateX(-50%);}footer{margin-top:.520833333in;}footer{color:var(--text-secondary);}footer::before{width:1.5625in;}footer{font-weight:bold;}footer::before{height:3px;}footer{position:relative;}footer::before{background:linear-gradient(90deg,transparent,var(--highlight),transparent);}footer::before{border-radius:2.25pt;}@media (max-width: 768px){[class~=api-grid]{grid-template-columns:1fr;}h1{font-size:2rem;}.popup-content{width:95%;}.popup-content{padding-left:11.25pt;}.popup-content{padding-bottom:11.25pt;}.popup-content{padding-right:11.25pt;}.popup-content{padding-top:11.25pt;}}@media (max-width: 480px){.api-card{padding-left:.15625in;}.api-card{padding-bottom:.15625in;}.api-card{padding-right:.15625in;}.api-card{padding-top:.15625in;}[class~=popup-content]{width:98%;}h1{font-size:1.8rem;}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div id="comic-banner-container" class="comic-banner">
-            <!-- Banner akan diisi oleh JavaScript -->
-        </div>
-        
+  <div class="container">
         <header>
-            <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
-            <h1 id="api-name">Zelda Apis</h1>
+            <h1 id="api-name">JulxyZ  Apis</h1>
             <div class="status" id="api-status">Online</div>
             <p class="description" id="api-description">Simple Rest Api.</p>
         </header>
@@ -794,8 +38,8 @@
         <div id="categories-container"></div>
         
         <footer>
-            <p>Dibuat dengan ❤ oleh <span id="api-creator">Zelda Apis</span></p>
-            <p>Versi <span id="api-version">v1.0</span></p>
+            <p>Dibuat dengan ❤ oleh <span id="api-creator">JulxyZ Apis</span></p>
+            <p>Versi <span id="api-version">v1.1</span></p>
         </footer>
     </div>
 
@@ -818,430 +62,431 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('themeToggle');
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            
-            themeToggle.textContent = currentTheme === 'dark' ? '☀️ Mode Terang' : '🌙 Mode Gelap';
-            
-            themeToggle.addEventListener('click', function() {
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                themeToggle.textContent = newTheme === 'dark' ? '☀️ Mode Terang' : '🌙 Mode Gelap';
-                
-                this.blur();
-            });
-
-            const apiPopup = document.getElementById('apiPopup');
-            const closePopup = document.getElementById('closePopup');
-            const popupBody = document.getElementById('popupBody');
-            const popupTitle = document.getElementById('popupTitle');
-            const copyResultBtn = document.getElementById('copyResultBtn');
-            const statusNotification = document.getElementById('statusNotification');
-            const comicBannerContainer = document.getElementById('comic-banner-container');
-            
-            closePopup.addEventListener('click', function() {
-                apiPopup.style.display = 'none';
-            });
-            
-            window.addEventListener('click', function(e) {
-                if (e.target === apiPopup) {
-                    apiPopup.style.display = 'none';
+    const apiPopup = document.getElementById('apiPopup');
+    const closePopup = document.getElementById('closePopup');
+    const popupBody = document.getElementById('popupBody');
+    const popupTitle = document.getElementById('popupTitle');
+    const copyResultBtn = document.getElementById('copyResultBtn');
+    const statusNotification = document.getElementById('statusNotification');
+    
+    closePopup.addEventListener('click', function() {
+        apiPopup.style.display = 'none';
+    });
+    
+    window.addEventListener('click', function(e) {
+        if (e.target === apiPopup) {
+            apiPopup.style.display = 'none';
+        }
+    });
+    
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', debounce(handleSearch, 300));
+    
+    loadApiData();
+    
+    function showStatusNotification(message) {
+        statusNotification.textContent = message;
+        statusNotification.style.display = 'block';
+        
+        setTimeout(function() {
+            statusNotification.style.display = 'none';
+        }, 3000);
+    }
+    
+    function handleSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const apiCards = document.querySelectorAll('.api-card');
+        
+        if (!searchTerm) {
+            apiCards.forEach(card => {
+                card.style.display = 'block';
+                const category = card.closest('.category');
+                if (category) {
+                    category.style.display = 'block';
                 }
             });
+            return;
+        }
+        
+        apiCards.forEach(card => {
+            const name = card.dataset.apiName;
+            const desc = card.dataset.apiDesc;
+            const matches = name.includes(searchTerm) || desc.includes(searchTerm);
+            card.style.display = matches ? 'block' : 'none';
             
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', debounce(handleSearch, 300));
-            
-            loadApiData();
-            
-            function createComicBanner(bannerImage) {
-                if (!bannerImage) return;
-                
-                const bannerHTML = `
-                    <img src="${bannerImage}" alt="Banner Zelda Apis" loading="lazy">
-                    <div class="banner-caption">Selamat Menggunakan -/o/-</div>
-                    <div class="speech-bubble" style="top: 20px; right: 20px;">
-                        Coba API gratis sekarang!
-                    </div>
-                    <div class="speech-bubble" style="bottom: 40px; left: 20px; animation-delay: 0.5s;">
-                        Keren banget!
-                    </div>
-                `;
-                
-                comicBannerContainer.innerHTML = bannerHTML;
+            const category = card.closest('.category');
+            if (category) {
+                const hasVisibleCards = Array.from(category.querySelectorAll('.api-card'))
+                    .some(c => c.style.display !== 'none');
+                category.style.display = hasVisibleCards ? 'block' : 'none';
             }
-            
-            function showStatusNotification(message) {
-                statusNotification.textContent = message;
-                statusNotification.style.display = 'block';
-                
-                setTimeout(function() {
-                    statusNotification.style.display = 'none';
-                }, 3000);
+        });
+    }
+    
+    function debounce(func, wait) {
+        let timeout;
+        return function() {
+            const context = this, args = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+                func.apply(context, args);
+            }, wait);
+        };
+    }
+    
+    function checkVisibility() {
+        const categories = document.querySelectorAll('.category');
+        categories.forEach(category => {
+            const rect = category.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                category.classList.add('visible');
             }
-            
-            function handleSearch() {
-                const searchTerm = searchInput.value.toLowerCase();
-                const apiCards = document.querySelectorAll('.api-card');
-                
-                if (!searchTerm) {
-                    apiCards.forEach(card => {
-                        card.style.display = 'block';
-                        const category = card.closest('.category');
-                        if (category) {
-                            category.style.display = 'block';
-                        }
-                    });
-                    return;
+        });
+    }
+    
+    window.addEventListener('scroll', checkVisibility);
+    checkVisibility();
+    
+    function syntaxHighlight(json) {
+        if (typeof json != 'string') {
+            json = JSON.stringify(json, null, 2);
+        }
+        
+        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, 
+        function(match) {
+            let cls = 'number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'key';
+                } else {
+                    cls = 'string';
                 }
-                
-                apiCards.forEach(card => {
-                    const name = card.dataset.apiName;
-                    const desc = card.dataset.apiDesc;
-                    const matches = name.includes(searchTerm) || desc.includes(searchTerm);
-                    card.style.display = matches ? 'block' : 'none';
-                    
-                    const category = card.closest('.category');
-                    if (category) {
-                        const hasVisibleCards = Array.from(category.querySelectorAll('.api-card'))
-                            .some(c => c.style.display !== 'none');
-                        category.style.display = hasVisibleCards ? 'block' : 'none';
-                    }
-                });
+            } else if (/true|false/.test(match)) {
+                cls = 'boolean';
+            } else if (/null/.test(match)) {
+                cls = 'null';
             }
-            
-            function debounce(func, wait) {
-                let timeout;
-                return function() {
-                    const context = this, args = arguments;
-                    clearTimeout(timeout);
-                    timeout = setTimeout(function() {
-                        func.apply(context, args);
-                    }, wait);
-                };
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+    
+    async function loadApiData() {
+        try {
+            const response = await fetch('/src/web-set.json');
+            if (!response.ok) {
+                throw new Error('Gagal memuat data: ' + response.status);
             }
+            const data = await response.json();
             
-            function checkVisibility() {
-                const categories = document.querySelectorAll('.category');
-                categories.forEach(category => {
-                    const rect = category.getBoundingClientRect();
-                    if (rect.top < window.innerHeight - 100) {
-                        category.classList.add('visible');
-                    }
-                });
-            }
+            document.getElementById('api-name').textContent = data.name;
+            document.getElementById('api-status').textContent = data.header.status;
+            document.getElementById('api-description').textContent = data.description;
+            document.getElementById('api-creator').textContent = data.apiSettings.creator;
+            document.getElementById('api-version').textContent = data.version;
             
-            window.addEventListener('scroll', checkVisibility);
-            checkVisibility();
+            const categoriesContainer = document.getElementById('categories-container');
+            categoriesContainer.innerHTML = '';
             
-            async function loadApiData() {
-                try {
-                    const response = await fetch('/src/web-set.json');
-                    if (!response.ok) {
-                        throw new Error('Gagal memuat data: ' + response.status);
-                    }
-                    const data = await response.json();
-                    
-                    document.getElementById('api-name').textContent = data.name;
-                    document.getElementById('api-status').textContent = data.header.status;
-                    document.getElementById('api-description').textContent = data.description;
-                    document.getElementById('api-creator').textContent = data.apiSettings.creator;
-                    document.getElementById('api-version').textContent = data.version;
-                    
-                    if (data.bannerImage) {
-                        createComicBanner(data.bannerImage);
-                    }
-                    
-                    const categoriesContainer = document.getElementById('categories-container');
-                    categoriesContainer.innerHTML = '';
-                    
-                    data.categories.forEach(category => {
-                        const categoryElement = document.createElement('div');
-                        categoryElement.className = 'category';
-                        categoryElement.dataset.category = category.name.toLowerCase();
-                        
-                        const categoryTitle = document.createElement('h2');
-                        categoryTitle.className = 'category-title';
-                        categoryTitle.textContent = category.name;
-                        
-                        const apiGrid = document.createElement('div');
-                        apiGrid.className = 'api-grid';
-                        
-                        category.items.forEach(item => {
-                            const apiCard = document.createElement('div');
-                            apiCard.className = 'api-card';
-                            apiCard.dataset.apiName = item.name.toLowerCase();
-                            apiCard.dataset.apiDesc = item.desc.toLowerCase();
-                            
-                            const apiName = document.createElement('h3');
-                            apiName.className = 'api-name';
-                            apiName.textContent = item.name;
-                            
-                            const apiKeyBadge = document.createElement('span');
-                            apiKeyBadge.className = `api-key-badge ${item.requireKey ? '' : 'public'}`;
-                            apiKeyBadge.textContent = item.requireKey ? 'Butuh Key' : 'Publik';
-                            apiName.appendChild(apiKeyBadge);
-                            
-                            const apiDesc = document.createElement('p');
-                            apiDesc.className = 'api-desc';
-                            apiDesc.textContent = item.desc;
-                            
-                            const apiPathContainer = document.createElement('div');
-                            apiPathContainer.className = 'api-path-container';
-                            
-                            const apiPath = document.createElement('code');
-                            apiPath.className = 'api-path';
-                            apiPath.textContent = item.path;
-                            
-                            const copyPathBtn = document.createElement('button');
-                            copyPathBtn.className = 'copy-path-btn';
-                            copyPathBtn.title = 'Salin endpoint';
-                            copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
-                            copyPathBtn.addEventListener('click', function() {
-                                navigator.clipboard.writeText(item.path).then(function() {
-                                    copyPathBtn.innerHTML = '<i class="fas fa-check"></i>';
-                                    setTimeout(function() {
-                                        copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
-                                    }, 2000);
-                                });
-                            });
-                            
-                            apiPathContainer.appendChild(apiPath);
-                            apiPathContainer.appendChild(copyPathBtn);
-                            
-                            const apiStatus = document.createElement('span');
-                            apiStatus.className = `api-status status-${item.status.toLowerCase()}`;
-                            
-                            const statusIcon = document.createElement('i');
-                            let statusText = item.status;
-                            
-                            switch(item.status.toLowerCase()) {
-                                case 'ready':
-                                    statusIcon.className = 'fas fa-circle-check';
-                                    statusText = 'Online';
-                                    break;
-                                case 'update':
-                                    statusIcon.className = 'fas fa-circle-notch fa-spin';
-                                    statusText = 'Update';
-                                    break;
-                                case 'offline':
-                                    statusIcon.className = 'fas fa-circle-xmark';
-                                    statusText = 'Offline';
-                                    break;
-                                case 'maintenance':
-                                    statusIcon.className = 'fas fa-tools';
-                                    statusText = 'Maintenance';
-                                    break;
-                                case 'error':
-                                    statusIcon.className = 'fas fa-circle-exclamation';
-                                    statusText = 'Error';
-                                    break;
-                                default:
-                                    statusIcon.className = 'fas fa-circle';
-                            }
-                            
-                            apiStatus.appendChild(statusIcon);
-                            apiStatus.appendChild(document.createTextNode(statusText));
-                            
-                            apiCard.append(apiName, apiDesc, apiPathContainer, apiStatus);
-                            
-                            if (item.params) {
-                                const paramTitle = document.createElement('p');
-                                paramTitle.className = 'param-title';
-                                paramTitle.textContent = 'Parameter:';
-                                
-                                const paramList = document.createElement('div');
-                                paramList.className = 'param-list';
-                                
-                                Object.entries(item.params).forEach(([key, desc]) => {
-                                    const paramItem = document.createElement('div');
-                                    paramItem.className = 'param-item';
-                                    paramItem.innerHTML = `<span class="param-name">${key}</span>: ${desc}`;
-                                    paramList.appendChild(paramItem);
-                                });
-                                
-                                apiCard.append(paramTitle, paramList);
-                            }
-                            
-                            const tryBtn = document.createElement('button');
-                            tryBtn.className = 'try-btn';
-                            tryBtn.textContent = 'Coba Sekarang';
-                            
-                            if (item.status.toLowerCase() !== 'ready') {
-                                tryBtn.classList.add('disabled');
-                                tryBtn.addEventListener('click', function() {
-                                    showStatusNotification(`Endpoint ini sedang ${statusText.toLowerCase()}!`);
-                                });
-                            } else {
-                                tryBtn.addEventListener('click', function() {
-                                    toggleTryContainer(apiCard, item);
-                                });
-                            }
-                            
-                            apiCard.appendChild(tryBtn);
-                            apiGrid.appendChild(apiCard);
-                        });
-                        
-                        categoryElement.append(categoryTitle, apiGrid);
-                        categoriesContainer.appendChild(categoryElement);
-                    });
-                    
-                    checkVisibility();
-                    
-                } catch (error) {
-                    console.error('Error:', error);
-                    const errorElement = document.createElement('div');
-                    errorElement.className = 'api-card';
-                    errorElement.style.backgroundColor = '#c62828';
-                    errorElement.style.color = 'white';
-                    errorElement.style.padding = '20px';
-                    errorElement.textContent = `Error memuat data API: ${error.message}`;
-                    document.getElementById('categories-container').appendChild(errorElement);
-                }
-            }
-            
-            function toggleTryContainer(apiCard, item) {
-                let tryContainer = apiCard.querySelector('.try-container');
+            data.categories.forEach(category => {
+                const categoryElement = document.createElement('div');
+                categoryElement.className = 'category';
+                categoryElement.dataset.category = category.name.toLowerCase();
                 
-                if (!tryContainer) {
-                    tryContainer = createTryContainer(apiCard, item);
-                }
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.className = 'category-title';
+                categoryTitle.textContent = category.name;
                 
-                tryContainer.style.display = tryContainer.style.display === 'none' ? 'block' : 'none';
-            }
-            
-            function createTryContainer(apiCard, item) {
-                const tryContainer = document.createElement('div');
-                tryContainer.className = 'try-container';
+                const apiGrid = document.createElement('div');
+                apiGrid.className = 'api-grid';
                 
-                if (item.requireKey) {
-                    const keyGroup = document.createElement('div');
-                    keyGroup.className = 'input-group';
-                    
-                    const keyLabel = document.createElement('label');
-                    keyLabel.textContent = 'API Key';
-                    keyLabel.innerHTML += ' <span style="color: var(--primary-light)">*wajib</span>';
-                    
-                    const keyInput = document.createElement('input');
-                    keyInput.type = 'text';
-                    keyInput.placeholder = 'Masukkan API key Anda';
-                    keyInput.id = `api-key-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
-                    keyInput.required = true;
-                    
-                    keyGroup.append(keyLabel, keyInput);
-                    tryContainer.appendChild(keyGroup);
-                }
-                
-                if (item.params) {
-                    Object.keys(item.params).forEach(param => {
-                        const inputGroup = document.createElement('div');
-                        inputGroup.className = 'input-group';
-                        
-                        const label = document.createElement('label');
-                        label.textContent = param;
-                        
-                        const input = document.createElement('input');
-                        input.type = 'text';
-                        input.placeholder = item.params[param];
-                        input.id = `param-${param}-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
-                        
-                        inputGroup.append(label, input);
-                        tryContainer.appendChild(inputGroup);
-                    });
-                }
-                
-                const buttonGroup = document.createElement('div');
-                buttonGroup.style.marginTop = '10px';
-                
-                const executeBtn = document.createElement('button');
-                executeBtn.className = 'execute-btn';
-                executeBtn.textContent = 'Jalankan';
-                executeBtn.addEventListener('click', function() {
-                    executeApi(item);
-                });
-                
-                buttonGroup.appendChild(executeBtn);
-                tryContainer.appendChild(buttonGroup);
-                
-                apiCard.appendChild(tryContainer);
-                return tryContainer;
-            }
-            
-            async function executeApi(item) {
-                popupTitle.textContent = `Hasil ${item.name}`;
-                popupBody.innerHTML = `
-                    <div style="text-align: center; padding: 20px;">
-                        <div class="loading"></div>
-                        <p>Memproses request ke ${item.name}...</p>
-                    </div>
-                `;
-                apiPopup.style.display = 'flex';
-                
-                try {
-                    let url = item.path.split('?')[0];
-                    const params = new URLSearchParams();
-                    
+                category.items.forEach(item => {
+                    const apiCard = document.createElement('div');
+                    apiCard.className = 'api-card';
                     if (item.requireKey) {
-                        const apiKey = document.getElementById(`api-key-${item.name.replace(/\s+/g, '-').toLowerCase()}`).value.trim();
-                        if (!apiKey) {
-                            throw new Error('API key diperlukan');
-                        }
-                        params.append('apikey', apiKey);
+                        apiCard.classList.add('premium');
                     }
+                    apiCard.dataset.apiName = item.name.toLowerCase();
+                    apiCard.dataset.apiDesc = item.desc.toLowerCase();
+                    
+                    const apiName = document.createElement('h3');
+                    apiName.className = 'api-name';
+                    apiName.textContent = item.name;
+                    
+                    const apiKeyBadge = document.createElement('span');
+                    apiKeyBadge.className = `api-key-badge ${item.requireKey ? 'premium' : ''}`;
+                    apiKeyBadge.textContent = item.requireKey ? 'Premium' : 'Publik';
+                    apiName.appendChild(apiKeyBadge);
+                    
+                    const apiDesc = document.createElement('p');
+                    apiDesc.className = 'api-desc';
+                    apiDesc.textContent = item.desc;
+                    
+                    const apiPathContainer = document.createElement('div');
+                    apiPathContainer.className = 'api-path-container';
+                    
+                    const apiPath = document.createElement('code');
+                    apiPath.className = 'api-path';
+                    apiPath.textContent = item.path;
+                    
+                    const copyPathBtn = document.createElement('button');
+                    copyPathBtn.className = 'copy-path-btn';
+                    copyPathBtn.title = 'Salin endpoint';
+                    copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
+                    copyPathBtn.addEventListener('click', function() {
+                        navigator.clipboard.writeText(item.path).then(function() {
+                            copyPathBtn.innerHTML = '<i class="fas fa-check"></i>';
+                            setTimeout(function() {
+                                copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
+                            }, 2000);
+                        });
+                    });
+                    
+                    apiPathContainer.appendChild(apiPath);
+                    apiPathContainer.appendChild(copyPathBtn);
+                    
+                    const apiStatus = document.createElement('span');
+                    apiStatus.className = `api-status status-${item.status.toLowerCase()}`;
+                    
+                    const statusIcon = document.createElement('i');
+                    let statusText = item.status;
+                    
+                    switch(item.status.toLowerCase()) {
+                        case 'ready':
+                            statusIcon.className = 'fas fa-circle-check';
+                            statusText = 'Online';
+                            break;
+                        case 'update':
+                            statusIcon.className = 'fas fa-circle-notch fa-spin';
+                            statusText = 'Update';
+                            break;
+                        case 'offline':
+                            statusIcon.className = 'fas fa-circle-xmark';
+                            statusText = 'Offline';
+                            break;
+                        case 'maintenance':
+                            statusIcon.className = 'fas fa-tools';
+                            statusText = 'Maintenance';
+                            break;
+                        case 'error':
+                            statusIcon.className = 'fas fa-circle-exclamation';
+                            statusText = 'Error';
+                            break;
+                        default:
+                            statusIcon.className = 'fas fa-circle';
+                    }
+                    
+                    apiStatus.appendChild(statusIcon);
+                    apiStatus.appendChild(document.createTextNode(statusText));
+                    
+                    apiCard.append(apiName, apiDesc, apiPathContainer, apiStatus);
                     
                     if (item.params) {
-                        Object.keys(item.params).forEach(param => {
-                            const input = document.getElementById(`param-${param}-${item.name.replace(/\s+/g, '-').toLowerCase()}`);
-                            if (input && input.value.trim()) {
-                                params.append(param, input.value.trim());
-                            }
+                        const paramTitle = document.createElement('p');
+                        paramTitle.className = 'param-title';
+                        paramTitle.textContent = 'Parameter:';
+                        
+                        const paramList = document.createElement('div');
+                        paramList.className = 'param-list';
+                        
+                        Object.entries(item.params).forEach(([key, desc]) => {
+                            const paramItem = document.createElement('div');
+                            paramItem.className = 'param-item';
+                            paramItem.innerHTML = `<span class="param-name">${key}</span>: ${desc}`;
+                            paramList.appendChild(paramItem);
+                        });
+                        
+                        apiCard.append(paramTitle, paramList);
+                    }
+                    
+                    const tryBtn = document.createElement('button');
+                    tryBtn.className = `try-btn ${item.requireKey ? 'premium' : ''}`;
+                    tryBtn.textContent = 'Coba Sekarang';
+                    
+                    if (item.status.toLowerCase() !== 'ready') {
+                        tryBtn.classList.add('disabled');
+                        tryBtn.addEventListener('click', function() {
+                            showStatusNotification(`Endpoint ini sedang ${statusText.toLowerCase()}!`);
+                        });
+                    } else {
+                        tryBtn.addEventListener('click', function() {
+                            toggleTryContainer(apiCard, item);
                         });
                     }
                     
-                    if (params.toString()) {
-                        url += '?' + params.toString();
-                    }
-                    
-                    const response = await fetch(url);
-                    
-                    if (!response.ok) {
-                        throw new Error(`Request gagal dengan status ${response.status}`);
-                    }
-                    
-                    const data = await response.json();
-                    
-                    popupBody.innerHTML = '';
-                    const pre = document.createElement('pre');
-                    pre.className = 'result-content';
-                    pre.textContent = JSON.stringify(data, null, 2);
-                    popupBody.appendChild(pre);
-                    
-                } catch (error) {
-                    console.error('Error:', error);
-                    popupBody.innerHTML = `
-                        <div class="error-message">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <p><strong>Error:</strong> ${error.message}</p>
-                            <p>Coba lagi atau periksa parameter Anda</p>
-                        </div>
-                    `;
+                    apiCard.appendChild(tryBtn);
+                    apiGrid.appendChild(apiCard);
+                });
+                
+                categoryElement.append(categoryTitle, apiGrid);
+                categoriesContainer.appendChild(categoryElement);
+            });
+            
+            checkVisibility();
+            
+        } catch (error) {
+            console.error('Error:', error);
+            const errorElement = document.createElement('div');
+            errorElement.className = 'api-card';
+            errorElement.style.backgroundColor = '#c62828';
+            errorElement.style.color = 'white';
+            errorElement.style.padding = '20px';
+            errorElement.textContent = `Error memuat data API: ${error.message}`;
+            document.getElementById('categories-container').appendChild(errorElement);
+        }
+    }
+    
+    function toggleTryContainer(apiCard, item) {
+        let tryContainer = apiCard.querySelector('.try-container');
+        
+        if (!tryContainer) {
+            tryContainer = createTryContainer(apiCard, item);
+        }
+        
+        tryContainer.style.display = tryContainer.style.display === 'none' ? 'block' : 'none';
+    }
+    
+    function createTryContainer(apiCard, item) {
+        const tryContainer = document.createElement('div');
+        tryContainer.className = `try-container ${item.requireKey ? 'premium' : ''}`;
+        
+        if (item.requireKey) {
+            const keyGroup = document.createElement('div');
+            keyGroup.className = 'input-group';
+            
+            const keyLabel = document.createElement('label');
+            keyLabel.textContent = 'API Key';
+            keyLabel.innerHTML += ' <span style="color: gold">*wajib</span>';
+            
+            const keyInput = document.createElement('input');
+            keyInput.type = 'text';
+            keyInput.placeholder = 'Masukkan API key premium Anda';
+            keyInput.id = `api-key-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
+            keyInput.required = true;
+            
+            keyGroup.append(keyLabel, keyInput);
+            tryContainer.appendChild(keyGroup);
+        }
+        
+        if (item.params) {
+            Object.keys(item.params).forEach(param => {
+                const inputGroup = document.createElement('div');
+                inputGroup.className = 'input-group';
+                
+                const label = document.createElement('label');
+                label.textContent = param;
+                
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = item.params[param];
+                input.id = `param-${param}-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
+                
+                inputGroup.append(label, input);
+                tryContainer.appendChild(inputGroup);
+            });
+        }
+        
+        const buttonGroup = document.createElement('div');
+        buttonGroup.style.marginTop = '15px';
+        
+        const executeBtn = document.createElement('button');
+        executeBtn.className = `execute-btn ${item.requireKey ? 'premium' : ''}`;
+        executeBtn.textContent = 'Jalankan';
+        executeBtn.addEventListener('click', function() {
+            executeApi(item);
+        });
+        
+        buttonGroup.appendChild(executeBtn);
+        tryContainer.appendChild(buttonGroup);
+        
+        apiCard.appendChild(tryContainer);
+        return tryContainer;
+    }
+    
+    async function executeApi(item) {
+        const isPremium = item.requireKey;
+        const popup = document.getElementById('apiPopup');
+        popup.className = `popup ${isPremium ? 'premium' : ''}`;
+        popup.querySelector('.popup-content').className = `popup-content ${isPremium ? 'premium' : ''}`;
+        popup.querySelector('.popup-title').className = `popup-title ${isPremium ? 'premium' : ''}`;
+        popup.querySelector('.close-popup').className = `close-popup ${isPremium ? 'premium' : ''}`;
+        popup.querySelector('.popup-body').className = `popup-body ${isPremium ? 'premium' : ''}`;
+        popup.querySelector('.copy-btn').className = `copy-btn ${isPremium ? 'premium' : ''}`;
+        
+        popupTitle.textContent = `Hasil ${item.name}`;
+        popupBody.innerHTML = `
+            <div class="loading-container">
+                <div class="loading ${isPremium ? 'premium' : ''}"></div>
+                <p>Memproses request ke ${item.name}...</p>
+            </div>
+        `;
+        apiPopup.style.display = 'flex';
+        
+        try {
+            let [baseUrl, existingQuery] = item.path.split('?');
+            const params = new URLSearchParams(existingQuery || '');
+            
+            if (item.requireKey) {
+                const apiKey = document.getElementById(`api-key-${item.name.replace(/\s+/g, '-').toLowerCase()}`).value.trim();
+                if (!apiKey) {
+                    throw new Error('API key premium diperlukan');
                 }
+                params.set('apikey', apiKey);
             }
             
-            copyResultBtn.addEventListener('click', function() {
-                const pre = popupBody.querySelector('pre');
-                if (pre) {
-                    navigator.clipboard.writeText(pre.textContent).then(function() {
-                        copyResultBtn.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
-                        setTimeout(function() {
-                            copyResultBtn.innerHTML = '<i class="fas fa-copy"></i> Salin';
-                        }, 2000);
-                    });
-                }
+            if (item.params) {
+                Object.keys(item.params).forEach(param => {
+                    const input = document.getElementById(`param-${param}-${item.name.replace(/\s+/g, '-').toLowerCase()}`);
+                    if (input && input.value.trim()) {
+                        params.set(param, input.value.trim());
+                    }
+                });
+            }
+            
+            let url = baseUrl;
+            if (params.toString()) {
+                url += '?' + params.toString();
+            }
+            
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error(`Request gagal dengan status ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            popupBody.innerHTML = '';
+            const pre = document.createElement('pre');
+            pre.className = 'result-content';
+            pre.innerHTML = syntaxHighlight(data);
+            popupBody.appendChild(pre);
+            
+        } catch (error) {
+            console.error('Error:', error);
+            popupBody.innerHTML = `
+                <div style="color: white; background-color: #F44336; padding: 15px; border-radius: 8px; border: var(--comic-border); box-shadow: var(--comic-shadow);">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p>Coba lagi atau periksa parameter Anda</p>
+                </div>
+            `;
+        }
+    }
+    
+    copyResultBtn.addEventListener('click', function() {
+        const pre = popupBody.querySelector('pre');
+        if (pre) {
+            navigator.clipboard.writeText(pre.textContent).then(function() {
+                copyResultBtn.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
+                setTimeout(function() {
+                    copyResultBtn.innerHTML = '<i class="fas fa-copy"></i> Salin';
+                }, 2000);
             });
-        });
+        }
+    });
+});
     </script>
 </body>
 </html>
